@@ -1,0 +1,272 @@
+﻿@media (max-width: 1280px) {
+  :root {
+    --sidebar: 176px;
+  }
+
+  .hero-grid {
+    grid-template-columns: 28% 35% 37%;
+  }
+
+  .hero-copy {
+    padding-left: 28px;
+    padding-right: 24px;
+  }
+
+  .hero-copy h1 {
+    font-size: clamp(38px, 3.6vw, 54px);
+  }
+
+  .design-panel {
+    min-width: 440px;
+  }
+}
+
+@media (max-width: 1080px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .hero-copy,
+  .preview-stage {
+    min-height: auto;
+  }
+
+  .hero-copy {
+    padding: 120px 36px 30px;
+    border-right: 0;
+  }
+
+  .preview-stage {
+    min-height: 560px;
+  }
+
+  .design-panel {
+    width: calc(100% - 72px);
+    max-width: none;
+    min-width: 0;
+    margin: 0 auto 60px;
+  }
+}
+
+@media (max-width: 900px) {
+  .sidebar {
+    display: none;
+  }
+
+  .main {
+    width: 100%;
+    margin-left: 0;
+    padding: 26px 20px 118px;
+    overflow: visible;
+  }
+
+  .topbar {
+    position: static;
+    justify-content: space-between;
+    margin-bottom: 18px;
+  }
+
+  .mobile-menu,
+  .mobile-brand {
+    display: block;
+  }
+
+  .mobile-brand {
+    letter-spacing: 0.44em;
+    font-weight: 900;
+    font-size: 20px;
+  }
+
+  .mobile-brand span {
+    color: var(--primary);
+  }
+
+  .mobile-menu {
+    border: 0;
+    border-radius: 16px;
+    background: rgba(255,255,255,0.74);
+    padding: 12px 15px;
+    box-shadow: var(--soft-shadow);
+  }
+
+  html[data-theme="dark"] .mobile-menu {
+    background: rgba(255,255,255,0.055);
+  }
+
+  .top-actions .ghost-btn,
+  .top-actions .primary {
+    display: none;
+  }
+
+  .hero-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+
+  .hero-copy {
+    order: 1;
+    padding: 10px 4px 0;
+  }
+
+  .hero-copy h1 {
+    font-size: 48px;
+    line-height: 1.08;
+    margin-bottom: 18px;
+  }
+
+  .hero-copy h1::after {
+    width: 105px;
+    margin-left: 118px;
+  }
+
+  .hero-copy p {
+    max-width: 320px;
+    font-size: 18px;
+    line-height: 1.55;
+  }
+
+  .hero-copy .primary,
+  .mini-card {
+    display: none;
+  }
+
+  .preview-stage {
+    order: 2;
+    min-height: 420px;
+    border-radius: 36px;
+  }
+
+  .preview-stage::before {
+    width: 88%;
+    height: 286px;
+    border-radius: 34px;
+  }
+
+  .preview-stage::after {
+    bottom: 50px;
+  }
+
+  .qr-canvas {
+    width: min(325px, 82vw);
+    min-height: 270px;
+    padding: 20px;
+    transform: translateY(-14px);
+  }
+
+  .qr-canvas canvas,
+  .qr-canvas svg {
+    max-width: 230px !important;
+    max-height: 230px !important;
+  }
+
+  .qr-canvas::before {
+    left: -34px;
+    bottom: 36px;
+    width: 34px;
+    height: 34px;
+  }
+
+  .qr-canvas::after {
+    right: -30px;
+    bottom: 56px;
+    width: 42px;
+    height: 42px;
+  }
+
+  .scan-chip {
+    bottom: 30px;
+    min-width: 230px;
+  }
+
+  .design-panel {
+    order: 3;
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+    height: auto;
+    max-height: none;
+    overflow: visible;
+    border-radius: 28px;
+  }
+
+  .editor-tab.active {
+    overflow: visible;
+  }
+
+  .type-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .choice-row {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .page-head,
+  .search-line,
+  .template-grid,
+  .codes-list,
+  .settings-grid,
+  .code-actions,
+  .empty-state {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .page-head {
+    padding-top: 20px;
+  }
+
+  .search-line,
+  .settings-grid,
+  .template-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .code-row {
+    grid-template-columns: 72px 1fr;
+  }
+
+  .bottom-nav {
+    position: fixed;
+    left: 18px;
+    right: 18px;
+    bottom: 18px;
+    z-index: 80;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 10px;
+    border: 1px solid var(--line);
+    border-radius: 28px;
+    background: rgba(255,255,255,0.82);
+    box-shadow: var(--deep-shadow);
+    backdrop-filter: blur(22px);
+  }
+
+  html[data-theme="dark"] .bottom-nav {
+    background: rgba(17,20,28,0.82);
+  }
+
+  .bottom-nav button {
+    border: 0;
+    background: transparent;
+    color: var(--muted);
+    display: grid;
+    place-items: center;
+    gap: 5px;
+    padding: 12px 6px;
+    border-radius: 20px;
+  }
+
+  .bottom-nav button.active {
+    background: rgba(101,71,255,0.12);
+    color: var(--primary);
+  }
+
+  .bottom-nav span {
+    font-size: 12px;
+  }
+}

@@ -1,0 +1,124 @@
+﻿.app-shell {
+  min-height: 100vh;
+}
+
+.main {
+  margin-left: var(--sidebar);
+  width: calc(100vw - var(--sidebar));
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.topbar {
+  position: fixed;
+  top: 24px;
+  right: 28px;
+  z-index: 80;
+}
+
+.top-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.mobile-brand,
+.mobile-menu {
+  display: none;
+}
+
+.hero-grid {
+  width: 100%;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 29% 35% 36%;
+  gap: 0;
+  align-items: stretch;
+}
+
+/* LEFT TEXT SECTION */
+.hero-copy {
+  min-height: 100vh;
+  padding: 150px 30px 54px 34px;
+  border-right: 1px solid rgba(226, 229, 240, 0.50);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.hero-copy h1 {
+  margin: 0 0 26px;
+  max-width: 350px;
+  font-size: clamp(42px, 3.55vw, 60px);
+  line-height: 1.06;
+  letter-spacing: -0.065em;
+  font-weight: 900;
+}
+
+.hero-copy h1 span {
+  color: transparent;
+  background: linear-gradient(135deg, var(--primary), var(--primary2));
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.hero-copy h1::after {
+  content: "";
+  display: block;
+  width: 105px;
+  height: 15px;
+  margin-left: 128px;
+  margin-top: 3px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, transparent, var(--primary), transparent);
+  transform: rotate(-8deg);
+  opacity: 0.72;
+}
+
+.hero-copy p {
+  margin: 0 0 28px;
+  max-width: 320px;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+.hero-copy .primary {
+  width: 235px;
+  height: 60px;
+  font-size: 16px;
+}
+
+.mini-card {
+  margin-top: 54px;
+  width: 330px;
+  max-width: 100%;
+  min-height: 74px;
+  padding: 16px 18px;
+  border-radius: 22px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: var(--soft-shadow);
+  backdrop-filter: blur(20px);
+}
+
+html[data-theme="dark"] .mini-card {
+  background: rgba(255, 255, 255, 0.055);
+}
+
+.mini-card span {
+  color: var(--primary);
+}
+
+.mini-card b {
+  display: block;
+}
+
+.mini-card small {
+  display: block;
+  margin-top: 5px;
+  color: var(--muted);
+}
