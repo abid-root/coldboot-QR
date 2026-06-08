@@ -98,6 +98,27 @@ function selectedValue(choice) {
   return active ? active.dataset.value : 'square';
 }
 
+function escapeSvgAttr(value) {
+  return String(value)
+    .replace(/&/g, '&amp;')
+    .replace(/"/g, '&quot;');
+}
+
+function makeSafeZoneLogoImage(dataUrl, visiblePct, safeZonePct) {
+  if (!dataUrl) return undefined;
+
+  const totalPct = Math.max(visiblePct, visiblePct + safeZonePct * 2);
+  const logoPx = Math.max(8, Math.min(196, 200 * (visiblePct / totalPct)));
+  const pad = (200 - logoPx) / 2;
+
+  const svg = `
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <image href="${escapeSvgAttr(dataUrl)}" x="${pad}" y="${pad}" width="${logoPx}" height="${logoPx}" preserveAspectRatio="xMidYMid meet"/>
+</svg>`;
+
+  return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`;
+}
+
 function getOptions() {
   const dotsType = selectedValue('style') || 'square';
   const eyeType = selectedValue('eye') || 'square';
@@ -106,13 +127,13 @@ function getOptions() {
   const accent = $('#accentColor')?.value || '#635BFF';
   const light = $('#lightColor')?.value || '#ffffff';
 
-  const qrMargin = Number($('#qrMargin')?.value || 8);
-  const logoGap = Number($('#logoGap')?.value || 8);
-  const logoSize = Number($('#logoSize')?.value || 22) / 100;
-  const gradientDeg = Number($('#gradientAngle')?.value || 0);
+  const qrMargin = Number(#qrMargin?.value || 10);
+  const logoSizePct = Number(#logoSize?.value || 20);
+  const logoSafeZone = Number(#logoGap?.value || 5);
+  const gradientDeg = Number(#gradientAngle?.value || 0);
   const gradientRad = gradientDeg * Math.PI / 180;
 
-  const useGradient = $('#gradientToggle') ? $('#gradientToggle').checked : true;
+  const useGradient = $('#gradientToggle') ? $('#gradientToggle').checked : false;
   const transparentBg = $('#transparentBg') ? $('#transparentBg').checked : false;
   const syncEyes = $('#syncEyeColors') ? $('#syncEyeColors').checked : true;
 
@@ -134,20 +155,22 @@ function getOptions() {
     dotsOptions.color = dark;
   }
 
+  const safeLogoTotal = Math.min(0.48, (logoSizePct + logoSafeZone * 2) / 100);
+
   return {
     width: size,
     height: size,
     type: 'svg',
     data: buildPayload(),
-    image: logoData || undefined,
+    image: makeSafeZoneLogoImage(logoData, logoSizePct, logoSafeZone),
     margin: qrMargin,
     qrOptions: {
       errorCorrectionLevel: $('#errorLevel')?.value || 'H'
     },
     imageOptions: {
       crossOrigin: 'anonymous',
-      margin: logoGap,
-      imageSize: logoSize,
+      margin: 0,
+      imageSize: safeLogoTotal,
       hideBackgroundDots: true
     },
     dotsOptions,
@@ -172,10 +195,10 @@ function setToolText(id, value) {
 }
 
 function applyUsefulDesignPreview() {
-  const margin = Number($('#qrMargin')?.value || 8);
-  const logoSize = Number($('#logoSize')?.value || 22);
-  const logoGap = Number($('#logoGap')?.value || 8);
-  const angle = Number($('#gradientAngle')?.value || 0);
+  const margin = Number(#qrMargin?.value || 10);
+  const logoSize = Number(#logoSize?.value || 20);
+  const logoGap = Number(#logoGap?.value || 5);
+  const angle = Number(#gradientAngle?.value || 0);
   const transparentBg = $('#transparentBg') ? $('#transparentBg').checked : false;
   const light = $('#lightColor')?.value || '#ffffff';
 
