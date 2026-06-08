@@ -1,7 +1,0 @@
-﻿@import url("./sections/00-global.css");
-@import url("./sections/01-sidebar.css");
-@import url("./sections/02-create-layout.css");
-@import url("./sections/03-qr-stage.css");
-@import url("./sections/04-editor-panel.css");
-@import url("./sections/05-other-pages.css");
-@import url("./sections/06-mobile.css");
