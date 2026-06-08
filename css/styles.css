@@ -1,4 +1,4 @@
-@import url("./sections/00-global.css");
+﻿@import url("./sections/00-global.css");
 @import url("./sections/01-sidebar.css");
 @import url("./sections/02-create-layout.css");
 @import url("./sections/03-qr-stage.css");
@@ -1166,3 +1166,20 @@ html[data-theme="dark"] body {
 }
 
 /* === QRYX CLEAN FLOAT ONLY END === */
+/* === QR 10PX CORNER START === */
+.qr-canvas {
+  overflow: visible !important;
+}
+
+.qr-canvas svg,
+.qr-canvas canvas {
+  border-radius: 10px !important;
+  overflow: hidden !important;
+}
+
+.qr-canvas svg > rect:first-child {
+  fill: #ffffff !important;
+  rx: 10px !important;
+  ry: 10px !important;
+}
+/* === QR 10PX CORNER END === */
