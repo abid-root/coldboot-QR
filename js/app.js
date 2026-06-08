@@ -5,12 +5,12 @@ let qr;
 let currentType = 'url';
 let logoData = '';
 let sessionCodes = [];
-let size = 300;
+let size = Number($('#sizeRange')?.value || 300);
 
 const templates = [
   { title: 'Website Link', cat: 'Business', type: 'url', text: 'Drive traffic to any landing page.', data: 'https://qryx.app' },
   { title: 'Business Card', cat: 'Business', type: 'vcard', text: 'Share contact details instantly.', data: 'Jane Doe' },
-  { title: 'Wi‑Fi Access', cat: 'Wi‑Fi', type: 'wifi', text: 'Share Wi‑Fi credentials with one scan.', data: 'QRYX_Office' },
+  { title: 'Wi-Fi Access', cat: 'Wi-Fi', type: 'wifi', text: 'Share Wi-Fi credentials with one scan.', data: 'QRYX_Office' },
   { title: 'Restaurant Menu', cat: 'Restaurant', type: 'url', text: 'Open a digital menu instantly.', data: 'https://restaurant.example/menu' },
   { title: 'Event Ticket', cat: 'Event', type: 'event', text: 'Share event info and check-in links.', data: 'Product Launch' },
   { title: 'Product Label', cat: 'Product', type: 'url', text: 'Link manuals, warranty and product info.', data: 'https://product.example' },
@@ -78,17 +78,22 @@ function buildPayload() {
 
 function renderFields() {
   const wrap = $('#contentFields');
+  if (!wrap) return;
+
   wrap.innerHTML = '';
   const fields = fieldConfig[currentType] || fieldConfig.url;
+
   fields.forEach(field => {
     const label = document.createElement('label');
     label.textContent = field.label;
+
     const input = document.createElement(field.type === 'textarea' ? 'textarea' : 'input');
     input.id = field.id;
     input.className = 'input';
     if (field.type && field.type !== 'textarea') input.type = field.type;
     input.value = field.value || '';
     input.addEventListener('input', updateQR);
+
     wrap.append(label, input);
   });
 }
@@ -98,22 +103,22 @@ function selectedValue(choice) {
   return active ? active.dataset.value : 'square';
 }
 
-function escapeSvgAttr(value) {
+function escapeSvg(value) {
   return String(value)
     .replace(/&/g, '&amp;')
     .replace(/"/g, '&quot;');
 }
 
-function makeSafeZoneLogoImage(dataUrl, visiblePct, safeZonePct) {
+function makeSafeLogo(dataUrl, visiblePct, safeZonePct) {
   if (!dataUrl) return undefined;
 
-  const totalPct = Math.max(visiblePct, visiblePct + safeZonePct * 2);
-  const logoPx = Math.max(8, Math.min(196, 200 * (visiblePct / totalPct)));
+  const safeTotal = Math.max(visiblePct, visiblePct + safeZonePct * 2);
+  const logoPx = Math.max(8, Math.min(196, 200 * (visiblePct / safeTotal)));
   const pad = (200 - logoPx) / 2;
 
   const svg = `
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
-  <image href="${escapeSvgAttr(dataUrl)}" x="${pad}" y="${pad}" width="${logoPx}" height="${logoPx}" preserveAspectRatio="xMidYMid meet"/>
+  <image href="${escapeSvg(dataUrl)}" x="${pad}" y="${pad}" width="${logoPx}" height="${logoPx}" preserveAspectRatio="xMidYMid meet"/>
 </svg>`;
 
   return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`;
@@ -123,22 +128,22 @@ function getOptions() {
   const dotsType = selectedValue('style') || 'square';
   const eyeType = selectedValue('eye') || 'square';
 
-  const dark = $('#darkColor')?.value || '#111111';
-  const accent = $('#accentColor')?.value || '#635BFF';
-  const light = $('#lightColor')?.value || '#ffffff';
+  const solidColor = $('#darkColor')?.value || '#111111';
+  const secondColor = $('#accentColor')?.value || solidColor;
+  const bgColor = $('#lightColor')?.value || '#ffffff';
 
-  const qrMargin = Number(#qrMargin?.value || 10);
-  const logoSizePct = Number(#logoSize?.value || 20);
-  const logoSafeZone = Number(#logoGap?.value || 5);
-  const gradientDeg = Number(#gradientAngle?.value || 0);
-  const gradientRad = gradientDeg * Math.PI / 180;
-
-  const useGradient = $('#gradientToggle') ? $('#gradientToggle').checked : false;
-  const transparentBg = $('#transparentBg') ? $('#transparentBg').checked : false;
+  const useGradient = $('#gradientToggle')?.checked || false;
+  const transparentBg = $('#transparentBg')?.checked || false;
   const syncEyes = $('#syncEyeColors') ? $('#syncEyeColors').checked : true;
 
-  const eyeOuter = syncEyes ? dark : ($('#eyeOuterColor')?.value || dark);
-  const eyeInner = syncEyes ? accent : ($('#eyeInnerColor')?.value || accent);
+  const qrMargin = Number($('#qrMargin')?.value || 10);
+  const logoSizePct = Number($('#logoSize')?.value || 20);
+  const logoSafeZone = Number($('#logoGap')?.value || 5);
+  const gradientDeg = Number($('#gradientAngle')?.value || 0);
+  const gradientRad = gradientDeg * Math.PI / 180;
+
+  const eyeOuter = syncEyes ? solidColor : ($('#eyeOuterColor')?.value || solidColor);
+  const eyeInner = syncEyes ? (useGradient ? secondColor : solidColor) : ($('#eyeInnerColor')?.value || secondColor);
 
   const dotsOptions = { type: dotsType };
 
@@ -147,12 +152,12 @@ function getOptions() {
       type: 'linear',
       rotation: gradientRad,
       colorStops: [
-        { offset: 0, color: dark },
-        { offset: 1, color: accent }
+        { offset: 0, color: solidColor },
+        { offset: 1, color: secondColor }
       ]
     };
   } else {
-    dotsOptions.color = dark;
+    dotsOptions.color = solidColor;
   }
 
   const safeLogoTotal = Math.min(0.48, (logoSizePct + logoSafeZone * 2) / 100);
@@ -162,7 +167,7 @@ function getOptions() {
     height: size,
     type: 'svg',
     data: buildPayload(),
-    image: makeSafeZoneLogoImage(logoData, logoSizePct, logoSafeZone),
+    image: makeSafeLogo(logoData, logoSizePct, logoSafeZone),
     margin: qrMargin,
     qrOptions: {
       errorCorrectionLevel: $('#errorLevel')?.value || 'H'
@@ -183,58 +188,68 @@ function getOptions() {
       color: eyeInner
     },
     backgroundOptions: {
-      color: transparentBg ? 'transparent' : light
+      color: transparentBg ? 'transparent' : bgColor
     }
   };
 }
 
-// === QRYX USEFUL DESIGN HELPERS START ===
 function setToolText(id, value) {
   const el = document.getElementById(id);
   if (el) el.textContent = value;
 }
 
+function syncEyeInputs() {
+  const solidColor = $('#darkColor')?.value || '#111111';
+  const secondColor = $('#accentColor')?.value || solidColor;
+  const useGradient = $('#gradientToggle')?.checked || false;
+  const syncEyes = $('#syncEyeColors') ? $('#syncEyeColors').checked : true;
+
+  const outer = $('#eyeOuterColor');
+  const inner = $('#eyeInnerColor');
+
+  if (syncEyes) {
+    if (outer) outer.value = solidColor;
+    if (inner) inner.value = useGradient ? secondColor : solidColor;
+  }
+
+  if (outer) outer.disabled = syncEyes;
+  if (inner) inner.disabled = syncEyes;
+
+  document.documentElement.classList.toggle('eye-sync-on', syncEyes);
+}
+
 function applyUsefulDesignPreview() {
-  const margin = Number(#qrMargin?.value || 10);
-  const logoSize = Number(#logoSize?.value || 20);
-  const logoGap = Number(#logoGap?.value || 5);
-  const angle = Number(#gradientAngle?.value || 0);
-  const transparentBg = $('#transparentBg') ? $('#transparentBg').checked : false;
-  const light = $('#lightColor')?.value || '#ffffff';
+  const margin = Number($('#qrMargin')?.value || 10);
+  const logoSize = Number($('#logoSize')?.value || 20);
+  const logoGap = Number($('#logoGap')?.value || 5);
+  const angle = Number($('#gradientAngle')?.value || 0);
+  const transparentBg = $('#transparentBg')?.checked || false;
+  const bgColor = $('#lightColor')?.value || '#ffffff';
 
   setToolText('qrMarginValue', margin);
   setToolText('logoSizeValue', `${logoSize}%`);
   setToolText('logoGapValue', logoGap);
   setToolText('gradientAngleValue', `${angle}°`);
 
-  document.documentElement.style.setProperty('--qryx-qr-bg-preview', transparentBg ? 'transparent' : light);
+  document.documentElement.style.setProperty('--qryx-qr-bg-preview', transparentBg ? 'transparent' : bgColor);
+  syncEyeInputs();
 }
-
-function bindUsefulDesignTools() {
-  ['qrMargin','logoSize','logoGap','gradientAngle','eyeOuterColor','eyeInnerColor'].forEach(id => {
-    const el = document.getElementById(id);
-    if (!el) return;
-    el.addEventListener('input', updateQR);
-  });
-
-  ['gradientToggle','transparentBg','syncEyeColors'].forEach(id => {
-    const el = document.getElementById(id);
-    if (!el) return;
-    el.addEventListener('change', updateQR);
-  });
-}
-// === QRYX USEFUL DESIGN HELPERS END ===
 
 function initQR() {
   const target = $('#qrCanvas');
+  if (!target) return;
+
   target.innerHTML = '';
+
   if (!window.QRCodeStyling) {
     target.innerHTML = '<p style="max-width:260px;text-align:center;color:var(--muted)">QR library failed to load. Connect internet or host the library locally.</p>';
     return;
   }
+
   qr = new QRCodeStyling(getOptions());
   qr.append(target);
-  applyUsefulDesignPreview();}
+  applyUsefulDesignPreview();
+}
 
 function updateQR() {
   if (!qr) return initQR();
@@ -243,8 +258,9 @@ function updateQR() {
   applyUsefulDesignPreview();
 
   const chip = $('.scan-chip');
-  if (chip && chip.childNodes[2]) {
-    chip.childNodes[2].nodeValue = ` ${$('#frameText')?.value || 'Scan to preview'} `;
+  if (chip) {
+    const textNode = [...chip.childNodes].find(n => n.nodeType === Node.TEXT_NODE && n.nodeValue.trim());
+    if (textNode) textNode.nodeValue = ` ${$('#frameText')?.value || 'Scan to preview'} `;
   }
 }
 
@@ -262,7 +278,11 @@ function setPage(page) {
 
 function setTheme(mode) {
   document.documentElement.dataset.theme = mode;
-  $('#themeToggle').textContent = mode === 'dark' ? '☀' : '☾';
+  const mainToggle = $('#themeToggle');
+  const secondToggle = $('#themeToggle2');
+
+  if (mainToggle) mainToggle.textContent = mode === 'dark' ? '☀' : '☾';
+  if (secondToggle) secondToggle.textContent = mode === 'dark' ? 'Switch to Light' : 'Switch to Dark';
 }
 
 function toggleTheme() {
@@ -271,116 +291,233 @@ function toggleTheme() {
 
 function renderTemplates() {
   const grid = $('#templateGrid');
+  if (!grid) return;
+
   const q = ($('#templateSearch')?.value || '').toLowerCase();
   const cat = $('#categoryFilter')?.value || 'All Categories';
+
   grid.innerHTML = '';
-  templates.filter(t => (cat === 'All Categories' || t.cat === cat) && (`${t.title} ${t.text}`.toLowerCase().includes(q))).forEach(t => {
-    const card = document.createElement('article');
-    card.className = 'template-card';
-    card.innerHTML = `<div class="template-thumb"><div class="mini-qr"></div></div><h3>${t.title}</h3><p>${t.text}</p><button class="primary" type="button">Use Template</button>`;
-    card.querySelector('button').addEventListener('click', () => {
-      currentType = t.type === 'event' ? 'text' : t.type;
-      setPage('create');
-      $$('#typeGrid button').forEach(b => b.classList.toggle('selected', b.dataset.type === currentType));
-      renderFields();
-      const first = $('#contentFields input, #contentFields textarea');
-      if (first) first.value = t.data;
-      updateQR();
+
+  templates
+    .filter(t => (cat === 'All Categories' || t.cat === cat) && (`${t.title} ${t.text}`.toLowerCase().includes(q)))
+    .forEach(t => {
+      const card = document.createElement('article');
+      card.className = 'template-card';
+      card.innerHTML = `<div class="template-thumb"><div class="mini-qr"></div></div><h3>${t.title}</h3><p>${t.text}</p><button class="primary" type="button">Use Template</button>`;
+
+      card.querySelector('button').addEventListener('click', () => {
+        currentType = t.type === 'event' ? 'text' : t.type;
+        setPage('create');
+
+        $$('#typeGrid button').forEach(b => b.classList.toggle('selected', b.dataset.type === currentType));
+
+        renderFields();
+
+        const first = $('#contentFields input, #contentFields textarea');
+        if (first) first.value = t.data;
+
+        updateQR();
+      });
+
+      grid.appendChild(card);
+
+      if (window.QRCodeStyling) {
+        new QRCodeStyling({
+          width: 96,
+          height: 96,
+          data: t.data,
+          margin: 2,
+          dotsOptions: { color: '#111111', type: 'dots' },
+          backgroundOptions: { color: '#ffffff' }
+        }).append(card.querySelector('.mini-qr'));
+      }
     });
-    grid.appendChild(card);
-    if (window.QRCodeStyling) new QRCodeStyling({ width: 96, height: 96, data: t.data, margin: 2, dotsOptions: { color: '#111', type: 'dots' }, backgroundOptions: { color: '#ffffff' } }).append(card.querySelector('.mini-qr'));
-  });
 }
 
 async function addSessionCode() {
   if (!qr) return;
+
   try {
     const raw = await qr.getRawData('png');
     const url = URL.createObjectURL(raw);
-    sessionCodes.unshift({ img: url, type: currentType, data: buildPayload(), time: new Date().toLocaleTimeString() });
+
+    sessionCodes.unshift({
+      img: url,
+      type: currentType,
+      data: buildPayload(),
+      time: new Date().toLocaleTimeString()
+    });
+
     renderCodes();
     toast('Added to session list. Not saved permanently.');
-  } catch { toast('Could not create preview.'); }
+  } catch {
+    toast('Could not create preview.');
+  }
 }
 
 function renderCodes() {
   const list = $('#codesList');
+  if (!list) return;
+
   list.innerHTML = '';
+
   if (!sessionCodes.length) {
     list.innerHTML = '<div class="empty-state"><b>No QR codes in this session.</b><span>Add your current QR to see it here. This list clears after refresh.</span></div>';
     return;
   }
+
   sessionCodes.forEach((c, i) => {
     const row = document.createElement('div');
     row.className = 'code-row';
     row.innerHTML = `<img src="${c.img}" alt="QR preview"><div><b>${c.type.toUpperCase()} QR</b><br><small>${c.data.slice(0, 90)}</small></div><span class="meta-extra">${c.time}</span><button class="ghost-btn" type="button">Remove</button>`;
-    row.querySelector('button').addEventListener('click', () => { sessionCodes.splice(i, 1); renderCodes(); });
+
+    row.querySelector('button').addEventListener('click', () => {
+      sessionCodes.splice(i, 1);
+      renderCodes();
+    });
+
     list.appendChild(row);
   });
 }
 
 function bind() {
-  $$('[data-page]').forEach(btn => btn.addEventListener('click', () => setPage(btn.dataset.page)));
-  $$('.panel-tabs button').forEach(btn => btn.addEventListener('click', () => {
-    $$('.panel-tabs button').forEach(b => b.classList.remove('active'));
-    $$('.editor-tab').forEach(t => t.classList.remove('active'));
-    btn.classList.add('active');
-    $(`#editor-${btn.dataset.editorTab}`).classList.add('active');
-  }));
-  $$('#typeGrid button').forEach(btn => btn.addEventListener('click', () => {
-    currentType = btn.dataset.type;
-    $$('#typeGrid button').forEach(b => b.classList.remove('selected'));
-    btn.classList.add('selected');
-    renderFields();
-    updateQR();
-  }));
-  $$('[data-choice] button').forEach(btn => btn.addEventListener('click', () => {
-    $$(`[data-choice="${btn.parentElement.dataset.choice}"] button`).forEach(b => b.classList.remove('selected'));
-    btn.classList.add('selected');
-    updateQR();
-  }));
-  $$('.color-preset').forEach(b => b.addEventListener('click', () => { $('#darkColor').value = b.dataset.c1; $('#accentColor').value = b.dataset.c2; updateQR(); }));
-  ['darkColor','accentColor','lightColor','errorLevel','fileName','frameText','sizeRange','qrMargin','logoSize','logoGap','qrRadius','qrShadow'].forEach(id => {
-    const el = $(`#${id}`);
-    if (!el) return;
+  $$('[data-page]').forEach(btn => {
+    btn.addEventListener('click', () => setPage(btn.dataset.page));
+  });
 
-    el.addEventListener('input', () => {
-      if (id === 'sizeRange') size = Number($('#sizeRange').value);
+  $$('.panel-tabs button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      $$('.panel-tabs button').forEach(b => b.classList.remove('active'));
+      $$('.editor-tab').forEach(t => t.classList.remove('active'));
+      btn.classList.add('active');
+      $(`#editor-${btn.dataset.editorTab}`)?.classList.add('active');
+    });
+  });
+
+  $$('#typeGrid button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      currentType = btn.dataset.type;
+      $$('#typeGrid button').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      renderFields();
       updateQR();
     });
   });
 
-  ['gradientToggle','transparentBg'].forEach(id => {
-    const el = $(`#${id}`);
-    if (!el) return;
-    el.addEventListener('change', updateQR);
+  $$('[data-choice] button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      $$(`[data-choice="${btn.parentElement.dataset.choice}"] button`).forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      updateQR();
+    });
   });
-  $('#sizeMinus').addEventListener('click', () => { size = Math.max(160, size - 20); $('#sizeRange').value = size; updateQR(); });
-  $('#sizePlus').addEventListener('click', () => { size = Math.min(380, size + 20); $('#sizeRange').value = size; updateQR(); });
-  $('#logoUpload').addEventListener('change', e => {
+
+  const liveInputIds = [
+    'darkColor',
+    'accentColor',
+    'lightColor',
+    'errorLevel',
+    'fileName',
+    'frameText',
+    'sizeRange',
+    'qrMargin',
+    'logoSize',
+    'logoGap',
+    'gradientAngle',
+    'eyeOuterColor',
+    'eyeInnerColor'
+  ];
+
+  liveInputIds.forEach(id => {
+    const el = document.getElementById(id);
+    if (!el) return;
+
+    el.addEventListener('input', () => {
+      if (id === 'sizeRange') size = Number(el.value);
+      updateQR();
+    });
+  });
+
+  ['gradientToggle', 'transparentBg', 'syncEyeColors'].forEach(id => {
+    const el = document.getElementById(id);
+    if (!el) return;
+
+    el.addEventListener('change', () => {
+      updateQR();
+    });
+  });
+
+  $$('.color-preset').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const c1 = btn.dataset.c1 || '#111111';
+      const c2 = btn.dataset.c2 || c1;
+
+      if ($('#darkColor')) $('#darkColor').value = c1;
+      if ($('#accentColor')) $('#accentColor').value = c2;
+
+      const gradientToggle = $('#gradientToggle');
+      if (gradientToggle) gradientToggle.checked = c1.toLowerCase() !== c2.toLowerCase();
+
+      updateQR();
+    });
+  });
+
+  $('#sizeMinus')?.addEventListener('click', () => {
+    size = Math.max(160, size - 20);
+    if ($('#sizeRange')) $('#sizeRange').value = size;
+    updateQR();
+  });
+
+  $('#sizePlus')?.addEventListener('click', () => {
+    size = Math.min(380, size + 20);
+    if ($('#sizeRange')) $('#sizeRange').value = size;
+    updateQR();
+  });
+
+  $('#logoUpload')?.addEventListener('change', e => {
     const file = e.target.files[0];
     if (!file) return;
+
     const reader = new FileReader();
-    reader.onload = () => { logoData = reader.result; updateQR(); };
+    reader.onload = () => {
+      logoData = reader.result;
+      updateQR();
+    };
     reader.readAsDataURL(file);
   });
-  $('#removeLogo').addEventListener('click', () => { logoData = ''; $('#logoUpload').value = ''; updateQR(); });
-  $('#downloadPng').addEventListener('click', () => download('png'));
-  $('#downloadSvg').addEventListener('click', () => download('svg'));
-  $('#quickDownload').addEventListener('click', () => download('png'));
-  $('#themeToggle').addEventListener('click', toggleTheme);
-  $('#themeToggle2').addEventListener('click', toggleTheme);
-  $('#focusInput').addEventListener('click', () => $('#contentFields input, #contentFields textarea')?.focus());
-  $('#resetBtn').addEventListener('click', () => location.reload());
-  $('#templateSearch').addEventListener('input', renderTemplates);
-  $('#categoryFilter').addEventListener('change', renderTemplates);
-  $('#saveSessionCode').addEventListener('click', addSessionCode);
-  $('#clearSession').addEventListener('click', () => { sessionCodes = []; renderCodes(); });
+
+  $('#removeLogo')?.addEventListener('click', () => {
+    logoData = '';
+    if ($('#logoUpload')) $('#logoUpload').value = '';
+    updateQR();
+  });
+
+  $('#downloadPng')?.addEventListener('click', () => download('png'));
+  $('#downloadSvg')?.addEventListener('click', () => download('svg'));
+  $('#quickDownload')?.addEventListener('click', () => download('png'));
+
+  $('#themeToggle')?.addEventListener('click', toggleTheme);
+  $('#themeToggle2')?.addEventListener('click', toggleTheme);
+
+  $('#focusInput')?.addEventListener('click', () => {
+    $('#contentFields input, #contentFields textarea')?.focus();
+  });
+
+  $('#resetBtn')?.addEventListener('click', () => location.reload());
+
+  $('#templateSearch')?.addEventListener('input', renderTemplates);
+  $('#categoryFilter')?.addEventListener('change', renderTemplates);
+
+  $('#saveSessionCode')?.addEventListener('click', addSessionCode);
+  $('#clearSession')?.addEventListener('click', () => {
+    sessionCodes = [];
+    renderCodes();
+  });
 }
 
 renderFields();
 bind();
-bindUsefulDesignTools();initQR();
+initQR();
 renderTemplates();
 renderCodes();
-setTheme('light');
+setTheme(document.documentElement.dataset.theme || 'light');

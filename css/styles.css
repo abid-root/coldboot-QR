@@ -1281,3 +1281,22 @@ html[data-theme="dark"] .upload-box {
 }
 
 /* === QRYX LOGO UPLOAD POLISH END === */
+/* === QRYX SOLID GRADIENT FINAL START === */
+.eye-sync-on .qr-eye-tools {
+  opacity: .55 !important;
+}
+
+.eye-sync-on .qr-eye-tools input[type="color"] {
+  cursor: not-allowed !important;
+}
+
+.qr-toggle-tools input[type="checkbox"] {
+  accent-color: var(--primary) !important;
+}
+
+.qr-canvas svg > rect:first-child {
+  fill: var(--qryx-qr-bg-preview, #ffffff) !important;
+  rx: 10px !important;
+  ry: 10px !important;
+}
+/* === QRYX SOLID GRADIENT FINAL END === */
