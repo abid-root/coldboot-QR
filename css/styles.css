@@ -1,4 +1,4 @@
-﻿@import url("./sections/00-global.css");
+@import url("./sections/00-global.css");
 @import url("./sections/01-sidebar.css");
 @import url("./sections/02-create-layout.css");
 @import url("./sections/03-qr-stage.css");
@@ -1009,177 +1009,197 @@ html[data-theme="dark"] body {
 /* === CONSTANT PANEL FIX END === */
 
 
-/* === QRYX CLEAN FLOAT ONLY START === */
+/* === QRYX USEFUL QR KIT START === */
 
-@keyframes qryxQrCleanFloat {
-  0%, 100% {
-    transform: translateY(-34px);
-  }
-  50% {
-    transform: translateY(-46px);
-  }
+:root {
+  --qryx-qr-bg-preview: #ffffff;
+  --qryx-qr-radius: 10px;
 }
 
+/* useful design controls */
+.qr-useful-tools {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 12px !important;
+  margin: 12px 0 16px !important;
+}
+
+.qr-tool {
+  min-width: 0 !important;
+  padding: 13px !important;
+  border-radius: 18px !important;
+  background: rgba(255,255,255,.66) !important;
+  border: 1px solid rgba(226,229,240,.86) !important;
+  box-shadow: 0 12px 28px rgba(37,42,65,.06) !important;
+}
+
+html[data-theme="dark"] .qr-tool {
+  background: rgba(255,255,255,.055) !important;
+  border-color: rgba(255,255,255,.085) !important;
+  box-shadow: none !important;
+}
+
+.qr-tool-head {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  gap: 10px !important;
+  margin-bottom: 10px !important;
+}
+
+.qr-tool-head span {
+  color: var(--muted) !important;
+  font-size: 12px !important;
+  font-weight: 850 !important;
+}
+
+.qr-tool-head b {
+  color: var(--primary) !important;
+  font-size: 12px !important;
+  font-weight: 900 !important;
+}
+
+.qr-tool input[type="range"] {
+  width: 100% !important;
+  height: 5px !important;
+  border-radius: 999px !important;
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  background: linear-gradient(90deg, var(--primary), var(--primary2)) !important;
+  outline: none !important;
+}
+
+.qr-tool input[type="range"]::-webkit-slider-thumb {
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  width: 17px !important;
+  height: 17px !important;
+  border-radius: 50% !important;
+  background: #fff !important;
+  border: 3px solid var(--primary) !important;
+  box-shadow: 0 8px 18px rgba(99,91,255,.34) !important;
+  cursor: pointer !important;
+}
+
+.qr-eye-tools {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 12px !important;
+  margin: 12px 0 14px !important;
+}
+
+.qr-eye-tools label {
+  min-height: 54px !important;
+  padding: 10px 12px !important;
+  border-radius: 17px !important;
+  background: rgba(255,255,255,.66) !important;
+  border: 1px solid rgba(226,229,240,.86) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 12px !important;
+}
+
+html[data-theme="dark"] .qr-eye-tools label {
+  background: rgba(255,255,255,.055) !important;
+  border-color: rgba(255,255,255,.085) !important;
+}
+
+.qr-eye-tools span {
+  font-size: 12px !important;
+  font-weight: 850 !important;
+  color: var(--muted) !important;
+}
+
+.qr-eye-tools input[type="color"] {
+  width: 34px !important;
+  height: 34px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 50% !important;
+  background: transparent !important;
+  overflow: hidden !important;
+  cursor: pointer !important;
+}
+
+.qr-toggle-tools {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 10px !important;
+  margin-bottom: 8px !important;
+}
+
+.qr-toggle-tools label {
+  min-height: 48px !important;
+  padding: 11px 13px !important;
+  border-radius: 17px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  font-size: 12px !important;
+  font-weight: 850 !important;
+  color: var(--text) !important;
+  background: rgba(255,255,255,.66) !important;
+  border: 1px solid rgba(226,229,240,.86) !important;
+  cursor: pointer !important;
+}
+
+html[data-theme="dark"] .qr-toggle-tools label {
+  background: rgba(255,255,255,.055) !important;
+  border-color: rgba(255,255,255,.085) !important;
+}
+
+.qr-toggle-tools input {
+  width: 17px !important;
+  height: 17px !important;
+  accent-color: var(--primary) !important;
+}
+
+/* keep QR clean, floating, and not too big */
 @media (min-width: 901px) {
-  .preview-stage {
-    position: relative !important;
-    isolation: isolate !important;
-    overflow: hidden !important;
-    display: grid !important;
-    place-items: center !important;
-    background:
-      radial-gradient(circle at 50% 34%, rgba(99, 91, 255, 0.12), transparent 27%),
-      radial-gradient(circle at 50% 72%, rgba(99, 91, 255, 0.07), transparent 26%),
-      linear-gradient(145deg, rgba(255,255,255,0.16), rgba(244,246,255,0.46)) !important;
-  }
-
-  html[data-theme="dark"] .preview-stage {
-    background:
-      radial-gradient(circle at 50% 34%, rgba(120, 100, 255, 0.18), transparent 28%),
-      radial-gradient(circle at 50% 72%, rgba(120, 100, 255, 0.10), transparent 27%),
-      linear-gradient(145deg, rgba(255,255,255,0.035), rgba(255,255,255,0.012)) !important;
-  }
-
-  /* clean flat base under floating QR */
-  .preview-stage::before {
-    content: "" !important;
-    position: absolute !important;
-    left: 50% !important;
-    top: 50% !important;
-    width: 340px !important;
-    height: 96px !important;
-    transform: translate(-50%, 88px) !important;
-    border-radius: 999px !important;
-    z-index: 1 !important;
-    background:
-      linear-gradient(180deg, rgba(255,255,255,0.72), rgba(245,246,255,0.34)) !important;
-    border: 1px solid rgba(255,255,255,0.70) !important;
-    box-shadow:
-      inset 0 1px 0 rgba(255,255,255,0.86),
-      0 26px 64px rgba(42, 45, 85, 0.10) !important;
-    backdrop-filter: blur(14px) !important;
-  }
-
-  html[data-theme="dark"] .preview-stage::before {
-    background:
-      linear-gradient(180deg, rgba(255,255,255,0.09), rgba(255,255,255,0.035)) !important;
-    border-color: rgba(255,255,255,0.08) !important;
-    box-shadow:
-      inset 0 1px 0 rgba(255,255,255,0.12),
-      0 28px 70px rgba(0,0,0,0.30) !important;
-  }
-
-  /* soft shadow from the floating QR */
-  .preview-stage::after {
-    content: "" !important;
-    position: absolute !important;
-    left: 50% !important;
-    top: 50% !important;
-    width: 250px !important;
-    height: 66px !important;
-    transform: translate(-50%, 102px) !important;
-    border-radius: 50% !important;
-    z-index: 2 !important;
-    background:
-      radial-gradient(ellipse at center, rgba(28, 32, 62, 0.22), rgba(99, 91, 255, 0.09) 48%, transparent 74%) !important;
-    filter: blur(13px) !important;
-  }
-
-  /* remove old fake blocks attached to QR */
   .qr-canvas::before,
   .qr-canvas::after {
     display: none !important;
     content: none !important;
   }
 
-  /* QR: clean, smaller, floating, top layer */
   .qr-canvas {
-    position: relative !important;
     z-index: 6 !important;
     width: 292px !important;
     height: 292px !important;
     min-height: 292px !important;
     padding: 0 !important;
-    display: grid !important;
-    place-items: center !important;
-    border: 0 !important;
-    border-radius: 0 !important;
     background: transparent !important;
+    border: 0 !important;
     box-shadow: none !important;
-    animation: qryxQrCleanFloat 4.6s ease-in-out infinite !important;
   }
 
-  .qr-canvas canvas,
-  .qr-canvas svg {
+  .qr-canvas svg,
+  .qr-canvas canvas {
     width: 272px !important;
     height: 272px !important;
     max-width: 272px !important;
     max-height: 272px !important;
+    border-radius: var(--qryx-qr-radius) !important;
+    overflow: hidden !important;
     background: transparent !important;
     filter:
-      drop-shadow(0 22px 28px rgba(17, 21, 48, 0.24))
-      drop-shadow(0 0 22px rgba(99, 91, 255, 0.10)) !important;
-  }
-
-  /* remove QR library white square background */
-  .qr-canvas svg > rect:first-child {
-    fill: transparent !important;
-  }
-
-  .scan-chip {
-    position: absolute !important;
-    left: 50% !important;
-    bottom: 80px !important;
-    transform: translateX(-50%) !important;
-    z-index: 8 !important;
-    min-width: 250px !important;
-    height: 54px !important;
-    padding: 0 18px !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    gap: 12px !important;
-    border-radius: 999px !important;
-    color: var(--muted, #6f7585) !important;
-    background: rgba(255,255,255,0.82) !important;
-    border: 1px solid rgba(255,255,255,0.88) !important;
-    box-shadow: 0 18px 42px rgba(37, 42, 65, 0.12) !important;
-    backdrop-filter: blur(18px) !important;
-  }
-
-  html[data-theme="dark"] .scan-chip {
-    background: rgba(18, 22, 32, 0.82) !important;
-    border-color: rgba(255,255,255,0.08) !important;
-  }
-}
-
-@media (max-width: 900px) {
-  .qr-canvas::before,
-  .qr-canvas::after {
-    display: none !important;
-    content: none !important;
+      drop-shadow(0 22px 28px rgba(17,21,48,.24))
+      drop-shadow(0 0 22px rgba(99,91,255,.10)) !important;
   }
 
   .qr-canvas svg > rect:first-child {
-    fill: transparent !important;
+    fill: var(--qryx-qr-bg-preview) !important;
+    rx: var(--qryx-qr-radius) !important;
+    ry: var(--qryx-qr-radius) !important;
   }
 }
 
-/* === QRYX CLEAN FLOAT ONLY END === */
-/* === QR 10PX CORNER START === */
-.qr-canvas {
-  overflow: visible !important;
+@media (max-width: 700px) {
+  .qr-useful-tools,
+  .qr-eye-tools {
+    grid-template-columns: 1fr !important;
+  }
 }
 
-.qr-canvas svg,
-.qr-canvas canvas {
-  border-radius: 10px !important;
-  overflow: hidden !important;
-}
-
-.qr-canvas svg > rect:first-child {
-  fill: #ffffff !important;
-  rx: 10px !important;
-  ry: 10px !important;
-}
-/* === QR 10PX CORNER END === */
+/* === QRYX USEFUL QR KIT END === */

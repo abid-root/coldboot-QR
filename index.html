@@ -110,6 +110,74 @@
                 <button data-value="dot">Dot</button>
                 <button data-value="extra-rounded">Round</button>
               </div>
+<!-- QRYX USEFUL QR TOOLS START -->
+              <label>QR Customization</label>
+
+              <div class="qr-useful-tools">
+                <div class="qr-tool">
+                  <div class="qr-tool-head">
+                    <span>QR Padding</span>
+                    <b id="qrMarginValue">8</b>
+                  </div>
+                  <input id="qrMargin" type="range" min="0" max="24" value="8" />
+                </div>
+
+                <div class="qr-tool">
+                  <div class="qr-tool-head">
+                    <span>Logo Size</span>
+                    <b id="logoSizeValue">22%</b>
+                  </div>
+                  <input id="logoSize" type="range" min="8" max="36" value="22" />
+                </div>
+
+                <div class="qr-tool">
+                  <div class="qr-tool-head">
+                    <span>Logo Gap</span>
+                    <b id="logoGapValue">8</b>
+                  </div>
+                  <input id="logoGap" type="range" min="0" max="22" value="8" />
+                </div>
+
+                <div class="qr-tool">
+                  <div class="qr-tool-head">
+                    <span>Gradient Angle</span>
+                    <b id="gradientAngleValue">0°</b>
+                  </div>
+                  <input id="gradientAngle" type="range" min="0" max="315" step="45" value="0" />
+                </div>
+              </div>
+
+              <label>Eye Colors</label>
+
+              <div class="qr-eye-tools">
+                <label>
+                  <span>Outer</span>
+                  <input id="eyeOuterColor" type="color" value="#111111" />
+                </label>
+
+                <label>
+                  <span>Inner</span>
+                  <input id="eyeInnerColor" type="color" value="#635BFF" />
+                </label>
+              </div>
+
+              <div class="qr-toggle-tools">
+                <label>
+                  <input id="gradientToggle" type="checkbox" checked />
+                  <span>Gradient QR</span>
+                </label>
+
+                <label>
+                  <input id="syncEyeColors" type="checkbox" checked />
+                  <span>Sync eye colors</span>
+                </label>
+
+                <label>
+                  <input id="transparentBg" type="checkbox" />
+                  <span>Transparent background</span>
+                </label>
+              </div>
+<!-- QRYX USEFUL QR TOOLS END -->
             </div>
 
             <div class="editor-tab" id="editor-logo">

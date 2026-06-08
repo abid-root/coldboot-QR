@@ -99,33 +99,108 @@ function selectedValue(choice) {
 }
 
 function getOptions() {
-  const dotsType = selectedValue('style');
-  const eyeType = selectedValue('eye');
-  const dark = $('#darkColor').value;
-  const accent = $('#accentColor').value;
-  const bg = $('#lightColor').value;
+  const dotsType = selectedValue('style') || 'square';
+  const eyeType = selectedValue('eye') || 'square';
+
+  const dark = $('#darkColor')?.value || '#111111';
+  const accent = $('#accentColor')?.value || '#635BFF';
+  const light = $('#lightColor')?.value || '#ffffff';
+
+  const qrMargin = Number($('#qrMargin')?.value || 8);
+  const logoGap = Number($('#logoGap')?.value || 8);
+  const logoSize = Number($('#logoSize')?.value || 22) / 100;
+  const gradientDeg = Number($('#gradientAngle')?.value || 0);
+  const gradientRad = gradientDeg * Math.PI / 180;
+
+  const useGradient = $('#gradientToggle') ? $('#gradientToggle').checked : true;
+  const transparentBg = $('#transparentBg') ? $('#transparentBg').checked : false;
+  const syncEyes = $('#syncEyeColors') ? $('#syncEyeColors').checked : true;
+
+  const eyeOuter = syncEyes ? dark : ($('#eyeOuterColor')?.value || dark);
+  const eyeInner = syncEyes ? accent : ($('#eyeInnerColor')?.value || accent);
+
+  const dotsOptions = { type: dotsType };
+
+  if (useGradient) {
+    dotsOptions.gradient = {
+      type: 'linear',
+      rotation: gradientRad,
+      colorStops: [
+        { offset: 0, color: dark },
+        { offset: 1, color: accent }
+      ]
+    };
+  } else {
+    dotsOptions.color = dark;
+  }
+
   return {
     width: size,
     height: size,
     type: 'svg',
     data: buildPayload(),
     image: logoData || undefined,
-    margin: 8,
-    qrOptions: { errorCorrectionLevel: $('#errorLevel').value || 'H' },
-    imageOptions: { crossOrigin: 'anonymous', margin: 8, imageSize: .22 },
-    dotsOptions: {
-      type: dotsType,
-      gradient: {
-        type: 'linear',
-        rotation: 0,
-        colorStops: [{ offset: 0, color: dark }, { offset: 1, color: accent }]
-      }
+    margin: qrMargin,
+    qrOptions: {
+      errorCorrectionLevel: $('#errorLevel')?.value || 'H'
     },
-    cornersSquareOptions: { type: eyeType === 'dot' ? 'dot' : eyeType, color: dark },
-    cornersDotOptions: { type: eyeType === 'dot' ? 'dot' : 'square', color: accent },
-    backgroundOptions: { color: bg }
+    imageOptions: {
+      crossOrigin: 'anonymous',
+      margin: logoGap,
+      imageSize: logoSize,
+      hideBackgroundDots: true
+    },
+    dotsOptions,
+    cornersSquareOptions: {
+      type: eyeType === 'dot' ? 'dot' : eyeType,
+      color: eyeOuter
+    },
+    cornersDotOptions: {
+      type: eyeType === 'dot' ? 'dot' : 'square',
+      color: eyeInner
+    },
+    backgroundOptions: {
+      color: transparentBg ? 'transparent' : light
+    }
   };
 }
+
+// === QRYX USEFUL DESIGN HELPERS START ===
+function setToolText(id, value) {
+  const el = document.getElementById(id);
+  if (el) el.textContent = value;
+}
+
+function applyUsefulDesignPreview() {
+  const margin = Number($('#qrMargin')?.value || 8);
+  const logoSize = Number($('#logoSize')?.value || 22);
+  const logoGap = Number($('#logoGap')?.value || 8);
+  const angle = Number($('#gradientAngle')?.value || 0);
+  const transparentBg = $('#transparentBg') ? $('#transparentBg').checked : false;
+  const light = $('#lightColor')?.value || '#ffffff';
+
+  setToolText('qrMarginValue', margin);
+  setToolText('logoSizeValue', `${logoSize}%`);
+  setToolText('logoGapValue', logoGap);
+  setToolText('gradientAngleValue', `${angle}°`);
+
+  document.documentElement.style.setProperty('--qryx-qr-bg-preview', transparentBg ? 'transparent' : light);
+}
+
+function bindUsefulDesignTools() {
+  ['qrMargin','logoSize','logoGap','gradientAngle','eyeOuterColor','eyeInnerColor'].forEach(id => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.addEventListener('input', updateQR);
+  });
+
+  ['gradientToggle','transparentBg','syncEyeColors'].forEach(id => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.addEventListener('change', updateQR);
+  });
+}
+// === QRYX USEFUL DESIGN HELPERS END ===
 
 function initQR() {
   const target = $('#qrCanvas');
@@ -136,12 +211,18 @@ function initQR() {
   }
   qr = new QRCodeStyling(getOptions());
   qr.append(target);
-}
+  applyUsefulDesignPreview();}
 
 function updateQR() {
   if (!qr) return initQR();
+
   qr.update(getOptions());
-  $('.scan-chip').childNodes[2].nodeValue = ` ${$('#frameText')?.value || 'Scan to preview'} `;
+  applyUsefulDesignPreview();
+
+  const chip = $('.scan-chip');
+  if (chip && chip.childNodes[2]) {
+    chip.childNodes[2].nodeValue = ` ${$('#frameText')?.value || 'Scan to preview'} `;
+  }
 }
 
 function download(ext) {
@@ -236,7 +317,21 @@ function bind() {
     updateQR();
   }));
   $$('.color-preset').forEach(b => b.addEventListener('click', () => { $('#darkColor').value = b.dataset.c1; $('#accentColor').value = b.dataset.c2; updateQR(); }));
-  ['darkColor','accentColor','lightColor','errorLevel','fileName','frameText','sizeRange'].forEach(id => $(`#${id}`)?.addEventListener('input', () => { if (id === 'sizeRange') size = Number($('#sizeRange').value); updateQR(); }));
+  ['darkColor','accentColor','lightColor','errorLevel','fileName','frameText','sizeRange','qrMargin','logoSize','logoGap','qrRadius','qrShadow'].forEach(id => {
+    const el = $(`#${id}`);
+    if (!el) return;
+
+    el.addEventListener('input', () => {
+      if (id === 'sizeRange') size = Number($('#sizeRange').value);
+      updateQR();
+    });
+  });
+
+  ['gradientToggle','transparentBg'].forEach(id => {
+    const el = $(`#${id}`);
+    if (!el) return;
+    el.addEventListener('change', updateQR);
+  });
   $('#sizeMinus').addEventListener('click', () => { size = Math.max(160, size - 20); $('#sizeRange').value = size; updateQR(); });
   $('#sizePlus').addEventListener('click', () => { size = Math.min(380, size + 20); $('#sizeRange').value = size; updateQR(); });
   $('#logoUpload').addEventListener('change', e => {
@@ -262,7 +357,7 @@ function bind() {
 
 renderFields();
 bind();
-initQR();
+bindUsefulDesignTools();initQR();
 renderTemplates();
 renderCodes();
 setTheme('light');
