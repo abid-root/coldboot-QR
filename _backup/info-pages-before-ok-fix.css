@@ -236,14 +236,12 @@ html[data-theme="dark"] .info-glass {
 }
 
 .clean-list li::before {
-  content: "";
-  width: 7px;
-  height: 7px;
-  border-radius: 999px;
-  display: inline-block;
-  margin-right: 10px;
-  margin-bottom: 2px;
-  background: var(--primary, #6547ff);
+  content: "OK";
+  display: inline-flex;
+  margin-right: 9px;
+  color: var(--primary, #6547ff);
+  font-size: 11px;
+  font-weight: 950;
 }
 
 .info-section {
