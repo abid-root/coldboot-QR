@@ -246,10 +246,36 @@ body {
   white-space: nowrap !important;
 }
 
-.fs-layer-pills {
+.fs-layer-pills,
+.fs-tabs,
+.fs-grid-2,
+.fs-grid-3,
+.fs-actions {
   display: grid !important;
+  gap: 8px !important;
+}
+
+.fs-layer-pills {
   grid-template-columns: repeat(5, 1fr) !important;
-  gap: 7px !important;
+}
+
+.fs-tabs {
+  flex: 0 0 auto !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+  padding: 12px 16px !important;
+  border-bottom: 1px solid rgba(226,229,240,.9) !important;
+}
+
+.fs-grid-2 {
+  grid-template-columns: 1fr 1fr !important;
+}
+
+.fs-grid-3 {
+  grid-template-columns: repeat(3, 1fr) !important;
+}
+
+.fs-actions {
+  grid-template-columns: 1fr 1fr !important;
 }
 
 .fs-pro button {
@@ -259,8 +285,10 @@ body {
   font-family: inherit !important;
 }
 
-.fs-layer-pills button {
-  min-height: 36px !important;
+.fs-layer-pills button,
+.fs-tabs button,
+.fs-soft {
+  min-height: 38px !important;
   border-radius: 14px !important;
   color: #6547ff !important;
   background: rgba(101,71,255,.09) !important;
@@ -272,24 +300,6 @@ body {
 .fs-primary {
   color: #fff !important;
   background: linear-gradient(135deg,#6547ff,#2f80ff) !important;
-}
-
-.fs-tabs {
-  flex: 0 0 auto !important;
-  display: grid !important;
-  grid-template-columns: repeat(4, 1fr) !important;
-  gap: 7px !important;
-  padding: 12px 16px !important;
-  border-bottom: 1px solid rgba(226,229,240,.9) !important;
-}
-
-.fs-tabs button,
-.fs-soft {
-  min-height: 38px !important;
-  border-radius: 14px !important;
-  color: #6547ff !important;
-  background: rgba(101,71,255,.09) !important;
-  font-size: 12px !important;
 }
 
 .fs-body {
@@ -332,18 +342,6 @@ body {
   color: #64748b !important;
   font-size: 11px !important;
   font-weight: 850 !important;
-}
-
-.fs-grid-2 {
-  display: grid !important;
-  grid-template-columns: 1fr 1fr !important;
-  gap: 10px !important;
-}
-
-.fs-grid-3 {
-  display: grid !important;
-  grid-template-columns: repeat(3, 1fr) !important;
-  gap: 8px !important;
 }
 
 .fs-control label {
@@ -411,12 +409,6 @@ body {
   font-size: 16px !important;
 }
 
-.fs-actions {
-  display: grid !important;
-  grid-template-columns: 1fr 1fr !important;
-  gap: 10px !important;
-}
-
 .fs-actions button {
   min-height: 42px !important;
   border-radius: 15px !important;
@@ -433,18 +425,40 @@ body {
   font-weight: 750 !important;
 }
 
-.fs-move-on .label-pill,
-.fs-move-on .title,
-.fs-move-on .sub,
-.fs-move-on .footer,
-.fs-move-on .qr-box {
+.label-pill,
+.title,
+.sub,
+.footer,
+.qr-box {
   cursor: grab !important;
   user-select: none !important;
+  touch-action: none !important;
+}
+
+.label-pill:hover,
+.title:hover,
+.sub:hover,
+.footer:hover,
+.qr-box:hover {
+  outline: 2px dashed rgba(101,71,255,.45) !important;
+  outline-offset: 6px !important;
 }
 
 .fs-selected {
-  outline: 2px dashed rgba(101,71,255,.85) !important;
+  outline: 2px dashed rgba(101,71,255,.88) !important;
   outline-offset: 6px !important;
+}
+
+.fs-editing {
+  cursor: text !important;
+  user-select: text !important;
+  touch-action: auto !important;
+  outline: 2px solid rgba(101,71,255,.85) !important;
+  outline-offset: 6px !important;
+}
+
+.fs-editing:hover {
+  cursor: text !important;
 }
 
 @media (max-width: 980px) {
@@ -468,6 +482,66 @@ body {
   }
 }
 /* === FS PRO LEFT EDITOR END === */
+/* === FS SMART GUIDES START === */
+.card {
+  position: relative !important;
+}
+
+.fs-guide-line {
+  position: absolute !important;
+  z-index: 9999 !important;
+  pointer-events: none !important;
+  display: none;
+}
+
+.fs-guide-line.show {
+  display: block !important;
+}
+
+.fs-guide-v {
+  top: 0 !important;
+  bottom: 0 !important;
+  width: 0 !important;
+  border-left: 2px dashed rgba(101,71,255,.82) !important;
+}
+
+.fs-guide-h {
+  left: 0 !important;
+  right: 0 !important;
+  height: 0 !important;
+  border-top: 2px dashed rgba(101,71,255,.82) !important;
+}
+
+.fs-guide-tag {
+  position: absolute !important;
+  z-index: 10000 !important;
+  pointer-events: none !important;
+  display: none;
+  min-height: 22px !important;
+  padding: 0 8px !important;
+  border-radius: 999px !important;
+  background: rgba(101,71,255,.96) !important;
+  color: #fff !important;
+  font-size: 10px !important;
+  line-height: 22px !important;
+  font-weight: 950 !important;
+  letter-spacing: .02em !important;
+  box-shadow: 0 8px 22px rgba(101,71,255,.22) !important;
+}
+
+.fs-guide-tag.show {
+  display: inline-flex !important;
+  align-items: center !important;
+}
+
+.fs-guide-margin {
+  border-color: rgba(47,128,255,.82) !important;
+}
+
+.fs-guide-center {
+  border-color: rgba(236,72,153,.86) !important;
+}
+/* === FS SMART GUIDES END === */
 </style></head><body data-slug="restaurant-menu"><div class="topbar"><a class="back-btn" href="../index.html">← All templates</a><button class="dl-btn" id="downloadTop" type="button">Download PNG</button></div><main class="layout"><section class="preview-wrap"><article class="card size-portrait theme-restaurant" id="card">
 <span class="shape s1"></span><span class="art plate"></span><span class="art garnish"></span>
 <span class="label-pill" id="cardLabel" contenteditable="true">FOOD</span>
@@ -596,10 +670,36 @@ body {
   white-space: nowrap !important;
 }
 
-.fs-layer-pills {
+.fs-layer-pills,
+.fs-tabs,
+.fs-grid-2,
+.fs-grid-3,
+.fs-actions {
   display: grid !important;
+  gap: 8px !important;
+}
+
+.fs-layer-pills {
   grid-template-columns: repeat(5, 1fr) !important;
-  gap: 7px !important;
+}
+
+.fs-tabs {
+  flex: 0 0 auto !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+  padding: 12px 16px !important;
+  border-bottom: 1px solid rgba(226,229,240,.9) !important;
+}
+
+.fs-grid-2 {
+  grid-template-columns: 1fr 1fr !important;
+}
+
+.fs-grid-3 {
+  grid-template-columns: repeat(3, 1fr) !important;
+}
+
+.fs-actions {
+  grid-template-columns: 1fr 1fr !important;
 }
 
 .fs-pro button {
@@ -609,8 +709,10 @@ body {
   font-family: inherit !important;
 }
 
-.fs-layer-pills button {
-  min-height: 36px !important;
+.fs-layer-pills button,
+.fs-tabs button,
+.fs-soft {
+  min-height: 38px !important;
   border-radius: 14px !important;
   color: #6547ff !important;
   background: rgba(101,71,255,.09) !important;
@@ -622,24 +724,6 @@ body {
 .fs-primary {
   color: #fff !important;
   background: linear-gradient(135deg,#6547ff,#2f80ff) !important;
-}
-
-.fs-tabs {
-  flex: 0 0 auto !important;
-  display: grid !important;
-  grid-template-columns: repeat(4, 1fr) !important;
-  gap: 7px !important;
-  padding: 12px 16px !important;
-  border-bottom: 1px solid rgba(226,229,240,.9) !important;
-}
-
-.fs-tabs button,
-.fs-soft {
-  min-height: 38px !important;
-  border-radius: 14px !important;
-  color: #6547ff !important;
-  background: rgba(101,71,255,.09) !important;
-  font-size: 12px !important;
 }
 
 .fs-body {
@@ -682,18 +766,6 @@ body {
   color: #64748b !important;
   font-size: 11px !important;
   font-weight: 850 !important;
-}
-
-.fs-grid-2 {
-  display: grid !important;
-  grid-template-columns: 1fr 1fr !important;
-  gap: 10px !important;
-}
-
-.fs-grid-3 {
-  display: grid !important;
-  grid-template-columns: repeat(3, 1fr) !important;
-  gap: 8px !important;
 }
 
 .fs-control label {
@@ -761,12 +833,6 @@ body {
   font-size: 16px !important;
 }
 
-.fs-actions {
-  display: grid !important;
-  grid-template-columns: 1fr 1fr !important;
-  gap: 10px !important;
-}
-
 .fs-actions button {
   min-height: 42px !important;
   border-radius: 15px !important;
@@ -783,18 +849,40 @@ body {
   font-weight: 750 !important;
 }
 
-.fs-move-on .label-pill,
-.fs-move-on .title,
-.fs-move-on .sub,
-.fs-move-on .footer,
-.fs-move-on .qr-box {
+.label-pill,
+.title,
+.sub,
+.footer,
+.qr-box {
   cursor: grab !important;
   user-select: none !important;
+  touch-action: none !important;
+}
+
+.label-pill:hover,
+.title:hover,
+.sub:hover,
+.footer:hover,
+.qr-box:hover {
+  outline: 2px dashed rgba(101,71,255,.45) !important;
+  outline-offset: 6px !important;
 }
 
 .fs-selected {
-  outline: 2px dashed rgba(101,71,255,.85) !important;
+  outline: 2px dashed rgba(101,71,255,.88) !important;
   outline-offset: 6px !important;
+}
+
+.fs-editing {
+  cursor: text !important;
+  user-select: text !important;
+  touch-action: auto !important;
+  outline: 2px solid rgba(101,71,255,.85) !important;
+  outline-offset: 6px !important;
+}
+
+.fs-editing:hover {
+  cursor: text !important;
 }
 
 @media (max-width: 980px) {
@@ -818,6 +906,66 @@ body {
   }
 }
 /* === FS PRO LEFT EDITOR END === */
+/* === FS SMART GUIDES START === */
+.card {
+  position: relative !important;
+}
+
+.fs-guide-line {
+  position: absolute !important;
+  z-index: 9999 !important;
+  pointer-events: none !important;
+  display: none;
+}
+
+.fs-guide-line.show {
+  display: block !important;
+}
+
+.fs-guide-v {
+  top: 0 !important;
+  bottom: 0 !important;
+  width: 0 !important;
+  border-left: 2px dashed rgba(101,71,255,.82) !important;
+}
+
+.fs-guide-h {
+  left: 0 !important;
+  right: 0 !important;
+  height: 0 !important;
+  border-top: 2px dashed rgba(101,71,255,.82) !important;
+}
+
+.fs-guide-tag {
+  position: absolute !important;
+  z-index: 10000 !important;
+  pointer-events: none !important;
+  display: none;
+  min-height: 22px !important;
+  padding: 0 8px !important;
+  border-radius: 999px !important;
+  background: rgba(101,71,255,.96) !important;
+  color: #fff !important;
+  font-size: 10px !important;
+  line-height: 22px !important;
+  font-weight: 950 !important;
+  letter-spacing: .02em !important;
+  box-shadow: 0 8px 22px rgba(101,71,255,.22) !important;
+}
+
+.fs-guide-tag.show {
+  display: inline-flex !important;
+  align-items: center !important;
+}
+
+.fs-guide-margin {
+  border-color: rgba(47,128,255,.82) !important;
+}
+
+.fs-guide-center {
+  border-color: rgba(236,72,153,.86) !important;
+}
+/* === FS SMART GUIDES END === */
 </style>${clone.outerHTML}</div></foreignObject></svg>`;const blob=new Blob([svg],{type:'image/svg+xml;charset=utf-8'});const url=URL.createObjectURL(blob);const img=new Image();img.onload=function(){const canvas=document.createElement('canvas');canvas.width=width;canvas.height=height;const ctx=canvas.getContext('2d');ctx.drawImage(img,0,0);URL.revokeObjectURL(url);const a=document.createElement('a');a.download='flowsync-'+(document.body.dataset.slug||'template')+'.png';a.href=canvas.toDataURL('image/png');a.click();};img.src=url;}document.getElementById('downloadBtn').addEventListener('click',downloadCard);document.getElementById('downloadTop').addEventListener('click',downloadCard);})();</script>
 <!-- FS PRO LEFT EDITOR START -->
 <script>
@@ -849,10 +997,11 @@ body {
     ["qrBox", "QR"]
   ];
 
+  const textLayerIds = ["cardLabel", "cardTitle", "cardSub", "cardFooter"];
   let selected = qrBox;
-  let moveMode = false;
   let drag = null;
-  const layoutKey = "flowsync_pro_left_layout_" + location.pathname;
+  let lastTap = { id: "", time: 0 };
+  const layoutKey = "flowsync_default_drag_layout_" + location.pathname;
 
   const panel = document.createElement("div");
   panel.className = "fs-pro";
@@ -861,7 +1010,7 @@ body {
       <div class="fs-pro-headline">
         <div>
           <b>Template editor</b>
-          <small>Useful controls only. Select a layer, then edit.</small>
+          <small>Drag layers anytime. Double-click text to edit.</small>
         </div>
         <span class="fs-pro-status" id="fsStatus">Ready</span>
       </div>
@@ -883,7 +1032,7 @@ body {
         <div class="fs-section">
           <div class="fs-title-row">
             <b>Position</b>
-            <span>drag or nudge</span>
+            <span>drag directly on card</span>
           </div>
 
           <div class="fs-grid-2">
@@ -906,20 +1055,20 @@ body {
         </div>
 
         <div class="fs-actions">
-          <button class="fs-primary" id="fsDrag" type="button">Drag off</button>
           <button class="fs-soft" id="fsCenter" type="button">Center</button>
           <button class="fs-soft" id="fsFront" type="button">Bring front</button>
+          <button class="fs-soft" id="fsBack" type="button">Send back</button>
           <button class="fs-soft" id="fsHideOutline" type="button">Hide outline</button>
         </div>
 
-        <div class="fs-hint">Best workflow: choose layer → Drag on → move on card → Drag off → Style.</div>
+        <div class="fs-hint">Hover text or QR, then drag. Double-click text to type. QR upload only works from the QR tab.</div>
       </section>
 
       <section class="fs-panel" data-panel="style">
         <div class="fs-section">
           <div class="fs-title-row">
             <b>Text</b>
-            <span>only text layers</span>
+            <span>for selected text</span>
           </div>
 
           <div class="fs-control">
@@ -973,14 +1122,14 @@ body {
           </div>
         </div>
 
-        <div class="fs-hint">QR layer has no text style. Select Label, Title, Subtitle, or Footer first.</div>
+        <div class="fs-hint">Type here, or double-click text on the card and edit directly.</div>
       </section>
 
       <section class="fs-panel" data-panel="qr">
         <div class="fs-section">
           <div class="fs-title-row">
-            <b>QR setup</b>
-            <span>selected QR layer</span>
+            <b>QR</b>
+            <span>upload or resize</span>
           </div>
 
           <div class="fs-grid-2">
@@ -1010,7 +1159,7 @@ body {
           </div>
         </div>
 
-        <div class="fs-hint">Create QR on main page first, then open template. “Use generated QR” will place it here.</div>
+        <div class="fs-hint">Click/tap QR only selects it. Use Upload QR button to change the image.</div>
       </section>
 
       <section class="fs-panel" data-panel="export">
@@ -1028,7 +1177,7 @@ body {
           </div>
         </div>
 
-        <div class="fs-hint">Save stores this template layout in localStorage. It does not need backend.</div>
+        <div class="fs-hint">Save stores this template layout in your browser only. No backend needed.</div>
       </section>
     </div>
   `;
@@ -1037,10 +1186,14 @@ body {
 
   function id(x) { return document.getElementById(x); }
 
+  function isTextLayer(el) {
+    return el && textLayerIds.includes(el.id);
+  }
+
   function setStatus(text) {
     id("fsStatus").textContent = text;
     clearTimeout(setStatus.t);
-    setStatus.t = setTimeout(() => id("fsStatus").textContent = "Ready", 1100);
+    setStatus.t = setTimeout(() => id("fsStatus").textContent = "Ready", 1000);
   }
 
   function switchTab(tab) {
@@ -1069,9 +1222,60 @@ body {
     else switchTab("style");
   }
 
+  function enterTextEdit(el) {
+    if (!isTextLayer(el)) return;
+
+    stopDrag();
+
+    cleanSelection();
+    selected = el;
+    el.classList.add("fs-selected", "fs-editing");
+    el.setAttribute("contenteditable", "true");
+    el.focus();
+
+    const range = document.createRange();
+    range.selectNodeContents(el);
+    range.collapse(false);
+
+    const sel = window.getSelection();
+    sel.removeAllRanges();
+    sel.addRange(range);
+
+    switchTab("style");
+    syncControls();
+    setStatus("Editing");
+  }
+
+  function exitTextEdit(el) {
+    if (!isTextLayer(el)) return;
+
+    el.setAttribute("contenteditable", "false");
+    el.classList.remove("fs-editing");
+    syncControls();
+  }
+
+  textLayerIds.forEach(layerId => {
+    const el = id(layerId);
+    if (!el) return;
+
+    el.setAttribute("contenteditable", "false");
+
+    el.addEventListener("blur", () => exitTextEdit(el));
+
+    el.addEventListener("keydown", e => {
+      if (e.key === "Escape") {
+        e.preventDefault();
+        el.blur();
+      }
+    });
+
+    el.addEventListener("input", syncControls);
+  });
+
   function rgbToHex(rgb) {
     const n = rgb.match(/\d+/g);
     if (!n) return "#101219";
+
     return "#" + n.slice(0,3).map(x => {
       const h = Number(x).toString(16);
       return h.length === 1 ? "0" + h : h;
@@ -1191,16 +1395,6 @@ body {
     });
   });
 
-  id("fsDrag").addEventListener("click", () => {
-    moveMode = !moveMode;
-    document.body.classList.toggle("fs-move-on", moveMode);
-    id("fsDrag").textContent = moveMode ? "Drag on" : "Drag off";
-
-    ["cardLabel", "cardTitle", "cardSub", "cardFooter"].forEach(t => {
-      id(t)?.setAttribute("contenteditable", moveMode ? "false" : "true");
-    });
-  });
-
   id("fsCenter").addEventListener("click", () => {
     setPercent(selected, 50, Number(id("fsY").value));
     syncControls();
@@ -1209,6 +1403,11 @@ body {
   id("fsFront").addEventListener("click", () => {
     selected.style.zIndex = String(Math.max(30, Number(selected.style.zIndex || 7) + 1));
     setStatus("Front");
+  });
+
+  id("fsBack").addEventListener("click", () => {
+    selected.style.zIndex = "3";
+    setStatus("Back");
   });
 
   id("fsTextValue").addEventListener("input", () => {
@@ -1360,41 +1559,113 @@ body {
     } catch {}
   }
 
+  function startDrag(target, e) {
+    if (!target || target.classList.contains("fs-editing")) return;
+
+    stopDrag();
+    selectLayer(target);
+
+    drag = {
+      el: target,
+      pointerId: e.pointerId,
+      sx: e.clientX,
+      sy: e.clientY,
+      left: 0,
+      top: 0,
+      active: false,
+      moved: false
+    };
+  }
+
+  function moveDrag(e) {
+    if (!drag) return;
+
+    const dx = e.clientX - drag.sx;
+    const dy = e.clientY - drag.sy;
+    const dist = Math.sqrt(dx * dx + dy * dy);
+
+    if (!drag.active && dist > 5) {
+      e.preventDefault();
+      normalize(drag.el);
+      drag.left = parseFloat(drag.el.style.left || 0);
+      drag.top = parseFloat(drag.el.style.top || 0);
+      drag.active = true;
+      drag.moved = true;
+      document.body.style.cursor = "grabbing";
+    }
+
+    if (!drag.active) return;
+
+    e.preventDefault();
+    clampMove(drag.el, drag.left + dx, drag.top + dy);
+    syncControls();
+  }
+
+  function finishTap(target) {
+    const now = Date.now();
+
+    if (target.id === "qrBox") {
+      selectLayer(qrBox);
+      switchTab("qr");
+      lastTap = { id: "qrBox", time: now };
+      return;
+    }
+
+    if (isTextLayer(target)) {
+      if (lastTap.id === target.id && now - lastTap.time < 350) {
+        enterTextEdit(target);
+      }
+
+      lastTap = { id: target.id, time: now };
+    }
+  }
+
+  function stopDrag(e) {
+    if (!drag) return;
+
+    const target = drag.el;
+    const wasMoved = drag.moved;
+
+    drag = null;
+    document.body.style.cursor = "";
+
+    if (wasMoved) {
+      syncControls();
+      return;
+    }
+
+    if (target) finishTap(target);
+  }
+
+  card.addEventListener("dblclick", e => {
+    const target = e.target.closest(".label-pill, .title, .sub, .footer, .qr-box");
+    if (!target || !card.contains(target)) return;
+
+    e.preventDefault();
+
+    if (target.id === "qrBox") {
+      selectLayer(qrBox);
+      switchTab("qr");
+      setStatus("QR selected");
+      return;
+    }
+
+    enterTextEdit(target);
+  });
+
   card.addEventListener("pointerdown", e => {
     const target = e.target.closest(".label-pill, .title, .sub, .footer, .qr-box");
     if (!target || !card.contains(target)) return;
 
-    selectLayer(target);
+    if (target.classList.contains("fs-editing")) return;
 
-    if (!moveMode) return;
-
-    e.preventDefault();
-    normalize(target);
-
-    drag = {
-      el: target,
-      sx: e.clientX,
-      sy: e.clientY,
-      left: parseFloat(target.style.left || 0),
-      top: parseFloat(target.style.top || 0)
-    };
-
-    target.setPointerCapture(e.pointerId);
+    startDrag(target, e);
   });
 
-  card.addEventListener("pointermove", e => {
-    if (!drag || !moveMode) return;
-
-    clampMove(
-      drag.el,
-      drag.left + e.clientX - drag.sx,
-      drag.top + e.clientY - drag.sy
-    );
-
-    syncControls();
-  });
-
-  card.addEventListener("pointerup", () => drag = null);
+  document.addEventListener("pointermove", moveDrag, { passive: false });
+  document.addEventListener("pointerup", stopDrag, true);
+  document.addEventListener("pointercancel", stopDrag, true);
+  window.addEventListener("blur", stopDrag);
 
   const savedQr = localStorage.getItem("flowsync_current_qr");
   if (savedQr) {
@@ -1407,4 +1678,230 @@ body {
 })();
 </script>
 <!-- FS PRO LEFT EDITOR END -->
+
+<!-- FS SMART GUIDES START -->
+<script>
+(function () {
+  const card = document.getElementById("card");
+  if (!card) return;
+
+  const layerSelector = ".label-pill, .title, .sub, .footer, .qr-box";
+  const snapDistance = 7;
+  const safeMargin = 28;
+
+  let active = null;
+  let isPointerDown = false;
+
+  function makeGuide(className) {
+    const el = document.createElement("div");
+    el.className = className;
+    card.appendChild(el);
+    return el;
+  }
+
+  const vGuide = makeGuide("fs-guide-line fs-guide-v");
+  const hGuide = makeGuide("fs-guide-line fs-guide-h");
+  const tag = makeGuide("fs-guide-tag");
+
+  function layers() {
+    return [...card.querySelectorAll(layerSelector)].filter(el => {
+      return el !== active && !el.classList.contains("fs-guide-line") && !el.classList.contains("fs-guide-tag");
+    });
+  }
+
+  function cardRect() {
+    return card.getBoundingClientRect();
+  }
+
+  function localRect(el) {
+    const c = cardRect();
+    const r = el.getBoundingClientRect();
+
+    return {
+      left: r.left - c.left,
+      top: r.top - c.top,
+      right: r.right - c.left,
+      bottom: r.bottom - c.top,
+      width: r.width,
+      height: r.height,
+      centerX: r.left - c.left + r.width / 2,
+      centerY: r.top - c.top + r.height / 2
+    };
+  }
+
+  function ensureAbsolute(el) {
+    const r = localRect(el);
+
+    el.style.position = "absolute";
+    el.style.left = r.left + "px";
+    el.style.top = r.top + "px";
+    el.style.right = "auto";
+    el.style.bottom = "auto";
+    el.style.transform = "none";
+  }
+
+  function hideGuides() {
+    vGuide.classList.remove("show", "fs-guide-margin", "fs-guide-center");
+    hGuide.classList.remove("show", "fs-guide-margin", "fs-guide-center");
+    tag.classList.remove("show");
+  }
+
+  function showV(x, kind, label) {
+    vGuide.style.left = Math.round(x) + "px";
+    vGuide.classList.add("show");
+    vGuide.classList.toggle("fs-guide-margin", kind === "margin");
+    vGuide.classList.toggle("fs-guide-center", kind === "center");
+
+    tag.textContent = label;
+    tag.style.left = Math.min(Math.max(8, x + 8), card.clientWidth - 72) + "px";
+    tag.style.top = "10px";
+    tag.classList.add("show");
+  }
+
+  function showH(y, kind, label) {
+    hGuide.style.top = Math.round(y) + "px";
+    hGuide.classList.add("show");
+    hGuide.classList.toggle("fs-guide-margin", kind === "margin");
+    hGuide.classList.toggle("fs-guide-center", kind === "center");
+
+    tag.textContent = label;
+    tag.style.left = "10px";
+    tag.style.top = Math.min(Math.max(8, y + 8), card.clientHeight - 30) + "px";
+    tag.classList.add("show");
+  }
+
+  function xTargets() {
+    const w = card.clientWidth;
+    const targets = [
+      { x: safeMargin, kind: "margin", label: "left margin" },
+      { x: w / 2, kind: "center", label: "center" },
+      { x: w - safeMargin, kind: "margin", label: "right margin" }
+    ];
+
+    layers().forEach(el => {
+      const r = localRect(el);
+      targets.push(
+        { x: r.left, kind: "align", label: "left align" },
+        { x: r.centerX, kind: "center", label: "same center" },
+        { x: r.right, kind: "align", label: "right align" }
+      );
+    });
+
+    return targets;
+  }
+
+  function yTargets() {
+    const h = card.clientHeight;
+    const targets = [
+      { y: safeMargin, kind: "margin", label: "top margin" },
+      { y: h / 2, kind: "center", label: "middle" },
+      { y: h - safeMargin, kind: "margin", label: "bottom margin" }
+    ];
+
+    layers().forEach(el => {
+      const r = localRect(el);
+      targets.push(
+        { y: r.top, kind: "align", label: "top align" },
+        { y: r.centerY, kind: "center", label: "same middle" },
+        { y: r.bottom, kind: "align", label: "bottom align" }
+      );
+    });
+
+    return targets;
+  }
+
+  function findSnapX(r) {
+    const points = [
+      { value: r.left, move: "left" },
+      { value: r.centerX, move: "center" },
+      { value: r.right, move: "right" }
+    ];
+
+    let best = null;
+
+    xTargets().forEach(target => {
+      points.forEach(point => {
+        const diff = target.x - point.value;
+        if (Math.abs(diff) <= snapDistance && (!best || Math.abs(diff) < Math.abs(best.diff))) {
+          best = { ...target, diff, move: point.move };
+        }
+      });
+    });
+
+    return best;
+  }
+
+  function findSnapY(r) {
+    const points = [
+      { value: r.top, move: "top" },
+      { value: r.centerY, move: "center" },
+      { value: r.bottom, move: "bottom" }
+    ];
+
+    let best = null;
+
+    yTargets().forEach(target => {
+      points.forEach(point => {
+        const diff = target.y - point.value;
+        if (Math.abs(diff) <= snapDistance && (!best || Math.abs(diff) < Math.abs(best.diff))) {
+          best = { ...target, diff, move: point.move };
+        }
+      });
+    });
+
+    return best;
+  }
+
+  function applySmartGuides() {
+    if (!active || !isPointerDown) return;
+
+    ensureAbsolute(active);
+    hideGuides();
+
+    let left = parseFloat(active.style.left || "0");
+    let top = parseFloat(active.style.top || "0");
+    let r = localRect(active);
+
+    const snapX = findSnapX(r);
+    if (snapX) {
+      left += snapX.diff;
+      active.style.left = left + "px";
+      showV(snapX.x, snapX.kind, snapX.label);
+    }
+
+    r = localRect(active);
+
+    const snapY = findSnapY(r);
+    if (snapY) {
+      top += snapY.diff;
+      active.style.top = top + "px";
+      showH(snapY.y, snapY.kind, snapY.label);
+    }
+  }
+
+  card.addEventListener("pointerdown", e => {
+    const target = e.target.closest(layerSelector);
+    if (!target || !card.contains(target)) return;
+
+    active = target;
+    isPointerDown = true;
+  }, true);
+
+  document.addEventListener("pointermove", () => {
+    if (!isPointerDown || !active) return;
+    requestAnimationFrame(applySmartGuides);
+  }, true);
+
+  function stop() {
+    isPointerDown = false;
+    active = null;
+    setTimeout(hideGuides, 80);
+  }
+
+  document.addEventListener("pointerup", stop, true);
+  document.addEventListener("pointercancel", stop, true);
+  window.addEventListener("blur", stop);
+})();
+</script>
+<!-- FS SMART GUIDES END -->
 </body></html>
