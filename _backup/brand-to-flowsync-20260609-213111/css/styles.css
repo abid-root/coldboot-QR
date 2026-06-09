@@ -7,7 +7,7 @@
 @import url("./sections/06-mobile.css");
 
 
-/* === FlowSync TOP NAV REDESIGN START === */
+/* === QRYX TOP NAV REDESIGN START === */
 /* Top navbar redesign + cleaner editor panel. CSS only. */
 
 /* ---------- Base ---------- */
@@ -705,10 +705,10 @@ html[data-theme="dark"] body {
   }
 }
 
-/* === FlowSync TOP NAV REDESIGN END === */
+/* === QRYX TOP NAV REDESIGN END === */
 
 
-/* === FlowSync NO SCROLL PANEL START === */
+/* === QRYX NO SCROLL PANEL START === */
 
 /* Make right panel fit content without ugly inner scroll */
 @media (min-width: 901px) {
@@ -853,7 +853,7 @@ html[data-theme="dark"] body {
   }
 }
 
-/* === FlowSync NO SCROLL PANEL END === */
+/* === QRYX NO SCROLL PANEL END === */
 
 
 /* === CONSTANT PANEL FIX START === */
@@ -1009,10 +1009,10 @@ html[data-theme="dark"] body {
 /* === CONSTANT PANEL FIX END === */
 
 
-/* === FlowSync FINAL CLEAN QR CONTROLS START === */
+/* === QRYX FINAL CLEAN QR CONTROLS START === */
 :root {
-  --flowsync-qr-bg-preview: #ffffff;
-  --flowsync-qr-radius: 10px;
+  --qryx-qr-bg-preview: #ffffff;
+  --qryx-qr-radius: 10px;
 }
 
 .qr-useful-tools {
@@ -1241,7 +1241,7 @@ html[data-theme="dark"] .upload-box {
     height: 272px !important;
     max-width: 272px !important;
     max-height: 272px !important;
-    border-radius: var(--flowsync-qr-radius) !important;
+    border-radius: var(--qryx-qr-radius) !important;
     overflow: hidden !important;
     background: transparent !important;
     filter:
@@ -1250,9 +1250,9 @@ html[data-theme="dark"] .upload-box {
   }
 
   .qr-canvas svg > rect:first-child {
-    fill: var(--flowsync-qr-bg-preview, #ffffff) !important;
-    rx: var(--flowsync-qr-radius) !important;
-    ry: var(--flowsync-qr-radius) !important;
+    fill: var(--qryx-qr-bg-preview, #ffffff) !important;
+    rx: var(--qryx-qr-radius) !important;
+    ry: var(--qryx-qr-radius) !important;
   }
 }
 
@@ -1262,10 +1262,10 @@ html[data-theme="dark"] .upload-box {
     grid-template-columns: 1fr !important;
   }
 }
-/* === FlowSync FINAL CLEAN QR CONTROLS END === */
+/* === QRYX FINAL CLEAN QR CONTROLS END === */
 
 
-/* === FlowSync COLOR ROW FINAL START === */
+/* === QRYX COLOR ROW FINAL START === */
 .color-row {
   display: grid !important;
   gap: 15px !important;
@@ -1337,10 +1337,10 @@ html[data-theme="dark"] .upload-box {
     flex: 0 0 34px !important;
   }
 }
-/* === FlowSync COLOR ROW FINAL END === */
+/* === QRYX COLOR ROW FINAL END === */
 
 
-/* === FlowSync COLOR LABELS SELECTED START === */
+/* === QRYX COLOR LABELS SELECTED START === */
 .color-manuals {
   align-items: flex-start !important;
 }
@@ -1409,10 +1409,10 @@ html[data-theme="dark"] .upload-box {
     height: 34px !important;
   }
 }
-/* === FlowSync COLOR LABELS SELECTED END === */
+/* === QRYX COLOR LABELS SELECTED END === */
 
 
-/* === FlowSync TOP COLOR SHORT UI START === */
+/* === QRYX TOP COLOR SHORT UI START === */
 .color-manuals {
   display: flex !important;
   align-items: flex-start !important;
@@ -1462,8 +1462,8 @@ html[data-theme="dark"] .upload-box {
     height: 34px !important;
   }
 }
-/* === FlowSync TOP COLOR SHORT UI END === */
-/* === FlowSync EYE COLOR CLICK FIX START === */
+/* === QRYX TOP COLOR SHORT UI END === */
+/* === QRYX EYE COLOR CLICK FIX START === */
 #eyeOuterColor,
 #eyeInnerColor {
   pointer-events: auto !important;
@@ -1491,8 +1491,8 @@ html[data-theme="dark"] .upload-box {
   opacity: 1 !important;
   cursor: pointer !important;
 }
-/* === FlowSync EYE COLOR CLICK FIX END === */
-/* === FlowSync MANUAL EYE COLOR FIX START === */
+/* === QRYX EYE COLOR CLICK FIX END === */
+/* === QRYX MANUAL EYE COLOR FIX START === */
 #eyeOuterColor,
 #eyeInnerColor {
   pointer-events: auto !important;
@@ -1517,7 +1517,7 @@ html[data-theme="dark"] .upload-box {
 .eye-sync-on .manual-color:has(#eyeInnerColor) {
   opacity: 1 !important;
 }
-/* === FlowSync MANUAL EYE COLOR FIX END === */
+/* === QRYX MANUAL EYE COLOR FIX END === */
 /* === REMOVE FRAME TAB FIX START === */
 .panel-tabs {
   grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
@@ -1529,7 +1529,7 @@ html[data-theme="dark"] .upload-box {
 /* === REMOVE FRAME TAB FIX END === */
 
 
-/* === FlowSync DOWNLOAD PANEL POSITION START === */
+/* === QRYX DOWNLOAD PANEL POSITION START === */
 @media (min-width: 901px) {
   .design-panel {
     position: relative !important;
@@ -1572,10 +1572,10 @@ html[data-theme="dark"] .upload-box {
     margin-top: 18px !important;
   }
 }
-/* === FlowSync DOWNLOAD PANEL POSITION END === */
+/* === QRYX DOWNLOAD PANEL POSITION END === */
 
 
-/* === FlowSync NAV LINK FIX START === */
+/* === QRYX NAV LINK FIX START === */
 .side-nav a.nav-item {
   text-decoration: none !important;
   color: inherit !important;
@@ -1588,7 +1588,7 @@ html[data-theme="dark"] .upload-box {
 .side-nav a.nav-item:hover {
   color: var(--primary) !important;
 }
-/* === FlowSync NAV LINK FIX END === */
+/* === QRYX NAV LINK FIX END === */
 /* === SIDEBAR LEGAL LINK START === */
 .legal-links {
   margin-top: 14px;
@@ -1649,25 +1649,3 @@ html[data-theme="dark"] .floating-legal-link {
   }
 }
 /* === FLOATING PRIVACY LINK END === */
-
-/* === FLOWSYNC BRAND FIX START === */
-.brand-text,
-.mobile-brand {
-  letter-spacing: -0.04em !important;
-  text-transform: none !important;
-  white-space: nowrap !important;
-}
-
-.brand-text span,
-.mobile-brand span {
-  color: var(--primary, #6547ff) !important;
-}
-
-.brand-text {
-  font-weight: 950 !important;
-}
-
-.mobile-brand {
-  font-weight: 950 !important;
-}
-/* === FLOWSYNC BRAND FIX END === */

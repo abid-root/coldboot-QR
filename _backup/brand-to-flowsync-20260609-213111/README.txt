@@ -1,4 +1,4 @@
-FlowSync Static QR Code Generator
+QRYX Static QR Code Generator
 
 How to run:
 1. Extract the zip.

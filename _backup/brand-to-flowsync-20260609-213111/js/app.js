@@ -8,9 +8,9 @@ let sessionCodes = [];
 let size = Number($('#sizeRange')?.value || 300);
 
 const templates = [
-  { title: 'Website Link', cat: 'Business', type: 'url', text: 'Drive traffic to any landing page.', data: 'https://flowsync.app' },
+  { title: 'Website Link', cat: 'Business', type: 'url', text: 'Drive traffic to any landing page.', data: 'https://qryx.app' },
   { title: 'Business Card', cat: 'Business', type: 'vcard', text: 'Share contact details instantly.', data: 'Jane Doe' },
-  { title: 'Wi-Fi Access', cat: 'Wi-Fi', type: 'wifi', text: 'Share Wi-Fi credentials with one scan.', data: 'FlowSync_Office' },
+  { title: 'Wi-Fi Access', cat: 'Wi-Fi', type: 'wifi', text: 'Share Wi-Fi credentials with one scan.', data: 'QRYX_Office' },
   { title: 'Restaurant Menu', cat: 'Restaurant', type: 'url', text: 'Open a digital menu instantly.', data: 'https://restaurant.example/menu' },
   { title: 'Event Ticket', cat: 'Event', type: 'event', text: 'Share event info and check-in links.', data: 'Product Launch' },
   { title: 'Product Label', cat: 'Product', type: 'url', text: 'Link manuals, warranty and product info.', data: 'https://product.example' },
@@ -20,10 +20,10 @@ const templates = [
 
 const fieldConfig = {
   url: [{ id: 'url', label: 'Website URL', value: 'https://www.example.com', type: 'url' }],
-  text: [{ id: 'text', label: 'Text', value: 'Hello from FlowSync', type: 'textarea' }],
+  text: [{ id: 'text', label: 'Text', value: 'Hello from QRYX', type: 'textarea' }],
   wifi: [
-    { id: 'ssid', label: 'Network Name', value: 'FlowSync_Office' },
-    { id: 'password', label: 'Password', value: 'flowsync1234' },
+    { id: 'ssid', label: 'Network Name', value: 'QRYX_Office' },
+    { id: 'password', label: 'Password', value: 'qryx1234' },
     { id: 'encryption', label: 'Encryption', value: 'WPA' },
   ],
   email: [
@@ -38,7 +38,7 @@ const fieldConfig = {
   ],
   vcard: [
     { id: 'name', label: 'Full Name', value: 'Jane Doe' },
-    { id: 'org', label: 'Company', value: 'FlowSync Studio' },
+    { id: 'org', label: 'Company', value: 'QRYX Studio' },
     { id: 'vphone', label: 'Phone', value: '+880123456789' },
     { id: 'vemail', label: 'Email', value: 'jane@example.com' },
     { id: 'website', label: 'Website', value: 'https://example.com' },
@@ -65,7 +65,7 @@ function getFieldValue(id) {
 function buildPayload() {
   switch (currentType) {
     case 'url': return getFieldValue('url') || 'https://www.example.com';
-    case 'text': return getFieldValue('text') || 'Hello from FlowSync';
+    case 'text': return getFieldValue('text') || 'Hello from QRYX';
     case 'wifi': return `WIFI:T:${getFieldValue('encryption') || 'WPA'};S:${getFieldValue('ssid')};P:${getFieldValue('password')};;`;
     case 'email': return `mailto:${getFieldValue('email')}?subject=${encodeURIComponent(getFieldValue('subject'))}&body=${encodeURIComponent(getFieldValue('body'))}`;
     case 'phone': return `tel:${getFieldValue('phone')}`;
@@ -223,7 +223,7 @@ function applyUsefulDesignPreview() {
   setToolText('logoGapValue', logoGap);
   setToolText('gradientAngleValue', `${angle}°`);
 
-  document.documentElement.style.setProperty('--flowsync-qr-bg-preview', transparentBg ? 'transparent' : bgColor);
+  document.documentElement.style.setProperty('--qryx-qr-bg-preview', transparentBg ? 'transparent' : bgColor);
   syncEyeInputs();
 }
 
@@ -285,7 +285,7 @@ function updateQR() {
 
 function download(ext) {
   if (!qr) return;
-  const name = ($('#fileName')?.value || 'flowsync-qr-code').replace(/[^a-z0-9-_]/gi, '-').toLowerCase();
+  const name = ($('#fileName')?.value || 'qryx-qr-code').replace(/[^a-z0-9-_]/gi, '-').toLowerCase();
   qr.download({ name, extension: ext });
 }
 
@@ -299,11 +299,9 @@ function setTheme(mode) {
   document.documentElement.dataset.theme = mode;
   const mainToggle = $('#themeToggle');
   const secondToggle = $('#themeToggle2');
-  const favicon = $('#themeFavicon');
 
   if (mainToggle) mainToggle.textContent = mode === 'dark' ? '☀' : '☾';
   if (secondToggle) secondToggle.textContent = mode === 'dark' ? 'Switch to Light' : 'Switch to Dark';
-  if (favicon) favicon.href = mode === 'dark' ? 'assets/common/lightone.png' : 'assets/common/darkone.png';
 }
 
 function toggleTheme() {
@@ -563,7 +561,7 @@ renderCodes();
 setTheme(document.documentElement.dataset.theme || 'light');
 
 
-// === FlowSync ACTIVE COLOR PRESET START ===
+// === QRYX ACTIVE COLOR PRESET START ===
 function qxNormalizeColor(value) {
   return String(value || '').trim().toLowerCase();
 }
@@ -611,8 +609,8 @@ function qxBindActiveColorPresetUI() {
 }
 
 qxBindActiveColorPresetUI();
-// === FlowSync ACTIVE COLOR PRESET END ===
-// FlowSync_FORCE_EYE_COLOR_ENABLE
+// === QRYX ACTIVE COLOR PRESET END ===
+// QRYX_FORCE_EYE_COLOR_ENABLE
 document.addEventListener('DOMContentLoaded', () => {
   const outer = document.getElementById('eyeOuterColor');
   const inner = document.getElementById('eyeInnerColor');
@@ -622,7 +620,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.documentElement.classList.remove('eye-sync-on');
 });
-// FlowSync_MANUAL_EYE_COLOR_FORCE
+// QRYX_MANUAL_EYE_COLOR_FORCE
 function qxBindManualEyeColorForce() {
   const outer = document.getElementById('eyeOuterColor');
   const inner = document.getElementById('eyeInnerColor');
@@ -654,7 +652,7 @@ qxBindManualEyeColorForce();
 document.addEventListener('DOMContentLoaded', qxBindManualEyeColorForce);
 
 
-// === FlowSync AUTO EYE COLOR SYNC START ===
+// === QRYX AUTO EYE COLOR SYNC START ===
 function qxAutoSyncEyeColors() {
   const qr = document.getElementById('darkColor');
   const grad = document.getElementById('accentColor');
@@ -706,4 +704,4 @@ function qxBindAutoEyeColorSync() {
 
 qxBindAutoEyeColorSync();
 document.addEventListener('DOMContentLoaded', qxBindAutoEyeColorSync);
-// === FlowSync AUTO EYE COLOR SYNC END ===
+// === QRYX AUTO EYE COLOR SYNC END ===

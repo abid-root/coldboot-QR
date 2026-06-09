@@ -3,16 +3,16 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>FlowSync - Privacy Policy</title>
-  <meta name="description" content="Privacy Policy for FlowSync QR code generator." />
+  <title>QRYX - Privacy Policy</title>
+  <meta name="description" content="Privacy Policy for QRYX QR code generator." />
   <link rel="stylesheet" href="../css/styles.css" />
   <link rel="stylesheet" href="../css/info-pages.css" />
 </head>
 <body class="info-body">
   <div class="app-shell">
     <aside class="sidebar" aria-label="Sidebar navigation">
-      <a class="brand" href="../index.html#create" data-page-link="create" aria-label="FlowSync home">
-        <span class="brand-text">Flow<span>Sync</span></span>
+      <a class="brand" href="../index.html#create" data-page-link="create" aria-label="QRYX home">
+        <span class="brand-text">QRY<span>X</span></span>
       </a>
 
       <nav class="side-nav">
@@ -47,7 +47,7 @@
     <main class="main">
       <header class="topbar">
         <button class="mobile-menu" type="button" onclick="location.href='../index.html'" aria-label="Go home">☰</button>
-        <div class="mobile-brand">Flow<span>Sync</span></div>
+        <div class="mobile-brand">QRY<span>X</span></div>
         <div class="top-actions">
           <button id="themeToggle" class="icon-btn" type="button" aria-label="Toggle theme">☾</button>
           <a class="primary small info-create-qr" href="../index.html#create">Create QR</a>
@@ -65,7 +65,7 @@
           <span class="info-kicker">Privacy Policy</span>
           <h1>Privacy-first by default.</h1>
           <p class="privacy-lead">
-            FlowSync is a browser-based static QR code generator. The current version does not require an account, database, backend, or cloud storage.
+            QRYX is a browser-based static QR code generator. The current version does not require an account, database, backend, or cloud storage.
           </p>
 
           <div class="privacy-grid">
@@ -88,7 +88,7 @@
             <article class="info-card">
               <h3>Local storage</h3>
               <p>
-                FlowSync may use your browser local storage only for interface preferences, such as theme mode. This helps the site remember your selected appearance.
+                QRYX may use your browser local storage only for interface preferences, such as theme mode. This helps the site remember your selected appearance.
               </p>
             </article>
 
@@ -103,7 +103,7 @@
           <section class="info-section">
             <div class="compare-box">
               <div class="compare-row head"><span>Item</span><span>Status</span><span>Details</span></div>
-              <div class="compare-row"><span>Account required</span><b>No</b><span>You can use FlowSync without signing in.</span></div>
+              <div class="compare-row"><span>Account required</span><b>No</b><span>You can use QRYX without signing in.</span></div>
               <div class="compare-row"><span>QR data stored</span><b>No</b><span>Your QR content is not saved to a server.</span></div>
               <div class="compare-row"><span>Uploaded logo stored</span><b>No</b><span>Logo files are used locally in your browser.</span></div>
               <div class="compare-row"><span>Scan analytics</span><b>No</b><span>The current static version does not track scans.</span></div>
@@ -122,10 +122,10 @@
     const btn = document.getElementById("themeToggle");
     function setTheme(mode) {
       document.documentElement.dataset.theme = mode;
-      localStorage.setItem("flowsync-theme", mode);
+      localStorage.setItem("qryx-theme", mode);
       if (btn) btn.textContent = mode === "dark" ? "☀" : "☾";
     }
-    setTheme(localStorage.getItem("flowsync-theme") || "light");
+    setTheme(localStorage.getItem("qryx-theme") || "light");
     if (btn) btn.addEventListener("click", function () {
       setTheme(document.documentElement.dataset.theme === "dark" ? "light" : "dark");
     });

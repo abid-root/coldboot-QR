@@ -3,9 +3,8 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>FlowSync - Guide</title>
-    <meta name="description" content="How to use FlowSync QR code generator." />
-    <link rel="icon" id="themeFavicon" href="../assets/common/darkone.png" type="image/png" />
+    <title>QRYX - Guide</title>
+    <meta name="description" content="How to use QRYX QR code generator." />
     <link rel="stylesheet" href="../css/styles.css" />
     <link rel="stylesheet" href="../css/info-pages.css" />
   </head>
@@ -16,9 +15,9 @@
           class="brand"
           href="../index.html#create"
           data-page-link="create"
-          aria-label="FlowSync home"
+          aria-label="QRYX home"
         >
-          <span class="brand-text">Flow<span>Sync</span></span>
+          <span class="brand-text">QRY<span>X</span></span>
         </a>
 
         <nav class="side-nav">
@@ -52,7 +51,7 @@
           >
             ☰
           </button>
-          <div class="mobile-brand">Flow<span>Sync</span></div>
+          <div class="mobile-brand">QRY<span>X</span></div>
           <div class="top-actions">
             <button
               id="themeToggle"
@@ -180,14 +179,12 @@
 
     <script>
       const btn = document.getElementById("themeToggle");
-      const favicon = document.getElementById("themeFavicon");
       function setTheme(mode) {
         document.documentElement.dataset.theme = mode;
-        localStorage.setItem("flowsync-theme", mode);
+        localStorage.setItem("qryx-theme", mode);
         if (btn) btn.textContent = mode === "dark" ? "☀" : "☾";
-        if (favicon) favicon.href = mode === "dark" ? "../assets/common/lightone.png" : "../assets/common/darkone.png";
       }
-      setTheme(localStorage.getItem("flowsync-theme") || "light");
+      setTheme(localStorage.getItem("qryx-theme") || "light");
       if (btn)
         btn.addEventListener("click", function () {
           setTheme(

@@ -1,4 +1,4 @@
-/* === FlowSync SAFE INFO PAGES START === */
+/* === QRYX SAFE INFO PAGES START === */
 
 body.info-body .main {
   overflow: visible !important;
@@ -359,8 +359,8 @@ html[data-theme="dark"] .info-glass {
   }
 }
 
-/* === FlowSync SAFE INFO PAGES END === */
-/* === FlowSync NAV HEADER MATCH FIX START === */
+/* === QRYX SAFE INFO PAGES END === */
+/* === QRYX NAV HEADER MATCH FIX START === */
 body.info-body .topbar a.info-create-qr {
   text-decoration: none !important;
   display: inline-flex !important;
@@ -387,7 +387,7 @@ body.info-body .mobile-menu {
     display: none !important;
   }
 }
-/* === FlowSync NAV HEADER MATCH FIX END === */
+/* === QRYX NAV HEADER MATCH FIX END === */
 /* === GUIDE HERO IMAGE START === */
 .guide-image-card {
   position: relative !important;
