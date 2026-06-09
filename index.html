@@ -67,7 +67,6 @@
               <button class="active" data-editor-tab="content" type="button">Content</button>
               <button data-editor-tab="design" type="button">Design</button>
               <button data-editor-tab="logo" type="button">Logo</button>
-              <button data-editor-tab="frame" type="button">Frame</button>
               <button data-editor-tab="options" type="button">Options</button>
             </div>
 
@@ -212,15 +211,15 @@
               </div>
               <button id="removeLogo" class="ghost-btn wide" type="button">Remove logo</button>
             </div>
-
-            <div class="editor-tab" id="editor-frame">
-              <label>Frame Label</label>
-              <input id="frameText" class="input" value="Scan to preview" />
-              <label>Preview Size</label>
-              <div class="range-line"><button id="sizeMinus" type="button">−</button><input id="sizeRange" type="range" min="160" max="380" value="300" /><button id="sizePlus" type="button">＋</button></div>
             </div>
 
-            <div class="editor-tab" id="editor-options">
+            <div class="hidden-frame-controls" hidden>
+              <input id="frameText" value="Scan to preview" />
+              <input id="sizeRange" type="range" min="160" max="380" value="300" />
+              <button id="sizeMinus" type="button">−</button>
+              <button id="sizePlus" type="button">＋</button>
+            </div>
+<div class="editor-tab" id="editor-options">
               <label>Error Correction</label>
               <select id="errorLevel" class="input"><option value="L">Low</option><option value="M">Medium</option><option value="Q">Quality</option><option value="H" selected>High</option></select>
               <label>File Name</label>

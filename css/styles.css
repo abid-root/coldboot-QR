@@ -1518,3 +1518,12 @@ html[data-theme="dark"] .upload-box {
   opacity: 1 !important;
 }
 /* === QRYX MANUAL EYE COLOR FIX END === */
+/* === REMOVE FRAME TAB FIX START === */
+.panel-tabs {
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+}
+
+.hidden-frame-controls {
+  display: none !important;
+}
+/* === REMOVE FRAME TAB FIX END === */

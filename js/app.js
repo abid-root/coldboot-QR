@@ -650,3 +650,58 @@ function qxBindManualEyeColorForce() {
 
 qxBindManualEyeColorForce();
 document.addEventListener('DOMContentLoaded', qxBindManualEyeColorForce);
+
+
+// === QRYX AUTO EYE COLOR SYNC START ===
+function qxAutoSyncEyeColors() {
+  const qr = document.getElementById('darkColor');
+  const grad = document.getElementById('accentColor');
+  const outer = document.getElementById('eyeOuterColor');
+  const inner = document.getElementById('eyeInnerColor');
+  const gradientToggle = document.getElementById('gradientToggle');
+
+  if (!qr || !outer || !inner) return;
+
+  const qrColor = qr.value || '#111111';
+  const gradColor = grad ? grad.value : qrColor;
+  const gradientOn = gradientToggle ? gradientToggle.checked : false;
+
+  outer.disabled = false;
+  inner.disabled = false;
+
+  outer.value = qrColor;
+  inner.value = gradientOn ? gradColor : qrColor;
+
+  document.documentElement.classList.remove('eye-sync-on');
+
+  if (typeof updateQR === 'function') {
+    updateQR();
+  }
+}
+
+function qxBindAutoEyeColorSync() {
+  const qr = document.getElementById('darkColor');
+  const grad = document.getElementById('accentColor');
+  const gradientToggle = document.getElementById('gradientToggle');
+
+  [qr, grad, gradientToggle].forEach(el => {
+    if (!el || el.dataset.qxEyeAutoBound === '1') return;
+
+    el.dataset.qxEyeAutoBound = '1';
+    el.addEventListener('input', qxAutoSyncEyeColors);
+    el.addEventListener('change', qxAutoSyncEyeColors);
+  });
+
+  document.querySelectorAll('.color-preset').forEach(btn => {
+    if (btn.dataset.qxEyePresetBound === '1') return;
+
+    btn.dataset.qxEyePresetBound = '1';
+    btn.addEventListener('click', () => {
+      setTimeout(qxAutoSyncEyeColors, 0);
+    });
+  });
+}
+
+qxBindAutoEyeColorSync();
+document.addEventListener('DOMContentLoaded', qxBindAutoEyeColorSync);
+// === QRYX AUTO EYE COLOR SYNC END ===
