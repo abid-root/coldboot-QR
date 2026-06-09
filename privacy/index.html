@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>QRYX - Privacy Policy</title>
+  <meta name="description" content="Privacy Policy for QRYX QR code generator." />
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="stylesheet" href="../css/info-pages.css" />
+</head>
+<body class="info-body">
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Sidebar navigation">
+      <a class="brand" href="../index.html#create" data-page-link="create" aria-label="QRYX home">
+        <span class="brand-text">QRY<span>X</span></span>
+      </a>
+
+      <nav class="side-nav">
+        <a class="nav-item" href="../index.html">
+          <span>⌂</span>Home
+        </a>
+
+        <a class="nav-item" href="../guide/">
+          <span>▦</span>Guide
+        </a>
+
+        <a class="nav-item" href="../pricing/">
+          <span>▤</span>Pricing
+        </a>
+
+        <a class="nav-item" href="../index.html">
+          <span>✉</span>Contact
+        </a>
+      </nav>
+
+      <div class="side-card">
+        <b>Static Tool</b>
+        <span>No backend, no database, no tracking.</span>
+      </div>
+
+      <div class="profile-chip">
+        <span class="avatar">Q</span>
+        <span><b>Local Mode</b><small>Nothing is saved</small></span>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <button class="mobile-menu" type="button" onclick="location.href='../index.html'" aria-label="Go home">☰</button>
+        <div class="mobile-brand">QRY<span>X</span></div>
+        <div class="top-actions">
+          <button id="themeToggle" class="icon-btn" type="button" aria-label="Toggle theme">☾</button>
+          <a class="primary small info-create-qr" href="../index.html#create">Create QR</a>
+        </div>
+      </header>
+
+      <section class="info-wrap privacy-wrap">
+        <div class="info-mobile-links">
+          <a href="../index.html">Create</a>
+          <a href="../guide/">Guide</a>
+          <a href="../pricing/">Pricing</a>
+        </div>
+
+        <div class="privacy-page">
+          <span class="info-kicker">Privacy Policy</span>
+          <h1>Privacy-first by default.</h1>
+          <p class="privacy-lead">
+            QRYX is a browser-based static QR code generator. The current version does not require an account, database, backend, or cloud storage.
+          </p>
+
+          <div class="privacy-grid">
+            <article class="info-card">
+              <h3>What we do not collect</h3>
+              <ul class="clean-list">
+                <li>We do not store your QR text, links, Wi-Fi details, contact details, or location data.</li>
+                <li>We do not store uploaded logos or generated QR images.</li>
+                <li>We do not require login or personal account information.</li>
+              </ul>
+            </article>
+
+            <article class="info-card">
+              <h3>How the tool works</h3>
+              <p>
+                QR generation happens inside your browser. When you type content into the tool, it is used to generate the QR code on your device.
+              </p>
+            </article>
+
+            <article class="info-card">
+              <h3>Local storage</h3>
+              <p>
+                QRYX may use your browser local storage only for interface preferences, such as theme mode. This helps the site remember your selected appearance.
+              </p>
+            </article>
+
+            <article class="info-card">
+              <h3>Static QR codes</h3>
+              <p>
+                Static QR codes cannot be edited after download. We also do not track scans, devices, locations, or analytics in the current version.
+              </p>
+            </article>
+          </div>
+
+          <section class="info-section">
+            <div class="compare-box">
+              <div class="compare-row head"><span>Item</span><span>Status</span><span>Details</span></div>
+              <div class="compare-row"><span>Account required</span><b>No</b><span>You can use QRYX without signing in.</span></div>
+              <div class="compare-row"><span>QR data stored</span><b>No</b><span>Your QR content is not saved to a server.</span></div>
+              <div class="compare-row"><span>Uploaded logo stored</span><b>No</b><span>Logo files are used locally in your browser.</span></div>
+              <div class="compare-row"><span>Scan analytics</span><b>No</b><span>The current static version does not track scans.</span></div>
+            </div>
+          </section>
+
+          <p class="privacy-note">
+            Last updated: 2026
+          </p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    const btn = document.getElementById("themeToggle");
+    function setTheme(mode) {
+      document.documentElement.dataset.theme = mode;
+      localStorage.setItem("qryx-theme", mode);
+      if (btn) btn.textContent = mode === "dark" ? "☀" : "☾";
+    }
+    setTheme(localStorage.getItem("qryx-theme") || "light");
+    if (btn) btn.addEventListener("click", function () {
+      setTheme(document.documentElement.dataset.theme === "dark" ? "light" : "dark");
+    });
+  </script>
+
+  <a class="floating-legal-link" href="../privacy/">Privacy Policy</a>
+</body>
+</html>
