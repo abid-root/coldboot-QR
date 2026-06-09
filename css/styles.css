@@ -1263,3 +1263,258 @@ html[data-theme="dark"] .upload-box {
   }
 }
 /* === QRYX FINAL CLEAN QR CONTROLS END === */
+
+
+/* === QRYX COLOR ROW FINAL START === */
+.color-row {
+  display: grid !important;
+  gap: 15px !important;
+}
+
+.color-manuals {
+  display: flex !important;
+  align-items: center !important;
+  flex-wrap: wrap !important;
+  gap: 14px !important;
+}
+
+.preset-group {
+  display: grid !important;
+  gap: 9px !important;
+}
+
+.preset-label {
+  color: var(--muted) !important;
+  font-size: 12px !important;
+  font-weight: 850 !important;
+  letter-spacing: .02em !important;
+}
+
+.preset-line {
+  display: flex !important;
+  align-items: center !important;
+  flex-wrap: wrap !important;
+  gap: 14px !important;
+}
+
+.color-row input[type="color"],
+.color-preset {
+  width: 40px !important;
+  height: 40px !important;
+  flex: 0 0 40px !important;
+  border-radius: 50% !important;
+}
+
+.color-preset {
+  border: 1px solid rgba(255,255,255,.12) !important;
+  background: linear-gradient(135deg, var(--a), var(--b)) !important;
+  box-shadow: 0 10px 24px rgba(0,0,0,.12) !important;
+  cursor: pointer !important;
+  transition: transform .18s ease, box-shadow .18s ease !important;
+}
+
+.color-preset:hover {
+  transform: translateY(-2px) scale(1.04) !important;
+  box-shadow: 0 14px 30px rgba(99,91,255,.22) !important;
+}
+
+.gradient-off #accentColor,
+.gradient-off #gradientAngle {
+  opacity: .42 !important;
+  cursor: not-allowed !important;
+}
+
+@media (max-width: 700px) {
+  .preset-line,
+  .color-manuals {
+    gap: 10px !important;
+  }
+
+  .color-row input[type="color"],
+  .color-preset {
+    width: 34px !important;
+    height: 34px !important;
+    flex: 0 0 34px !important;
+  }
+}
+/* === QRYX COLOR ROW FINAL END === */
+
+
+/* === QRYX COLOR LABELS SELECTED START === */
+.color-manuals {
+  align-items: flex-start !important;
+}
+
+.manual-color {
+  display: grid !important;
+  gap: 8px !important;
+  width: 74px !important;
+}
+
+.manual-color span {
+  color: var(--muted) !important;
+  font-size: 11px !important;
+  font-weight: 850 !important;
+  line-height: 1.1 !important;
+  white-space: nowrap !important;
+}
+
+.manual-color input[type="color"] {
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 50% !important;
+  cursor: pointer !important;
+}
+
+.gradient-off .manual-color:has(#accentColor) {
+  opacity: .42 !important;
+}
+
+.color-preset {
+  position: relative !important;
+}
+
+.color-preset.selected-preset {
+  outline: 3px solid var(--primary) !important;
+  outline-offset: 4px !important;
+  box-shadow:
+    0 0 0 7px rgba(99,91,255,.13),
+    0 14px 30px rgba(99,91,255,.26) !important;
+}
+
+.color-preset.selected-preset::after {
+  content: "✓" !important;
+  position: absolute !important;
+  right: -7px !important;
+  top: -7px !important;
+  width: 18px !important;
+  height: 18px !important;
+  display: grid !important;
+  place-items: center !important;
+  border-radius: 50% !important;
+  background: var(--primary) !important;
+  color: #ffffff !important;
+  font-size: 12px !important;
+  font-weight: 900 !important;
+  box-shadow: 0 8px 18px rgba(99,91,255,.32) !important;
+}
+
+@media (max-width: 700px) {
+  .manual-color {
+    width: 68px !important;
+  }
+
+  .manual-color input[type="color"] {
+    width: 34px !important;
+    height: 34px !important;
+  }
+}
+/* === QRYX COLOR LABELS SELECTED END === */
+
+
+/* === QRYX TOP COLOR SHORT UI START === */
+.color-manuals {
+  display: flex !important;
+  align-items: flex-start !important;
+  flex-wrap: wrap !important;
+  gap: 14px !important;
+}
+
+.manual-color {
+  display: grid !important;
+  gap: 8px !important;
+  width: 54px !important;
+}
+
+.manual-color span {
+  color: var(--muted) !important;
+  font-size: 11px !important;
+  font-weight: 850 !important;
+  line-height: 1.1 !important;
+  white-space: nowrap !important;
+  text-align: left !important;
+}
+
+.manual-color input[type="color"] {
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 50% !important;
+  cursor: pointer !important;
+}
+
+.preset-label {
+  font-size: 11px !important;
+  font-weight: 850 !important;
+  letter-spacing: .02em !important;
+}
+
+.gradient-off .manual-color:has(#accentColor) {
+  opacity: .42 !important;
+}
+
+@media (max-width: 700px) {
+  .manual-color {
+    width: 50px !important;
+  }
+
+  .manual-color input[type="color"] {
+    width: 34px !important;
+    height: 34px !important;
+  }
+}
+/* === QRYX TOP COLOR SHORT UI END === */
+/* === QRYX EYE COLOR CLICK FIX START === */
+#eyeOuterColor,
+#eyeInnerColor {
+  pointer-events: auto !important;
+  cursor: pointer !important;
+  opacity: 1 !important;
+  position: relative !important;
+  z-index: 20 !important;
+}
+
+.manual-color:has(#eyeOuterColor),
+.manual-color:has(#eyeInnerColor) {
+  pointer-events: auto !important;
+  opacity: 1 !important;
+}
+
+.manual-color:has(#eyeOuterColor) span,
+.manual-color:has(#eyeInnerColor) span {
+  pointer-events: none !important;
+}
+
+.eye-sync-on #eyeOuterColor,
+.eye-sync-on #eyeInnerColor,
+.gradient-off #eyeOuterColor,
+.gradient-off #eyeInnerColor {
+  opacity: 1 !important;
+  cursor: pointer !important;
+}
+/* === QRYX EYE COLOR CLICK FIX END === */
+/* === QRYX MANUAL EYE COLOR FIX START === */
+#eyeOuterColor,
+#eyeInnerColor {
+  pointer-events: auto !important;
+  cursor: pointer !important;
+  opacity: 1 !important;
+  filter: none !important;
+}
+
+.manual-color:has(#eyeOuterColor),
+.manual-color:has(#eyeInnerColor) {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
+.eye-sync-on #eyeOuterColor,
+.eye-sync-on #eyeInnerColor {
+  opacity: 1 !important;
+  cursor: pointer !important;
+}
+
+.eye-sync-on .manual-color:has(#eyeOuterColor),
+.eye-sync-on .manual-color:has(#eyeInnerColor) {
+  opacity: 1 !important;
+}
+/* === QRYX MANUAL EYE COLOR FIX END === */

@@ -97,25 +97,57 @@
               </div>
               <label>Colors</label>
               <div class="color-row">
-                <input id="darkColor" type="color" value="#111111" />
-                <input id="accentColor" type="color" value="#635BFF" />
-                <input id="lightColor" type="color" value="#ffffff" />
+                <div class="color-manuals">
+                  <label class="manual-color">
+                    <span>QR</span>
+                    <input id="darkColor" type="color" value="#111111" />
+                  </label>
 
-                <button class="color-preset" title="Classic Violet" data-c1="#111111" data-c2="#635BFF" style="--a:#111111;--b:#635BFF"></button>
-                <button class="color-preset" title="Sky Violet" data-c1="#0EA5E9" data-c2="#8B5CF6" style="--a:#0EA5E9;--b:#8B5CF6"></button>
-                <button class="color-preset" title="Rose Green" data-c1="#F43F5E" data-c2="#22C55E" style="--a:#F43F5E;--b:#22C55E"></button>
+                  <label class="manual-color">
+                    <span>Grad</span>
+                    <input id="accentColor" type="color" value="#635BFF" />
+                  </label>
 
-                <button class="color-preset" title="Cyber Blue" data-c1="#0F172A" data-c2="#38BDF8" style="--a:#0F172A;--b:#38BDF8"></button>
-                <button class="color-preset" title="Royal Purple" data-c1="#312E81" data-c2="#A855F7" style="--a:#312E81;--b:#A855F7"></button>
-                <button class="color-preset" title="Neon Lime" data-c1="#111827" data-c2="#A3E635" style="--a:#111827;--b:#A3E635"></button>
-                <button class="color-preset" title="Ocean Mint" data-c1="#0F766E" data-c2="#5EEAD4" style="--a:#0F766E;--b:#5EEAD4"></button>
-                <button class="color-preset" title="Fire Orange" data-c1="#7C2D12" data-c2="#FB923C" style="--a:#7C2D12;--b:#FB923C"></button>
-                <button class="color-preset" title="Pink Violet" data-c1="#BE185D" data-c2="#8B5CF6" style="--a:#BE185D;--b:#8B5CF6"></button>
-                <button class="color-preset" title="Emerald Blue" data-c1="#065F46" data-c2="#2563EB" style="--a:#065F46;--b:#2563EB"></button>
-                <button class="color-preset" title="Gold Black" data-c1="#111111" data-c2="#FACC15" style="--a:#111111;--b:#FACC15"></button>
-                <button class="color-preset" title="Clean Mono" data-c1="#111111" data-c2="#111111" style="--a:#111111;--b:#111111"></button>
-              </div>
-              <label>Eye Style</label>
+                  <label class="manual-color">
+                    <span>BG</span>
+                    <input id="lightColor" type="color" value="#ffffff" />
+                  </label>
+
+                  <label class="manual-color">
+                    <span>Outer</span>
+                    <input id="eyeOuterColor" type="color" value="#111111" />
+                  </label>
+
+                  <label class="manual-color">
+                    <span>Inner</span>
+                    <input id="eyeInnerColor" type="color" value="#635BFF" />
+                  </label>
+                </div>
+
+                <div class="preset-group">
+                  <div class="preset-label">Solid</div>
+                  <div class="preset-line">
+                    <button class="color-preset" title="Ink" data-mode="solid" data-c1="#111827" data-c2="#111827" style="--a:#111827;--b:#111827"></button>
+                    <button class="color-preset" title="Graphite" data-mode="solid" data-c1="#1F2937" data-c2="#1F2937" style="--a:#1F2937;--b:#1F2937"></button>
+                    <button class="color-preset" title="Forest" data-mode="solid" data-c1="#166534" data-c2="#166534" style="--a:#166534;--b:#166534"></button>
+                    <button class="color-preset" title="Berry" data-mode="solid" data-c1="#7F1D1D" data-c2="#7F1D1D" style="--a:#7F1D1D;--b:#7F1D1D"></button>
+                    <button class="color-preset" title="Indigo" data-mode="solid" data-c1="#312E81" data-c2="#312E81" style="--a:#312E81;--b:#312E81"></button>
+                    <button class="color-preset" title="Amber" data-mode="solid" data-c1="#A16207" data-c2="#A16207" style="--a:#A16207;--b:#A16207"></button>
+                  </div>
+                </div>
+
+                <div class="preset-group">
+                  <div class="preset-label">Gradient</div>
+                  <div class="preset-line">
+                    <button class="color-preset" title="Midnight Violet" data-mode="gradient" data-c1="#0F172A" data-c2="#635BFF" style="--a:#0F172A;--b:#635BFF"></button>
+                    <button class="color-preset" title="Sky Violet" data-mode="gradient" data-c1="#0EA5E9" data-c2="#8B5CF6" style="--a:#0EA5E9;--b:#8B5CF6"></button>
+                    <button class="color-preset" title="Emerald Blue" data-mode="gradient" data-c1="#065F46" data-c2="#2563EB" style="--a:#065F46;--b:#2563EB"></button>
+                    <button class="color-preset" title="Sunset" data-mode="gradient" data-c1="#C2410C" data-c2="#FB7185" style="--a:#C2410C;--b:#FB7185"></button>
+                    <button class="color-preset" title="Pink Violet" data-mode="gradient" data-c1="#BE185D" data-c2="#8B5CF6" style="--a:#BE185D;--b:#8B5CF6"></button>
+                    <button class="color-preset" title="Lime Glow" data-mode="gradient" data-c1="#1F2937" data-c2="#84CC16" style="--a:#1F2937;--b:#84CC16"></button>
+                  </div>
+                </div>
+              </div>              <label>Eye Style</label>
               <div class="choice-row" data-choice="eye">
                 <button class="selected" data-value="square">Square</button>
                 <button data-value="dot">Dot</button>
@@ -158,34 +190,15 @@
                 </div>
               </div>
 
-              <label>Eye Colors</label>
-
-              <div class="qr-eye-tools">
-                <label>
-                  <span>Outer</span>
-                  <input id="eyeOuterColor" type="color" value="#111111" />
-                </label>
-
-                <label>
-                  <span>Inner</span>
-                  <input id="eyeInnerColor" type="color" value="#635BFF" />
-                </label>
-              </div>
-
               <div class="qr-toggle-tools">
                 <label>
                   <input id="gradientToggle" type="checkbox" />
-                  <span>Gradient QR</span>
-                </label>
-
-                <label>
-                  <input id="syncEyeColors" type="checkbox" checked />
-                  <span>Sync eye colors</span>
+                  <span>Gradient</span>
                 </label>
 
                 <label>
                   <input id="transparentBg" type="checkbox" />
-                  <span>Transparent background</span>
+                  <span>Transparent BG</span>
                 </label>
               </div>
 <!-- QRYX USEFUL QR TOOLS END -->

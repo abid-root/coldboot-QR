@@ -134,7 +134,6 @@ function getOptions() {
 
   const useGradient = $('#gradientToggle')?.checked || false;
   const transparentBg = $('#transparentBg')?.checked || false;
-  const syncEyes = $('#syncEyeColors') ? $('#syncEyeColors').checked : true;
 
   const qrMargin = Number($('#qrMargin')?.value || 10);
   const logoSizePct = Number($('#logoSize')?.value || 20);
@@ -142,10 +141,8 @@ function getOptions() {
   const gradientDeg = Number($('#gradientAngle')?.value || 0);
   const gradientRad = gradientDeg * Math.PI / 180;
 
-  const eyeOuter = syncEyes ? solidColor : ($('#eyeOuterColor')?.value || solidColor);
-  const eyeInner = syncEyes
-    ? (useGradient ? secondColor : solidColor)
-    : ($('#eyeInnerColor')?.value || secondColor);
+  const eyeOuter = $('#eyeOuterColor')?.value || solidColor;
+  const eyeInner = $('#eyeInnerColor')?.value || secondColor;
 
   const dotsOptions = { type: dotsType };
 
@@ -163,13 +160,16 @@ function getOptions() {
   }
 
   const safeLogoTotal = Math.min(0.48, (logoSizePct + logoSafeZone * 2) / 100);
+  const logoImage = typeof makeSafeLogo === 'function'
+    ? makeSafeLogo(logoData, logoSizePct, logoSafeZone)
+    : (logoData || undefined);
 
   return {
     width: size,
     height: size,
     type: 'svg',
     data: buildPayload(),
-    image: makeSafeLogo(logoData, logoSizePct, logoSafeZone),
+    image: logoImage,
     margin: qrMargin,
     qrOptions: {
       errorCorrectionLevel: $('#errorLevel')?.value || 'H'
@@ -201,23 +201,13 @@ function setToolText(id, value) {
 }
 
 function syncEyeInputs() {
-  const solidColor = $('#darkColor')?.value || '#111111';
-  const secondColor = $('#accentColor')?.value || solidColor;
-  const useGradient = $('#gradientToggle')?.checked || false;
-  const syncEyes = $('#syncEyeColors') ? $('#syncEyeColors').checked : true;
-
   const outer = $('#eyeOuterColor');
   const inner = $('#eyeInnerColor');
 
-  if (syncEyes) {
-    if (outer) outer.value = solidColor;
-    if (inner) inner.value = useGradient ? secondColor : solidColor;
-  }
+  if (outer) outer.disabled = false;
+  if (inner) inner.disabled = false;
 
-  if (outer) outer.disabled = syncEyes;
-  if (inner) inner.disabled = syncEyes;
-
-  document.documentElement.classList.toggle('eye-sync-on', syncEyes);
+  document.documentElement.classList.remove('eye-sync-on');
 }
 
 function applyUsefulDesignPreview() {
@@ -251,6 +241,27 @@ function renderQR() {
   qr = new QRCodeStyling(getOptions());
   qr.append(target);
   applyUsefulDesignPreview();
+  updateScanChipText();
+}
+
+function renderQR() {
+  const target = $('#qrCanvas');
+  if (!target) return;
+
+  target.innerHTML = '';
+
+  if (!window.QRCodeStyling) {
+    target.innerHTML = '<p style="max-width:260px;text-align:center;color:var(--muted)">QR library failed to load. Connect internet or host the library locally.</p>';
+    return;
+  }
+
+  qr = new QRCodeStyling(getOptions());
+  qr.append(target);
+
+  if (typeof applyUsefulDesignPreview === 'function') {
+    applyUsefulDesignPreview();
+  }
+
   updateScanChipText();
 }
 
@@ -446,7 +457,7 @@ function bind() {
     });
   });
 
-  ['gradientToggle', 'transparentBg', 'syncEyeColors'].forEach(id => {
+  ['gradientToggle', 'transparentBg'].forEach(id => {
     const el = document.getElementById(id);
     if (!el) return;
 
@@ -455,18 +466,40 @@ function bind() {
     });
   });
 
+  const qxColorUIState = () => {
+    const gradientOn = $('#gradientToggle')?.checked || false;
+
+    const secondPicker = $('#accentColor');
+    const angleSlider = $('#gradientAngle');
+
+    if (secondPicker) secondPicker.disabled = !gradientOn;
+    if (angleSlider) angleSlider.disabled = !gradientOn;
+
+    document.documentElement.classList.toggle('gradient-off', !gradientOn);
+  };
+
+  $('#gradientToggle')?.addEventListener('change', qxColorUIState);
+
   $$('.color-preset').forEach(btn => {
     btn.addEventListener('click', () => {
       const c1 = btn.dataset.c1 || '#111111';
       const c2 = btn.dataset.c2 || c1;
+      const mode = btn.dataset.mode || 'solid';
 
       if ($('#darkColor')) $('#darkColor').value = c1;
       if ($('#accentColor')) $('#accentColor').value = c2;
 
+      const gradientToggle = $('#gradientToggle');
+      if (gradientToggle) {
+        gradientToggle.checked = mode === 'gradient';
+      }
+
+      qxColorUIState();
       updateQR();
     });
   });
 
+  qxColorUIState();
   $('#sizeMinus')?.addEventListener('click', () => {
     size = Math.max(160, size - 20);
     if ($('#sizeRange')) $('#sizeRange').value = size;
@@ -526,3 +559,94 @@ initQR();
 renderTemplates();
 renderCodes();
 setTheme(document.documentElement.dataset.theme || 'light');
+
+
+// === QRYX ACTIVE COLOR PRESET START ===
+function qxNormalizeColor(value) {
+  return String(value || '').trim().toLowerCase();
+}
+
+function qxUpdateActiveColorPreset() {
+  const currentMain = qxNormalizeColor($('#darkColor')?.value);
+  const currentSecond = qxNormalizeColor($('#accentColor')?.value);
+  const gradientOn = $('#gradientToggle')?.checked || false;
+
+  $$('.color-preset').forEach(btn => {
+    const c1 = qxNormalizeColor(btn.dataset.c1);
+    const c2 = qxNormalizeColor(btn.dataset.c2);
+    const mode = btn.dataset.mode || 'solid';
+
+    const isActive =
+      c1 === currentMain &&
+      c2 === currentSecond &&
+      ((mode === 'gradient') === gradientOn);
+
+    btn.classList.toggle('selected-preset', isActive);
+    btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+  });
+}
+
+function qxBindActiveColorPresetUI() {
+  $$('.color-preset').forEach(btn => {
+    if (btn.dataset.qxActiveBound === '1') return;
+    btn.dataset.qxActiveBound = '1';
+
+    btn.addEventListener('click', () => {
+      setTimeout(qxUpdateActiveColorPreset, 0);
+    });
+  });
+
+  ['darkColor', 'accentColor', 'lightColor', 'gradientToggle'].forEach(id => {
+    const el = document.getElementById(id);
+    if (!el || el.dataset.qxActiveInputBound === '1') return;
+
+    el.dataset.qxActiveInputBound = '1';
+    el.addEventListener('input', qxUpdateActiveColorPreset);
+    el.addEventListener('change', qxUpdateActiveColorPreset);
+  });
+
+  qxUpdateActiveColorPreset();
+}
+
+qxBindActiveColorPresetUI();
+// === QRYX ACTIVE COLOR PRESET END ===
+// QRYX_FORCE_EYE_COLOR_ENABLE
+document.addEventListener('DOMContentLoaded', () => {
+  const outer = document.getElementById('eyeOuterColor');
+  const inner = document.getElementById('eyeInnerColor');
+
+  if (outer) outer.disabled = false;
+  if (inner) inner.disabled = false;
+
+  document.documentElement.classList.remove('eye-sync-on');
+});
+// QRYX_MANUAL_EYE_COLOR_FORCE
+function qxBindManualEyeColorForce() {
+  const outer = document.getElementById('eyeOuterColor');
+  const inner = document.getElementById('eyeInnerColor');
+
+  if (outer) outer.disabled = false;
+  if (inner) inner.disabled = false;
+
+  document.documentElement.classList.remove('eye-sync-on');
+
+  ['eyeOuterColor', 'eyeInnerColor'].forEach(id => {
+    const el = document.getElementById(id);
+    if (!el || el.dataset.qxEyeBound === '1') return;
+
+    el.dataset.qxEyeBound = '1';
+
+    el.addEventListener('input', () => {
+      el.disabled = false;
+      updateQR();
+    });
+
+    el.addEventListener('change', () => {
+      el.disabled = false;
+      updateQR();
+    });
+  });
+}
+
+qxBindManualEyeColorForce();
+document.addEventListener('DOMContentLoaded', qxBindManualEyeColorForce);
