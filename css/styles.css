@@ -1573,3 +1573,19 @@ html[data-theme="dark"] .upload-box {
   }
 }
 /* === QRYX DOWNLOAD PANEL POSITION END === */
+
+
+/* === QRYX NAV LINK FIX START === */
+.side-nav a.nav-item {
+  text-decoration: none !important;
+  color: inherit !important;
+}
+
+.side-nav a.nav-item:visited {
+  color: inherit !important;
+}
+
+.side-nav a.nav-item:hover {
+  color: var(--primary) !important;
+}
+/* === QRYX NAV LINK FIX END === */
