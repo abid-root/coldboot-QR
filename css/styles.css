@@ -1527,3 +1527,49 @@ html[data-theme="dark"] .upload-box {
   display: none !important;
 }
 /* === REMOVE FRAME TAB FIX END === */
+
+
+/* === QRYX DOWNLOAD PANEL POSITION START === */
+@media (min-width: 901px) {
+  .design-panel {
+    position: relative !important;
+    padding-bottom: 104px !important;
+  }
+
+  .download-row {
+    position: absolute !important;
+    left: 22px !important;
+    right: 22px !important;
+    bottom: 22px !important;
+    width: auto !important;
+    margin: 0 !important;
+    z-index: 50 !important;
+    display: grid !important;
+    grid-template-columns: 1fr 96px !important;
+    gap: 12px !important;
+  }
+
+  .download-row .primary,
+  .download-row .square-btn {
+    min-height: 58px !important;
+    border-radius: 18px !important;
+  }
+
+  .download-row .primary,
+  .download-row .square-btn {
+    width: 100% !important;
+  }
+
+  .editor-tab.active {
+    padding-bottom: 26px !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .download-row {
+    position: static !important;
+    width: 100% !important;
+    margin-top: 18px !important;
+  }
+}
+/* === QRYX DOWNLOAD PANEL POSITION END === */
