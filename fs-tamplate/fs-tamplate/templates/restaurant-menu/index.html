@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>FlowSync Template - Restaurant Menu</title>
+<meta name="description" content="Editable FlowSync QR template: Restaurant Menu." />
+<style id="pageStyle">
+:root{--bg1:#fff7ed;--bg2:#fed7aa;--bg3:#ffffff;--accent:#dc2626;--text:#1f130b;--muted:#7c5d4b;}
+
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#101219;background:#f5f6fb}.page{min-height:100vh;padding:28px;display:grid;place-items:center}.topbar{position:fixed;left:22px;right:22px;top:18px;z-index:20;display:flex;justify-content:space-between;align-items:center;gap:14px}.topbar a,.topbar button{min-height:42px;padding:0 15px;border-radius:999px;border:1px solid rgba(226,229,240,.86);background:rgba(255,255,255,.7);backdrop-filter:blur(14px);box-shadow:0 12px 28px rgba(37,42,65,.08);color:#64748b;text-decoration:none;font-size:13px;font-weight:850;cursor:pointer}.topbar button.primary{background:linear-gradient(135deg,#6547ff,#2f80ff);color:#fff;border:0}.workspace{width:min(1120px,100%);display:grid;grid-template-columns:480px 1fr;gap:28px;align-items:center}.stage{width:420px;height:525px;margin:0 auto;filter:drop-shadow(0 34px 70px rgba(37,42,65,.16))}.qr-card{width:420px;height:525px;border-radius:34px;overflow:hidden;position:relative;border:1px solid rgba(226,229,240,.9);background:linear-gradient(135deg,var(--bg1),var(--bg2) 58%,var(--bg3));isolation:isolate}.art{position:absolute;inset:0;width:100%;height:100%;z-index:0}.copy{position:absolute;left:34px;top:44px;width:230px;z-index:3}.kicker{display:inline-flex;min-height:30px;padding:0 12px;align-items:center;border-radius:999px;background:rgba(255,255,255,.58);color:var(--accent);font-size:10px;font-weight:950;letter-spacing:.12em;text-transform:uppercase;max-width:230px}.title{display:block;margin-top:18px;color:var(--text);font-size:39px;line-height:.96;letter-spacing:-.065em;font-weight:950;max-width:260px}.subtitle{display:block;margin-top:13px;color:var(--muted);font-size:15px;line-height:1.42;font-weight:650;max-width:238px}.footer{position:absolute;left:34px;bottom:30px;z-index:3;color:var(--muted);font-size:13px;font-weight:900}.qr-box{position:absolute;right:32px;bottom:78px;z-index:4;width:152px;height:152px;border-radius:26px;background:rgba(255,255,255,.9);display:grid;place-items:center;box-shadow:0 22px 45px rgba(37,42,65,.18);overflow:hidden;cursor:pointer}.qr-box img{width:122px;height:122px;object-fit:contain;display:none}.qr-box.has-qr img{display:block}.qr-placeholder{width:108px;height:108px;border-radius:22px;border:2px dashed rgba(101,71,255,.45);display:grid;place-items:center;color:#6547ff;font-size:11px;line-height:1.15;text-align:center;font-weight:950;padding:10px}.qr-box.has-qr .qr-placeholder{display:none}[contenteditable="true"]{outline:none;border-radius:10px}[contenteditable="true"]:focus{box-shadow:0 0 0 3px rgba(101,71,255,.18);background:rgba(255,255,255,.25)}.panel{background:rgba(255,255,255,.72);border:1px solid rgba(226,229,240,.86);border-radius:30px;padding:22px;box-shadow:0 18px 50px rgba(37,42,65,.09);backdrop-filter:blur(18px)}.panel h1{margin:0 0 8px;font-size:34px;letter-spacing:-.055em}.panel p{margin:0 0 18px;color:#64748b;line-height:1.55}.controls{display:grid;gap:12px}.field{display:grid;gap:6px}.field label{color:#64748b;font-size:12px;font-weight:900}.field input{min-height:44px;border:1px solid rgba(226,229,240,.95);border-radius:15px;background:#fff;padding:0 13px;font-size:14px;font-weight:750;outline:none}.actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:4px}.actions button,.file-label{min-height:46px;border:0;border-radius:16px;display:grid;place-items:center;text-align:center;font-size:14px;font-weight:950;cursor:pointer;text-decoration:none}.file-label{background:rgba(101,71,255,.12);color:#6547ff}.download{background:linear-gradient(135deg,#6547ff,#2f80ff);color:#fff}.reset{background:#eef2ff;color:#4f46e5}.note{margin-top:16px;padding:12px;border-radius:18px;background:#f8fafc;color:#64748b;font-size:13px;line-height:1.45;font-weight:650}input[type="file"]{display:none}.hidden-capture{position:fixed;left:-99999px;top:0;width:420px;height:525px}@media(max-width:900px){.page{padding:80px 16px 28px}.workspace{grid-template-columns:1fr}.stage{transform:scale(.82);transform-origin:top center;height:431px}.panel{max-width:520px;margin:0 auto}.topbar{left:12px;right:12px}.topbar a,.topbar button{font-size:12px;padding:0 12px}.actions{grid-template-columns:1fr}}@media(max-width:480px){.stage{transform:scale(.72);height:378px}}
+
+</style>
+</head>
+<body>
+<header class="topbar"><a href="../">← All templates</a><button class="primary" id="downloadTop" onclick="document.getElementById('downloadBtn').click()">Download PNG</button></header>
+<main class="page">
+  <div class="workspace">
+    <section class="stage" aria-label="Editable QR template preview">
+      <div class="qr-card" id="qrCard">
+        <svg class="art" viewBox="0 0 420 525" preserveAspectRatio="none" aria-hidden="true">
+<circle cx="322" cy="142" r="104" fill="#fb923c" opacity=".22"/><circle cx="322" cy="142" r="64" fill="#fff" opacity=".55"/><circle cx="322" cy="142" r="36" fill="#f97316" opacity=".28"/><path d="M92 80v120M112 80v120M132 80v120M92 128h40" stroke="#dc2626" stroke-width="9" stroke-linecap="round" opacity=".25"/><path d="M168 80c40 42 42 86 0 130" stroke="#dc2626" stroke-width="10" fill="none" opacity=".23"/>
+<path d="M0 450c95-42 190-36 285 0 45 18 90 18 135 0v75H0Z" fill="#fed7aa" opacity=".35"/></svg>
+        <div class="copy">
+          <span class="kicker" id="editKicker" contenteditable="true">SCAN MENU</span>
+          <b class="title" id="editTitle" contenteditable="true">Taste today</b>
+          <small class="subtitle" id="editSubtitle" contenteditable="true">Open the menu, specials, and order page.</small>
+        </div>
+        <div class="qr-box" id="qrBox" title="Click to upload your QR PNG">
+          <img id="qrImg" alt="Uploaded QR code" />
+          <span class="qr-placeholder">Click to<br>upload QR</span>
+        </div>
+        <div class="footer" id="editFooter" contenteditable="true">Restaurant QR</div>
+      </div>
+    </section>
+    <aside class="panel">
+      <h1>Restaurant Menu</h1>
+      <p>Click text directly on the card or edit below. Upload the QR PNG you created from FlowSync, then download this finished card.</p>
+      <div class="controls">
+        <label class="file-label" for="qrUpload">Upload QR PNG/JPG</label><input id="qrUpload" type="file" accept="image/png,image/jpeg,image/webp,image/svg+xml" />
+        <div class="field"><label>Top label</label><input id="fieldKicker" value="SCAN MENU"></div>
+        <div class="field"><label>Title</label><input id="fieldTitle" value="Taste today"></div>
+        <div class="field"><label>Subtitle</label><input id="fieldSubtitle" value="Open the menu, specials, and order page."></div>
+        <div class="field"><label>Footer</label><input id="fieldFooter" value="Restaurant QR"></div>
+        <div class="actions"><button class="reset" id="resetBtn" type="button">Reset text</button><button class="download" id="downloadBtn" type="button">Download PNG</button></div>
+      </div>
+      <div class="note"><b>Flow:</b> Create QR on your main page → download QR PNG → open a template → upload QR → edit card text → download finished template card.</div>
+    </aside>
+  </div>
+</main>
+
+<script>
+const root = document.documentElement;
+const qrBox = document.getElementById('qrBox');
+const qrImg = document.getElementById('qrImg');
+const file = document.getElementById('qrUpload');
+const card = document.getElementById('qrCard');
+const fields = {
+  kicker: document.getElementById('fieldKicker'),
+  title: document.getElementById('fieldTitle'),
+  subtitle: document.getElementById('fieldSubtitle'),
+  footer: document.getElementById('fieldFooter')
+};
+const edits = {
+  kicker: document.getElementById('editKicker'),
+  title: document.getElementById('editTitle'),
+  subtitle: document.getElementById('editSubtitle'),
+  footer: document.getElementById('editFooter')
+};
+const defaults = Object.fromEntries(Object.keys(edits).map(k => [k, edits[k].textContent]));
+function syncFromFields(){Object.keys(fields).forEach(k=>{edits[k].textContent = fields[k].value || defaults[k];});}
+function syncFromCard(){Object.keys(fields).forEach(k=>{fields[k].value = edits[k].textContent.trim();});}
+Object.values(fields).forEach(el=>el.addEventListener('input',syncFromFields));
+Object.values(edits).forEach(el=>el.addEventListener('input',syncFromCard));
+qrBox.addEventListener('click',()=>file.click());
+file.addEventListener('change',()=>{
+  const f=file.files&&file.files[0]; if(!f) return;
+  const reader=new FileReader();
+  reader.onload=()=>{qrImg.src=reader.result; qrBox.classList.add('has-qr');};
+  reader.readAsDataURL(f);
+});
+document.getElementById('resetBtn').addEventListener('click',()=>{Object.keys(defaults).forEach(k=>{fields[k].value=defaults[k]; edits[k].textContent=defaults[k];});});
+function cssText(){return document.getElementById('pageStyle').textContent;}
+function cleanClone(){
+  const clone = card.cloneNode(true);
+  clone.querySelectorAll('[contenteditable]').forEach(el=>el.removeAttribute('contenteditable'));
+  clone.querySelectorAll('.qr-box').forEach(el=>el.style.cursor='default');
+  clone.classList.add('capture-card');
+  return clone.outerHTML;
+}
+async function downloadPng(){
+  if(!qrBox.classList.contains('has-qr')){ alert('Upload your QR PNG first.'); return; }
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="420" height="525"><foreignObject width="100%" height="100%"><div xmlns="http://www.w3.org/1999/xhtml"><style>${cssText()} .qr-card{box-shadow:none!important;}</style>${cleanClone()}</div></foreignObject></svg>`;
+  const blob = new Blob([svg],{type:'image/svg+xml;charset=utf-8'});
+  const url = URL.createObjectURL(blob);
+  const img = new Image();
+  img.onload = () => {
+    const canvas=document.createElement('canvas'); canvas.width=1080; canvas.height=1350;
+    const ctx=canvas.getContext('2d'); ctx.drawImage(img,0,0,1080,1350);
+    URL.revokeObjectURL(url);
+    const a=document.createElement('a'); a.download='flowsync-template-card.png'; a.href=canvas.toDataURL('image/png'); a.click();
+  };
+  img.onerror = () => {URL.revokeObjectURL(url); alert('Download failed. Try another browser or upload a PNG QR.');};
+  img.src = url;
+}
+document.getElementById('downloadBtn').addEventListener('click',downloadPng);
+</script>
+
+</body>
+</html>
