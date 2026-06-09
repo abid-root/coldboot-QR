@@ -537,5 +537,62 @@
     </div>
 
     <script src="js/app.js"></script>
-  </body>
+<!-- FS QR TO TEMPLATE BRIDGE START -->
+<script>
+(function () {
+  function getBigVisibleQrCandidate() {
+    return [...document.querySelectorAll("canvas, svg, img")]
+      .filter(el => {
+        const r = el.getBoundingClientRect();
+        return r.width > 90 && r.height > 90 && el.offsetParent !== null;
+      })
+      .sort((a, b) => {
+        const ar = a.getBoundingClientRect();
+        const br = b.getBoundingClientRect();
+        return (br.width * br.height) - (ar.width * ar.height);
+      })[0];
+  }
+
+  function elementToDataUrl(el) {
+    try {
+      const tag = el.tagName.toLowerCase();
+
+      if (tag === "canvas") {
+        return el.toDataURL("image/png");
+      }
+
+      if (tag === "svg") {
+        const svg = new XMLSerializer().serializeToString(el);
+        return "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg);
+      }
+
+      if (tag === "img" && el.src) {
+        if (el.src.startsWith("data:")) return el.src;
+
+        const canvas = document.createElement("canvas");
+        canvas.width = el.naturalWidth || 512;
+        canvas.height = el.naturalHeight || 512;
+        canvas.getContext("2d").drawImage(el, 0, 0);
+        return canvas.toDataURL("image/png");
+      }
+    } catch (err) {}
+
+    return "";
+  }
+
+  document.addEventListener("click", function (e) {
+    const link = e.target.closest('a[href*="fs-tamplate/templates"]');
+    if (!link) return;
+
+    const qr = getBigVisibleQrCandidate();
+    const data = qr ? elementToDataUrl(qr) : "";
+
+    if (data) {
+      localStorage.setItem("flowsync_current_qr", data);
+    }
+  }, true);
+})();
+</script>
+<!-- FS QR TO TEMPLATE BRIDGE END -->
+</body>
 </html>

@@ -127,6 +127,347 @@
 .theme-pet .shape.s1{width:170px;height:170px;right:-18px;top:82px;border-radius:50%;background:rgba(234,88,12,.16)}
 .theme-pet .art.paw{position:absolute;left:44px;top:72px;width:28px;height:28px;border-radius:50%;background:rgba(234,88,12,.32);box-shadow:34px -18px 0 rgba(234,88,12,.32),68px -8px 0 rgba(234,88,12,.32),18px 30px 0 rgba(234,88,12,.32),54px 30px 0 rgba(234,88,12,.32)}
 .theme-pet .label-pill{left:42px;bottom:186px;color:#ea580c}.theme-pet .title{left:42px;bottom:120px;max-width:220px}.theme-pet .sub{left:42px;bottom:74px;max-width:220px}.theme-pet .qr-box{right:44px;bottom:58px;width:126px;height:126px;border-radius:50%}.theme-pet .footer{left:42px;bottom:32px}
+/* === FS PRO LEFT EDITOR START === */
+body {
+  overflow: hidden !important;
+  padding: 16px 18px !important;
+}
+
+.topbar {
+  height: 46px !important;
+  margin-bottom: 14px !important;
+}
+
+.layout {
+  width: min(1440px, 100%) !important;
+  height: calc(100vh - 76px) !important;
+  display: grid !important;
+  grid-template-columns: 430px minmax(0, 1fr) !important;
+  gap: 26px !important;
+  align-items: stretch !important;
+}
+
+.editor {
+  order: 1 !important;
+  height: 100% !important;
+  max-height: 100% !important;
+  overflow: hidden !important;
+  display: flex !important;
+  flex-direction: column !important;
+  padding: 22px !important;
+  border-radius: 32px !important;
+  background: rgba(255,255,255,.88) !important;
+  border: 1px solid rgba(226,229,240,.96) !important;
+  box-shadow: 0 28px 80px rgba(15,23,42,.08) !important;
+}
+
+.preview-wrap {
+  order: 2 !important;
+  height: 100% !important;
+  min-height: 0 !important;
+  display: grid !important;
+  place-items: center !important;
+  overflow: hidden !important;
+  border-radius: 34px !important;
+  background:
+    radial-gradient(circle at 50% 40%, rgba(101,71,255,.10), transparent 34%),
+    rgba(255,255,255,.36) !important;
+  border: 1px solid rgba(226,229,240,.7) !important;
+}
+
+.editor > h1 {
+  flex: 0 0 auto !important;
+  font-size: 30px !important;
+  margin-bottom: 14px !important;
+}
+
+.editor > p,
+.editor > .field,
+.editor > .upload,
+.editor > .action-row,
+.editor > .note,
+.editor > .fs-studio,
+.editor > .fs-canva-panel,
+.editor > .fs-compact {
+  display: none !important;
+}
+
+.fs-pro {
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  border-radius: 26px !important;
+  border: 1px solid rgba(226,229,240,.96) !important;
+  background: linear-gradient(180deg, rgba(255,255,255,.94), rgba(247,249,255,.84)) !important;
+  overflow: hidden !important;
+}
+
+.fs-pro-head {
+  flex: 0 0 auto !important;
+  padding: 15px 16px 12px !important;
+  border-bottom: 1px solid rgba(226,229,240,.9) !important;
+}
+
+.fs-pro-headline {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: flex-start !important;
+  gap: 12px !important;
+  margin-bottom: 12px !important;
+}
+
+.fs-pro-headline b {
+  display: block !important;
+  font-size: 19px !important;
+  letter-spacing: -.04em !important;
+  line-height: 1 !important;
+}
+
+.fs-pro-headline small {
+  display: block !important;
+  margin-top: 4px !important;
+  color: #64748b !important;
+  font-size: 11px !important;
+  line-height: 1.35 !important;
+  font-weight: 750 !important;
+}
+
+.fs-pro-status {
+  min-height: 28px !important;
+  padding: 0 10px !important;
+  border-radius: 999px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  color: #6547ff !important;
+  background: rgba(101,71,255,.10) !important;
+  font-size: 11px !important;
+  font-weight: 950 !important;
+  white-space: nowrap !important;
+}
+
+.fs-layer-pills {
+  display: grid !important;
+  grid-template-columns: repeat(5, 1fr) !important;
+  gap: 7px !important;
+}
+
+.fs-pro button {
+  border: 0 !important;
+  cursor: pointer !important;
+  font-weight: 950 !important;
+  font-family: inherit !important;
+}
+
+.fs-layer-pills button {
+  min-height: 36px !important;
+  border-radius: 14px !important;
+  color: #6547ff !important;
+  background: rgba(101,71,255,.09) !important;
+  font-size: 12px !important;
+}
+
+.fs-layer-pills button.active,
+.fs-tabs button.active,
+.fs-primary {
+  color: #fff !important;
+  background: linear-gradient(135deg,#6547ff,#2f80ff) !important;
+}
+
+.fs-tabs {
+  flex: 0 0 auto !important;
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+  gap: 7px !important;
+  padding: 12px 16px !important;
+  border-bottom: 1px solid rgba(226,229,240,.9) !important;
+}
+
+.fs-tabs button,
+.fs-soft {
+  min-height: 38px !important;
+  border-radius: 14px !important;
+  color: #6547ff !important;
+  background: rgba(101,71,255,.09) !important;
+  font-size: 12px !important;
+}
+
+.fs-body {
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+  padding: 15px 16px !important;
+  overflow: hidden !important;
+}
+
+.fs-panel {
+  display: none !important;
+  height: 100% !important;
+}
+
+.fs-panel.active {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+}
+
+.fs-section {
+  padding: 13px !important;
+  border-radius: 20px !important;
+  background: rgba(255,255,255,.74) !important;
+  border: 1px solid rgba(226,229,240,.85) !important;
+}
+
+.fs-title-row {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  margin-bottom: 10px !important;
+}
+
+.fs-title-row b {
+  font-size: 13px !important;
+}
+
+.fs-title-row span {
+  color: #64748b !important;
+  font-size: 11px !important;
+  font-weight: 850 !important;
+}
+
+.fs-grid-2 {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 10px !important;
+}
+
+.fs-grid-3 {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 8px !important;
+}
+
+.fs-control label {
+  display: flex !important;
+  justify-content: space-between !important;
+  margin-bottom: 6px !important;
+  color: #64748b !important;
+  font-size: 11px !important;
+  font-weight: 950 !important;
+}
+
+.fs-val {
+  color: #6547ff !important;
+  font-weight: 950 !important;
+}
+
+.fs-control input,
+.fs-control select,
+.fs-control textarea {
+  width: 100% !important;
+  border: 1px solid rgba(221,225,236,1) !important;
+  background: #fff !important;
+  border-radius: 14px !important;
+  color: #101219 !important;
+  font-weight: 850 !important;
+  font-family: inherit !important;
+}
+
+.fs-control input,
+.fs-control select {
+  height: 40px !important;
+  padding: 0 10px !important;
+}
+
+.fs-control textarea {
+  height: 102px !important;
+  padding: 12px !important;
+  resize: none !important;
+  line-height: 1.4 !important;
+}
+
+.fs-control input[type="range"] {
+  height: 22px !important;
+  padding: 0 !important;
+  accent-color: #6547ff !important;
+}
+
+.fs-control input[type="color"] {
+  padding: 4px !important;
+}
+
+.fs-move-pad {
+  display: grid !important;
+  grid-template-columns: repeat(3, 48px) !important;
+  grid-template-rows: repeat(3, 42px) !important;
+  justify-content: center !important;
+  gap: 7px !important;
+  margin-top: 8px !important;
+}
+
+.fs-move-pad button {
+  border-radius: 15px !important;
+  background: rgba(101,71,255,.09) !important;
+  color: #6547ff !important;
+  font-size: 16px !important;
+}
+
+.fs-actions {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 10px !important;
+}
+
+.fs-actions button {
+  min-height: 42px !important;
+  border-radius: 15px !important;
+}
+
+.fs-hint {
+  margin-top: auto !important;
+  padding: 11px 13px !important;
+  border-radius: 17px !important;
+  color: #64748b !important;
+  background: rgba(101,71,255,.08) !important;
+  font-size: 11px !important;
+  line-height: 1.45 !important;
+  font-weight: 750 !important;
+}
+
+.fs-move-on .label-pill,
+.fs-move-on .title,
+.fs-move-on .sub,
+.fs-move-on .footer,
+.fs-move-on .qr-box {
+  cursor: grab !important;
+  user-select: none !important;
+}
+
+.fs-selected {
+  outline: 2px dashed rgba(101,71,255,.85) !important;
+  outline-offset: 6px !important;
+}
+
+@media (max-width: 980px) {
+  body {
+    overflow: auto !important;
+  }
+
+  .layout {
+    height: auto !important;
+    grid-template-columns: 1fr !important;
+  }
+
+  .editor {
+    order: 2 !important;
+    height: auto !important;
+  }
+
+  .preview-wrap {
+    order: 1 !important;
+    min-height: 520px !important;
+  }
+}
+/* === FS PRO LEFT EDITOR END === */
 </style></head><body data-slug="coupon-pop"><div class="topbar"><a class="back-btn" href="../index.html">← All templates</a><button class="dl-btn" id="downloadTop" type="button">Download PNG</button></div><main class="layout"><section class="preview-wrap"><article class="card size-landscape theme-coupon" id="card">
 <span class="shape s1"></span><span class="art zig"></span><span class="art burst"></span>
 <span class="label-pill" id="cardLabel" contenteditable="true">OFFER</span>
@@ -135,4 +476,935 @@
 <div class="qr-box" id="qrBox"><img id="qrImage" alt="QR"><span>click to<br>upload QR</span></div>
 <div class="footer" id="cardFooter" contenteditable="true">FlowSync Deal</div>
 </article></section><aside class="editor"><h1>Coupon Pop</h1><p>Upload your QR, edit the text, then download the final card as PNG. You can also click directly on the card text to edit it.</p><label class="upload">Upload QR PNG/JPG/WEBP<input id="qrUpload" type="file" accept="image/png,image/jpeg,image/webp"></label><div class="field"><label>Top label</label><input id="inputLabel" value="OFFER"></div><div class="field"><label>Title</label><input id="inputTitle" value="Coupon Pop"></div><div class="field"><label>Subtitle</label><input id="inputSub" value="Promo card for campaigns, offers, and discount links."></div><div class="field"><label>Footer</label><input id="inputFooter" value="FlowSync Deal"></div><div class="action-row"><button class="ghost-btn" id="resetBtn" type="button">Reset text</button><button class="dl-btn" id="downloadBtn" type="button">Download PNG</button></div><div class="note">Suggested flow: create your QR on the main page → download the QR image → open a template → upload QR → tweak text → download the finished card.</div></aside></main><script>(function(){
-const qrBox=document.getElementById('qrBox');const qrUpload=document.getElementById('qrUpload');const qrImage=document.getElementById('qrImage');const pairs=[['inputLabel','cardLabel'],['inputTitle','cardTitle'],['inputSub','cardSub'],['inputFooter','cardFooter']];const defaults=Object.fromEntries(pairs.map(([i])=>[i,document.getElementById(i).value]));function syncInputsToCard(){pairs.forEach(([i,c])=>document.getElementById(c).textContent=document.getElementById(i).value)}function syncCardToInputs(id,input){document.getElementById(input).value=document.getElementById(id).textContent.trim()}pairs.forEach(([input,cardId])=>{document.getElementById(input).addEventListener('input',syncInputsToCard);document.getElementById(cardId).addEventListener('input',()=>syncCardToInputs(cardId,input));});document.getElementById('resetBtn').addEventListener('click',()=>{Object.entries(defaults).forEach(([id,v])=>document.getElementById(id).value=v);syncInputsToCard();});qrBox.addEventListener('click',()=>qrUpload.click());qrUpload.addEventListener('change',()=>{const file=qrUpload.files&&qrUpload.files[0];if(!file)return;const reader=new FileReader();reader.onload=()=>{qrImage.src=reader.result;qrBox.classList.add('has-qr');};reader.readAsDataURL(file);});function downloadCard(){const card=document.getElementById('card');const css=document.getElementById('template-style').textContent;const clone=card.cloneNode(true);clone.querySelectorAll('[contenteditable]').forEach(el=>el.removeAttribute('contenteditable'));const rect=card.getBoundingClientRect();const width=1400;const height=Math.round(width*rect.height/rect.width);clone.style.width=width+'px';clone.style.height=height+'px';clone.style.maxWidth='none';const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}"><foreignObject width="100%" height="100%"><div xmlns="http://www.w3.org/1999/xhtml"><style>${css}</style>${clone.outerHTML}</div></foreignObject></svg>`;const blob=new Blob([svg],{type:'image/svg+xml;charset=utf-8'});const url=URL.createObjectURL(blob);const img=new Image();img.onload=function(){const canvas=document.createElement('canvas');canvas.width=width;canvas.height=height;const ctx=canvas.getContext('2d');ctx.drawImage(img,0,0);URL.revokeObjectURL(url);const a=document.createElement('a');a.download='flowsync-'+(document.body.dataset.slug||'template')+'.png';a.href=canvas.toDataURL('image/png');a.click();};img.src=url;}document.getElementById('downloadBtn').addEventListener('click',downloadCard);document.getElementById('downloadTop').addEventListener('click',downloadCard);})();</script></body></html>
+const qrBox=document.getElementById('qrBox');const qrUpload=document.getElementById('qrUpload');const qrImage=document.getElementById('qrImage');const pairs=[['inputLabel','cardLabel'],['inputTitle','cardTitle'],['inputSub','cardSub'],['inputFooter','cardFooter']];const defaults=Object.fromEntries(pairs.map(([i])=>[i,document.getElementById(i).value]));function syncInputsToCard(){pairs.forEach(([i,c])=>document.getElementById(c).textContent=document.getElementById(i).value)}function syncCardToInputs(id,input){document.getElementById(input).value=document.getElementById(id).textContent.trim()}pairs.forEach(([input,cardId])=>{document.getElementById(input).addEventListener('input',syncInputsToCard);document.getElementById(cardId).addEventListener('input',()=>syncCardToInputs(cardId,input));});document.getElementById('resetBtn').addEventListener('click',()=>{Object.entries(defaults).forEach(([id,v])=>document.getElementById(id).value=v);syncInputsToCard();});qrBox.addEventListener('click',()=>qrUpload.click());qrUpload.addEventListener('change',()=>{const file=qrUpload.files&&qrUpload.files[0];if(!file)return;const reader=new FileReader();reader.onload=()=>{qrImage.src=reader.result;qrBox.classList.add('has-qr');};reader.readAsDataURL(file);});function downloadCard(){const card=document.getElementById('card');const css=document.getElementById('template-style').textContent;const clone=card.cloneNode(true);clone.querySelectorAll('[contenteditable]').forEach(el=>el.removeAttribute('contenteditable'));const rect=card.getBoundingClientRect();const width=1400;const height=Math.round(width*rect.height/rect.width);clone.style.width=width+'px';clone.style.height=height+'px';clone.style.maxWidth='none';const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}"><foreignObject width="100%" height="100%"><div xmlns="http://www.w3.org/1999/xhtml"><style>${css}
+/* === FS PRO LEFT EDITOR START === */
+body {
+  overflow: hidden !important;
+  padding: 16px 18px !important;
+}
+
+.topbar {
+  height: 46px !important;
+  margin-bottom: 14px !important;
+}
+
+.layout {
+  width: min(1440px, 100%) !important;
+  height: calc(100vh - 76px) !important;
+  display: grid !important;
+  grid-template-columns: 430px minmax(0, 1fr) !important;
+  gap: 26px !important;
+  align-items: stretch !important;
+}
+
+.editor {
+  order: 1 !important;
+  height: 100% !important;
+  max-height: 100% !important;
+  overflow: hidden !important;
+  display: flex !important;
+  flex-direction: column !important;
+  padding: 22px !important;
+  border-radius: 32px !important;
+  background: rgba(255,255,255,.88) !important;
+  border: 1px solid rgba(226,229,240,.96) !important;
+  box-shadow: 0 28px 80px rgba(15,23,42,.08) !important;
+}
+
+.preview-wrap {
+  order: 2 !important;
+  height: 100% !important;
+  min-height: 0 !important;
+  display: grid !important;
+  place-items: center !important;
+  overflow: hidden !important;
+  border-radius: 34px !important;
+  background:
+    radial-gradient(circle at 50% 40%, rgba(101,71,255,.10), transparent 34%),
+    rgba(255,255,255,.36) !important;
+  border: 1px solid rgba(226,229,240,.7) !important;
+}
+
+.editor > h1 {
+  flex: 0 0 auto !important;
+  font-size: 30px !important;
+  margin-bottom: 14px !important;
+}
+
+.editor > p,
+.editor > .field,
+.editor > .upload,
+.editor > .action-row,
+.editor > .note,
+.editor > .fs-studio,
+.editor > .fs-canva-panel,
+.editor > .fs-compact {
+  display: none !important;
+}
+
+.fs-pro {
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  border-radius: 26px !important;
+  border: 1px solid rgba(226,229,240,.96) !important;
+  background: linear-gradient(180deg, rgba(255,255,255,.94), rgba(247,249,255,.84)) !important;
+  overflow: hidden !important;
+}
+
+.fs-pro-head {
+  flex: 0 0 auto !important;
+  padding: 15px 16px 12px !important;
+  border-bottom: 1px solid rgba(226,229,240,.9) !important;
+}
+
+.fs-pro-headline {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: flex-start !important;
+  gap: 12px !important;
+  margin-bottom: 12px !important;
+}
+
+.fs-pro-headline b {
+  display: block !important;
+  font-size: 19px !important;
+  letter-spacing: -.04em !important;
+  line-height: 1 !important;
+}
+
+.fs-pro-headline small {
+  display: block !important;
+  margin-top: 4px !important;
+  color: #64748b !important;
+  font-size: 11px !important;
+  line-height: 1.35 !important;
+  font-weight: 750 !important;
+}
+
+.fs-pro-status {
+  min-height: 28px !important;
+  padding: 0 10px !important;
+  border-radius: 999px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  color: #6547ff !important;
+  background: rgba(101,71,255,.10) !important;
+  font-size: 11px !important;
+  font-weight: 950 !important;
+  white-space: nowrap !important;
+}
+
+.fs-layer-pills {
+  display: grid !important;
+  grid-template-columns: repeat(5, 1fr) !important;
+  gap: 7px !important;
+}
+
+.fs-pro button {
+  border: 0 !important;
+  cursor: pointer !important;
+  font-weight: 950 !important;
+  font-family: inherit !important;
+}
+
+.fs-layer-pills button {
+  min-height: 36px !important;
+  border-radius: 14px !important;
+  color: #6547ff !important;
+  background: rgba(101,71,255,.09) !important;
+  font-size: 12px !important;
+}
+
+.fs-layer-pills button.active,
+.fs-tabs button.active,
+.fs-primary {
+  color: #fff !important;
+  background: linear-gradient(135deg,#6547ff,#2f80ff) !important;
+}
+
+.fs-tabs {
+  flex: 0 0 auto !important;
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+  gap: 7px !important;
+  padding: 12px 16px !important;
+  border-bottom: 1px solid rgba(226,229,240,.9) !important;
+}
+
+.fs-tabs button,
+.fs-soft {
+  min-height: 38px !important;
+  border-radius: 14px !important;
+  color: #6547ff !important;
+  background: rgba(101,71,255,.09) !important;
+  font-size: 12px !important;
+}
+
+.fs-body {
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+  padding: 15px 16px !important;
+  overflow: hidden !important;
+}
+
+.fs-panel {
+  display: none !important;
+  height: 100% !important;
+}
+
+.fs-panel.active {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+}
+
+.fs-section {
+  padding: 13px !important;
+  border-radius: 20px !important;
+  background: rgba(255,255,255,.74) !important;
+  border: 1px solid rgba(226,229,240,.85) !important;
+}
+
+.fs-title-row {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  margin-bottom: 10px !important;
+}
+
+.fs-title-row b {
+  font-size: 13px !important;
+}
+
+.fs-title-row span {
+  color: #64748b !important;
+  font-size: 11px !important;
+  font-weight: 850 !important;
+}
+
+.fs-grid-2 {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 10px !important;
+}
+
+.fs-grid-3 {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 8px !important;
+}
+
+.fs-control label {
+  display: flex !important;
+  justify-content: space-between !important;
+  margin-bottom: 6px !important;
+  color: #64748b !important;
+  font-size: 11px !important;
+  font-weight: 950 !important;
+}
+
+.fs-val {
+  color: #6547ff !important;
+  font-weight: 950 !important;
+}
+
+.fs-control input,
+.fs-control select,
+.fs-control textarea {
+  width: 100% !important;
+  border: 1px solid rgba(221,225,236,1) !important;
+  background: #fff !important;
+  border-radius: 14px !important;
+  color: #101219 !important;
+  font-weight: 850 !important;
+  font-family: inherit !important;
+}
+
+.fs-control input,
+.fs-control select {
+  height: 40px !important;
+  padding: 0 10px !important;
+}
+
+.fs-control textarea {
+  height: 102px !important;
+  padding: 12px !important;
+  resize: none !important;
+  line-height: 1.4 !important;
+}
+
+.fs-control input[type="range"] {
+  height: 22px !important;
+  padding: 0 !important;
+  accent-color: #6547ff !important;
+}
+
+.fs-control input[type="color"] {
+  padding: 4px !important;
+}
+
+.fs-move-pad {
+  display: grid !important;
+  grid-template-columns: repeat(3, 48px) !important;
+  grid-template-rows: repeat(3, 42px) !important;
+  justify-content: center !important;
+  gap: 7px !important;
+  margin-top: 8px !important;
+}
+
+.fs-move-pad button {
+  border-radius: 15px !important;
+  background: rgba(101,71,255,.09) !important;
+  color: #6547ff !important;
+  font-size: 16px !important;
+}
+
+.fs-actions {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 10px !important;
+}
+
+.fs-actions button {
+  min-height: 42px !important;
+  border-radius: 15px !important;
+}
+
+.fs-hint {
+  margin-top: auto !important;
+  padding: 11px 13px !important;
+  border-radius: 17px !important;
+  color: #64748b !important;
+  background: rgba(101,71,255,.08) !important;
+  font-size: 11px !important;
+  line-height: 1.45 !important;
+  font-weight: 750 !important;
+}
+
+.fs-move-on .label-pill,
+.fs-move-on .title,
+.fs-move-on .sub,
+.fs-move-on .footer,
+.fs-move-on .qr-box {
+  cursor: grab !important;
+  user-select: none !important;
+}
+
+.fs-selected {
+  outline: 2px dashed rgba(101,71,255,.85) !important;
+  outline-offset: 6px !important;
+}
+
+@media (max-width: 980px) {
+  body {
+    overflow: auto !important;
+  }
+
+  .layout {
+    height: auto !important;
+    grid-template-columns: 1fr !important;
+  }
+
+  .editor {
+    order: 2 !important;
+    height: auto !important;
+  }
+
+  .preview-wrap {
+    order: 1 !important;
+    min-height: 520px !important;
+  }
+}
+/* === FS PRO LEFT EDITOR END === */
+</style>${clone.outerHTML}</div></foreignObject></svg>`;const blob=new Blob([svg],{type:'image/svg+xml;charset=utf-8'});const url=URL.createObjectURL(blob);const img=new Image();img.onload=function(){const canvas=document.createElement('canvas');canvas.width=width;canvas.height=height;const ctx=canvas.getContext('2d');ctx.drawImage(img,0,0);URL.revokeObjectURL(url);const a=document.createElement('a');a.download='flowsync-'+(document.body.dataset.slug||'template')+'.png';a.href=canvas.toDataURL('image/png');a.click();};img.src=url;}document.getElementById('downloadBtn').addEventListener('click',downloadCard);document.getElementById('downloadTop').addEventListener('click',downloadCard);})();</script>
+<!-- FS PRO LEFT EDITOR START -->
+<script>
+(function () {
+  const card = document.getElementById("card");
+  const editor = document.querySelector(".editor");
+  const qrBox = document.getElementById("qrBox");
+  const qrImage = document.getElementById("qrImage");
+  let qrUpload = document.getElementById("qrUpload");
+
+  if (!card || !editor || !qrBox || !qrImage) return;
+
+  if (!qrUpload) {
+    qrUpload = document.createElement("input");
+    qrUpload.type = "file";
+    qrUpload.accept = "image/png,image/jpeg,image/webp";
+    qrUpload.id = "qrUpload";
+    qrUpload.hidden = true;
+    document.body.appendChild(qrUpload);
+  }
+
+  editor.querySelectorAll(".fs-pro").forEach(el => el.remove());
+
+  const layers = [
+    ["cardLabel", "Label"],
+    ["cardTitle", "Title"],
+    ["cardSub", "Subtitle"],
+    ["cardFooter", "Footer"],
+    ["qrBox", "QR"]
+  ];
+
+  let selected = qrBox;
+  let moveMode = false;
+  let drag = null;
+  const layoutKey = "flowsync_pro_left_layout_" + location.pathname;
+
+  const panel = document.createElement("div");
+  panel.className = "fs-pro";
+  panel.innerHTML = `
+    <div class="fs-pro-head">
+      <div class="fs-pro-headline">
+        <div>
+          <b>Template editor</b>
+          <small>Useful controls only. Select a layer, then edit.</small>
+        </div>
+        <span class="fs-pro-status" id="fsStatus">Ready</span>
+      </div>
+
+      <div class="fs-layer-pills">
+        ${layers.map(([id, name]) => `<button type="button" data-layer="${id}">${name}</button>`).join("")}
+      </div>
+    </div>
+
+    <div class="fs-tabs">
+      <button type="button" data-tab="move" class="active">Move</button>
+      <button type="button" data-tab="style">Style</button>
+      <button type="button" data-tab="qr">QR</button>
+      <button type="button" data-tab="export">Export</button>
+    </div>
+
+    <div class="fs-body">
+      <section class="fs-panel active" data-panel="move">
+        <div class="fs-section">
+          <div class="fs-title-row">
+            <b>Position</b>
+            <span>drag or nudge</span>
+          </div>
+
+          <div class="fs-grid-2">
+            <div class="fs-control">
+              <label>X <span class="fs-val" id="fsXVal">0</span></label>
+              <input id="fsX" type="range" min="0" max="100" value="50">
+            </div>
+
+            <div class="fs-control">
+              <label>Y <span class="fs-val" id="fsYVal">0</span></label>
+              <input id="fsY" type="range" min="0" max="100" value="50">
+            </div>
+          </div>
+
+          <div class="fs-move-pad">
+            <span></span><button data-nudge="0,-1" type="button">↑</button><span></span>
+            <button data-nudge="-1,0" type="button">←</button><button data-nudge="0,0" type="button">•</button><button data-nudge="1,0" type="button">→</button>
+            <span></span><button data-nudge="0,1" type="button">↓</button><span></span>
+          </div>
+        </div>
+
+        <div class="fs-actions">
+          <button class="fs-primary" id="fsDrag" type="button">Drag off</button>
+          <button class="fs-soft" id="fsCenter" type="button">Center</button>
+          <button class="fs-soft" id="fsFront" type="button">Bring front</button>
+          <button class="fs-soft" id="fsHideOutline" type="button">Hide outline</button>
+        </div>
+
+        <div class="fs-hint">Best workflow: choose layer → Drag on → move on card → Drag off → Style.</div>
+      </section>
+
+      <section class="fs-panel" data-panel="style">
+        <div class="fs-section">
+          <div class="fs-title-row">
+            <b>Text</b>
+            <span>only text layers</span>
+          </div>
+
+          <div class="fs-control">
+            <label>Content</label>
+            <textarea id="fsTextValue"></textarea>
+          </div>
+
+          <div class="fs-grid-2">
+            <div class="fs-control">
+              <label>Font</label>
+              <select id="fsFont">
+                <option value="Inter">Inter</option>
+                <option value="Arial">Arial</option>
+                <option value="Verdana">Verdana</option>
+                <option value="Trebuchet MS">Trebuchet</option>
+                <option value="Georgia">Georgia</option>
+                <option value="Times New Roman">Times</option>
+                <option value="Courier New">Courier</option>
+                <option value="Impact">Impact</option>
+              </select>
+            </div>
+
+            <div class="fs-control">
+              <label>Weight</label>
+              <select id="fsWeight">
+                <option value="500">Medium</option>
+                <option value="600">Semi</option>
+                <option value="700">Bold</option>
+                <option value="800">Extra</option>
+                <option value="900">Black</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="fs-grid-2">
+            <div class="fs-control">
+              <label>Size <span class="fs-val" id="fsSizeVal">0</span></label>
+              <input id="fsSize" type="range" min="8" max="90" value="30">
+            </div>
+
+            <div class="fs-control">
+              <label>Color</label>
+              <input id="fsColor" type="color" value="#101219">
+            </div>
+          </div>
+
+          <div class="fs-grid-3">
+            <button class="fs-soft" data-align="left" type="button">Left</button>
+            <button class="fs-soft" data-align="center" type="button">Center</button>
+            <button class="fs-soft" data-align="right" type="button">Right</button>
+          </div>
+        </div>
+
+        <div class="fs-hint">QR layer has no text style. Select Label, Title, Subtitle, or Footer first.</div>
+      </section>
+
+      <section class="fs-panel" data-panel="qr">
+        <div class="fs-section">
+          <div class="fs-title-row">
+            <b>QR setup</b>
+            <span>selected QR layer</span>
+          </div>
+
+          <div class="fs-grid-2">
+            <div class="fs-control">
+              <label>Size <span class="fs-val" id="fsQrSizeVal">0</span></label>
+              <input id="fsQrSize" type="range" min="60" max="240" value="120">
+            </div>
+
+            <div class="fs-control">
+              <label>Corner <span class="fs-val" id="fsRadiusVal">0</span></label>
+              <input id="fsRadius" type="range" min="0" max="90" value="24">
+            </div>
+          </div>
+
+          <div class="fs-grid-2">
+            <div class="fs-control">
+              <label>Background</label>
+              <input id="fsQrBg" type="color" value="#ffffff">
+            </div>
+
+            <button class="fs-primary" id="fsUploadQr" type="button">Upload QR</button>
+          </div>
+
+          <div class="fs-actions">
+            <button class="fs-soft" id="fsUseQr" type="button">Use generated QR</button>
+            <button class="fs-soft" id="fsClearQr" type="button">Clear QR</button>
+          </div>
+        </div>
+
+        <div class="fs-hint">Create QR on main page first, then open template. “Use generated QR” will place it here.</div>
+      </section>
+
+      <section class="fs-panel" data-panel="export">
+        <div class="fs-section">
+          <div class="fs-title-row">
+            <b>Save & export</b>
+            <span>browser only</span>
+          </div>
+
+          <div class="fs-actions">
+            <button class="fs-primary" id="fsSave" type="button">Save layout</button>
+            <button class="fs-soft" id="fsResetLayout" type="button">Reset layout</button>
+            <button class="fs-primary" id="fsDownload" type="button">Download PNG</button>
+            <button class="fs-soft" id="fsHideOutline2" type="button">Hide outline</button>
+          </div>
+        </div>
+
+        <div class="fs-hint">Save stores this template layout in localStorage. It does not need backend.</div>
+      </section>
+    </div>
+  `;
+
+  editor.appendChild(panel);
+
+  function id(x) { return document.getElementById(x); }
+
+  function setStatus(text) {
+    id("fsStatus").textContent = text;
+    clearTimeout(setStatus.t);
+    setStatus.t = setTimeout(() => id("fsStatus").textContent = "Ready", 1100);
+  }
+
+  function switchTab(tab) {
+    panel.querySelectorAll("[data-tab]").forEach(btn => btn.classList.toggle("active", btn.dataset.tab === tab));
+    panel.querySelectorAll("[data-panel]").forEach(p => p.classList.toggle("active", p.dataset.panel === tab));
+  }
+
+  function cleanSelection() {
+    layers.forEach(([lid]) => id(lid)?.classList.remove("fs-selected"));
+    panel.querySelectorAll("[data-layer]").forEach(btn => btn.classList.remove("active"));
+  }
+
+  function selectLayer(layer) {
+    selected = typeof layer === "string" ? id(layer) : layer;
+    if (!selected) return;
+
+    cleanSelection();
+    selected.classList.add("fs-selected");
+
+    const btn = panel.querySelector('[data-layer="' + selected.id + '"]');
+    if (btn) btn.classList.add("active");
+
+    syncControls();
+
+    if (selected.id === "qrBox") switchTab("qr");
+    else switchTab("style");
+  }
+
+  function rgbToHex(rgb) {
+    const n = rgb.match(/\d+/g);
+    if (!n) return "#101219";
+    return "#" + n.slice(0,3).map(x => {
+      const h = Number(x).toString(16);
+      return h.length === 1 ? "0" + h : h;
+    }).join("");
+  }
+
+  function cleanFont(font) {
+    const f = font.split(",")[0].replaceAll('"', "").trim();
+    return [...id("fsFont").options].some(o => o.value === f) ? f : "Inter";
+  }
+
+  function normalize(el) {
+    const c = card.getBoundingClientRect();
+    const r = el.getBoundingClientRect();
+
+    el.style.position = "absolute";
+    el.style.left = (r.left - c.left) + "px";
+    el.style.top = (r.top - c.top) + "px";
+    el.style.right = "auto";
+    el.style.bottom = "auto";
+    el.style.transform = "none";
+  }
+
+  function clampMove(el, left, top) {
+    const maxX = Math.max(0, card.clientWidth - el.offsetWidth);
+    const maxY = Math.max(0, card.clientHeight - el.offsetHeight);
+
+    el.style.left = Math.max(0, Math.min(maxX, left)) + "px";
+    el.style.top = Math.max(0, Math.min(maxY, top)) + "px";
+  }
+
+  function getPercent(el) {
+    const c = card.getBoundingClientRect();
+    const r = el.getBoundingClientRect();
+
+    const maxX = Math.max(1, card.clientWidth - r.width);
+    const maxY = Math.max(1, card.clientHeight - r.height);
+
+    return {
+      x: Math.round(((r.left - c.left) / maxX) * 100),
+      y: Math.round(((r.top - c.top) / maxY) * 100)
+    };
+  }
+
+  function setPercent(el, x, y) {
+    normalize(el);
+
+    const maxX = Math.max(1, card.clientWidth - el.offsetWidth);
+    const maxY = Math.max(1, card.clientHeight - el.offsetHeight);
+
+    clampMove(el, maxX * x / 100, maxY * y / 100);
+  }
+
+  function syncControls() {
+    if (!selected) return;
+
+    const p = getPercent(selected);
+    id("fsX").value = p.x;
+    id("fsY").value = p.y;
+    id("fsXVal").textContent = p.x;
+    id("fsYVal").textContent = p.y;
+
+    const cs = getComputedStyle(selected);
+
+    if (selected.id === "qrBox") {
+      id("fsQrSize").value = selected.offsetWidth;
+      id("fsQrSizeVal").textContent = selected.offsetWidth;
+      id("fsRadius").value = parseInt(cs.borderRadius, 10) || 0;
+      id("fsRadiusVal").textContent = parseInt(cs.borderRadius, 10) || 0;
+      id("fsQrBg").value = rgbToHex(cs.backgroundColor);
+      return;
+    }
+
+    id("fsTextValue").value = selected.textContent.trim();
+    id("fsFont").value = cleanFont(cs.fontFamily);
+    id("fsWeight").value = String(Math.min(900, Math.max(500, parseInt(cs.fontWeight, 10) || 700)));
+    id("fsSize").value = parseInt(cs.fontSize, 10) || 20;
+    id("fsSizeVal").textContent = id("fsSize").value;
+    id("fsColor").value = rgbToHex(cs.color);
+  }
+
+  panel.querySelectorAll("[data-layer]").forEach(btn => {
+    btn.addEventListener("click", () => selectLayer(btn.dataset.layer));
+  });
+
+  panel.querySelectorAll("[data-tab]").forEach(btn => {
+    btn.addEventListener("click", () => switchTab(btn.dataset.tab));
+  });
+
+  id("fsX").addEventListener("input", () => {
+    setPercent(selected, Number(id("fsX").value), Number(id("fsY").value));
+    syncControls();
+  });
+
+  id("fsY").addEventListener("input", () => {
+    setPercent(selected, Number(id("fsX").value), Number(id("fsY").value));
+    syncControls();
+  });
+
+  panel.querySelectorAll("[data-nudge]").forEach(btn => {
+    btn.addEventListener("click", () => {
+      normalize(selected);
+
+      const [dx, dy] = btn.dataset.nudge.split(",").map(Number);
+
+      if (dx === 0 && dy === 0) {
+        setPercent(selected, 50, 50);
+      } else {
+        clampMove(
+          selected,
+          parseFloat(selected.style.left || 0) + dx * 8,
+          parseFloat(selected.style.top || 0) + dy * 8
+        );
+      }
+
+      syncControls();
+    });
+  });
+
+  id("fsDrag").addEventListener("click", () => {
+    moveMode = !moveMode;
+    document.body.classList.toggle("fs-move-on", moveMode);
+    id("fsDrag").textContent = moveMode ? "Drag on" : "Drag off";
+
+    ["cardLabel", "cardTitle", "cardSub", "cardFooter"].forEach(t => {
+      id(t)?.setAttribute("contenteditable", moveMode ? "false" : "true");
+    });
+  });
+
+  id("fsCenter").addEventListener("click", () => {
+    setPercent(selected, 50, Number(id("fsY").value));
+    syncControls();
+  });
+
+  id("fsFront").addEventListener("click", () => {
+    selected.style.zIndex = String(Math.max(30, Number(selected.style.zIndex || 7) + 1));
+    setStatus("Front");
+  });
+
+  id("fsTextValue").addEventListener("input", () => {
+    if (selected.id !== "qrBox") selected.textContent = id("fsTextValue").value;
+  });
+
+  id("fsFont").addEventListener("change", () => {
+    if (selected.id !== "qrBox") selected.style.fontFamily = id("fsFont").value;
+  });
+
+  id("fsWeight").addEventListener("change", () => {
+    if (selected.id !== "qrBox") selected.style.fontWeight = id("fsWeight").value;
+  });
+
+  id("fsSize").addEventListener("input", () => {
+    if (selected.id !== "qrBox") {
+      selected.style.fontSize = id("fsSize").value + "px";
+      id("fsSizeVal").textContent = id("fsSize").value;
+    }
+  });
+
+  id("fsColor").addEventListener("input", () => {
+    if (selected.id !== "qrBox") selected.style.color = id("fsColor").value;
+  });
+
+  panel.querySelectorAll("[data-align]").forEach(btn => {
+    btn.addEventListener("click", () => {
+      if (selected.id !== "qrBox") selected.style.textAlign = btn.dataset.align;
+    });
+  });
+
+  id("fsQrSize").addEventListener("input", () => {
+    qrBox.style.width = id("fsQrSize").value + "px";
+    qrBox.style.height = id("fsQrSize").value + "px";
+    id("fsQrSizeVal").textContent = id("fsQrSize").value;
+    syncControls();
+  });
+
+  id("fsRadius").addEventListener("input", () => {
+    qrBox.style.borderRadius = id("fsRadius").value + "px";
+    id("fsRadiusVal").textContent = id("fsRadius").value;
+  });
+
+  id("fsQrBg").addEventListener("input", () => {
+    qrBox.style.background = id("fsQrBg").value;
+  });
+
+  id("fsUploadQr").addEventListener("click", () => qrUpload.click());
+
+  qrUpload.addEventListener("change", () => {
+    const file = qrUpload.files && qrUpload.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      qrImage.src = reader.result;
+      qrBox.classList.add("has-qr");
+      setStatus("QR uploaded");
+    };
+    reader.readAsDataURL(file);
+  });
+
+  id("fsUseQr").addEventListener("click", () => {
+    const saved = localStorage.getItem("flowsync_current_qr");
+
+    if (!saved) {
+      setStatus("No QR");
+      return;
+    }
+
+    qrImage.src = saved;
+    qrBox.classList.add("has-qr");
+    setStatus("QR used");
+  });
+
+  id("fsClearQr").addEventListener("click", () => {
+    qrImage.removeAttribute("src");
+    qrBox.classList.remove("has-qr");
+    setStatus("Cleared");
+  });
+
+  function hideOutline() {
+    layers.forEach(([lid]) => id(lid)?.classList.remove("fs-selected"));
+  }
+
+  id("fsHideOutline").addEventListener("click", hideOutline);
+  id("fsHideOutline2").addEventListener("click", hideOutline);
+
+  id("fsDownload").addEventListener("click", () => {
+    hideOutline();
+    document.getElementById("downloadBtn")?.click();
+  });
+
+  id("fsSave").addEventListener("click", () => {
+    const data = {};
+
+    layers.forEach(([lid]) => {
+      const el = id(lid);
+      if (!el) return;
+
+      data[lid] = {
+        text: lid === "qrBox" ? "" : el.textContent,
+        style: {
+          left: el.style.left,
+          top: el.style.top,
+          right: el.style.right,
+          bottom: el.style.bottom,
+          width: el.style.width,
+          height: el.style.height,
+          fontFamily: el.style.fontFamily,
+          fontSize: el.style.fontSize,
+          fontWeight: el.style.fontWeight,
+          color: el.style.color,
+          textAlign: el.style.textAlign,
+          background: el.style.background,
+          borderRadius: el.style.borderRadius,
+          zIndex: el.style.zIndex,
+          transform: el.style.transform
+        }
+      };
+    });
+
+    localStorage.setItem(layoutKey, JSON.stringify(data));
+    setStatus("Saved");
+  });
+
+  id("fsResetLayout").addEventListener("click", () => {
+    localStorage.removeItem(layoutKey);
+    location.reload();
+  });
+
+  function loadLayout() {
+    const raw = localStorage.getItem(layoutKey);
+    if (!raw) return;
+
+    try {
+      const data = JSON.parse(raw);
+
+      Object.entries(data).forEach(([lid, saved]) => {
+        const el = id(lid);
+        if (!el) return;
+
+        if (lid !== "qrBox" && saved.text) {
+          el.textContent = saved.text;
+        }
+
+        Object.assign(el.style, saved.style || {});
+      });
+    } catch {}
+  }
+
+  card.addEventListener("pointerdown", e => {
+    const target = e.target.closest(".label-pill, .title, .sub, .footer, .qr-box");
+    if (!target || !card.contains(target)) return;
+
+    selectLayer(target);
+
+    if (!moveMode) return;
+
+    e.preventDefault();
+    normalize(target);
+
+    drag = {
+      el: target,
+      sx: e.clientX,
+      sy: e.clientY,
+      left: parseFloat(target.style.left || 0),
+      top: parseFloat(target.style.top || 0)
+    };
+
+    target.setPointerCapture(e.pointerId);
+  });
+
+  card.addEventListener("pointermove", e => {
+    if (!drag || !moveMode) return;
+
+    clampMove(
+      drag.el,
+      drag.left + e.clientX - drag.sx,
+      drag.top + e.clientY - drag.sy
+    );
+
+    syncControls();
+  });
+
+  card.addEventListener("pointerup", () => drag = null);
+
+  const savedQr = localStorage.getItem("flowsync_current_qr");
+  if (savedQr) {
+    qrImage.src = savedQr;
+    qrBox.classList.add("has-qr");
+  }
+
+  loadLayout();
+  selectLayer("qrBox");
+})();
+</script>
+<!-- FS PRO LEFT EDITOR END -->
+</body></html>
