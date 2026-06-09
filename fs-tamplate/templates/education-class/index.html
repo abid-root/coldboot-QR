@@ -4,107 +4,683 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>FlowSync Template - Education Class</title>
-<meta name="description" content="Editable FlowSync QR template: Education Class." />
-<style id="pageStyle">
-:root{--bg1:#fefce8;--bg2:#fde68a;--bg3:#ffffff;--accent:#ca8a04;--text:#1f2937;--muted:#75623a;}
+<style>
+*{box-sizing:border-box}
+:root{
+  --bg:#f7f8fc;
+  --text:#101219;
+  --muted:#64748b;
+  --line:rgba(226,229,240,.9);
+  --primary:#6547ff;
+  --primary2:#2f80ff;
+}
+body{
+  margin:0;
+  min-height:100vh;
+  padding:58px 28px;
+  background:radial-gradient(circle at 50% 0%,rgba(101,71,255,.12),transparent 30%),var(--bg);
+  color:var(--text);
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+}
+.top-actions{
+  position:fixed;
+  top:18px;
+  left:24px;
+  right:24px;
+  z-index:50;
+  display:flex;
+  justify-content:space-between;
+  pointer-events:none;
+}
+.top-actions a,.top-actions button{
+  pointer-events:auto;
+  min-height:44px;
+  padding:0 18px;
+  border:0;
+  border-radius:999px;
+  background:rgba(255,255,255,.82);
+  color:var(--muted);
+  text-decoration:none;
+  font-weight:900;
+  box-shadow:0 12px 35px rgba(37,42,65,.08);
+  cursor:pointer;
+}
+.top-actions button{
+  color:#fff;
+  background:linear-gradient(135deg,var(--primary),var(--primary2));
+}
+.page{
+  width:min(1180px,100%);
+  min-height:calc(100vh - 116px);
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:minmax(420px,570px) minmax(350px,500px);
+  gap:46px;
+  align-items:center;
+}
+.preview-area{display:grid;place-items:center}
+.card{
+  position:relative;
+  overflow:hidden;
+  isolation:isolate;
+  border:1px solid rgba(226,229,240,.92);
+  box-shadow:0 34px 92px rgba(37,42,65,.14);
+  background:#fff;
+}
+.card::before,.card::after,.art,.art::before,.art::after{
+  content:"";
+  position:absolute;
+  pointer-events:none;
+}
+.copy{
+  position:absolute;
+  z-index:10;
+}
+.kicker{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:32px;
+  padding:0 14px;
+  border-radius:999px;
+  background:rgba(255,255,255,.68);
+  font-size:11px;
+  font-weight:950;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+  outline:0;
+}
+.title{
+  display:block;
+  margin-top:16px;
+  font-size:40px;
+  line-height:.96;
+  letter-spacing:-.07em;
+  font-weight:950;
+  outline:0;
+}
+.sub{
+  display:block;
+  margin-top:12px;
+  max-width:300px;
+  color:var(--muted);
+  font-size:15px;
+  line-height:1.42;
+  font-weight:720;
+  outline:0;
+}
+.footer{
+  position:absolute;
+  z-index:12;
+  color:var(--muted);
+  font-size:13px;
+  font-weight:900;
+  outline:0;
+}
+.qr-box{
+  position:absolute;
+  z-index:15;
+  display:grid;
+  place-items:center;
+  overflow:hidden;
+  cursor:pointer;
+  background:rgba(255,255,255,.96);
+  box-shadow:0 20px 46px rgba(37,42,65,.16);
+}
+.qr-box img{
+  width:74%;
+  height:74%;
+  object-fit:contain;
+  display:none;
+}
+.qr-box.has-qr img{display:block}
+.qr-box span{
+  color:var(--primary);
+  font-size:12px;
+  line-height:1.15;
+  font-weight:950;
+  text-align:center;
+  padding:12px;
+}
+.qr-box.has-qr span{display:none}
 
-*{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#101219;background:#f5f6fb}.page{min-height:100vh;padding:28px;display:grid;place-items:center}.topbar{position:fixed;left:22px;right:22px;top:18px;z-index:20;display:flex;justify-content:space-between;align-items:center;gap:14px}.topbar a,.topbar button{min-height:42px;padding:0 15px;border-radius:999px;border:1px solid rgba(226,229,240,.86);background:rgba(255,255,255,.7);backdrop-filter:blur(14px);box-shadow:0 12px 28px rgba(37,42,65,.08);color:#64748b;text-decoration:none;font-size:13px;font-weight:850;cursor:pointer}.topbar button.primary{background:linear-gradient(135deg,#6547ff,#2f80ff);color:#fff;border:0}.workspace{width:min(1120px,100%);display:grid;grid-template-columns:480px 1fr;gap:28px;align-items:center}.stage{width:420px;height:525px;margin:0 auto;filter:drop-shadow(0 34px 70px rgba(37,42,65,.16))}.qr-card{width:420px;height:525px;border-radius:34px;overflow:hidden;position:relative;border:1px solid rgba(226,229,240,.9);background:linear-gradient(135deg,var(--bg1),var(--bg2) 58%,var(--bg3));isolation:isolate}.art{position:absolute;inset:0;width:100%;height:100%;z-index:0}.copy{position:absolute;left:34px;top:44px;width:230px;z-index:3}.kicker{display:inline-flex;min-height:30px;padding:0 12px;align-items:center;border-radius:999px;background:rgba(255,255,255,.58);color:var(--accent);font-size:10px;font-weight:950;letter-spacing:.12em;text-transform:uppercase;max-width:230px}.title{display:block;margin-top:18px;color:var(--text);font-size:39px;line-height:.96;letter-spacing:-.065em;font-weight:950;max-width:260px}.subtitle{display:block;margin-top:13px;color:var(--muted);font-size:15px;line-height:1.42;font-weight:650;max-width:238px}.footer{position:absolute;left:34px;bottom:30px;z-index:3;color:var(--muted);font-size:13px;font-weight:900}.qr-box{position:absolute;right:32px;bottom:78px;z-index:4;width:152px;height:152px;border-radius:26px;background:rgba(255,255,255,.9);display:grid;place-items:center;box-shadow:0 22px 45px rgba(37,42,65,.18);overflow:hidden;cursor:pointer}.qr-box img{width:122px;height:122px;object-fit:contain;display:none}.qr-box.has-qr img{display:block}.qr-placeholder{width:108px;height:108px;border-radius:22px;border:2px dashed rgba(101,71,255,.45);display:grid;place-items:center;color:#6547ff;font-size:11px;line-height:1.15;text-align:center;font-weight:950;padding:10px}.qr-box.has-qr .qr-placeholder{display:none}[contenteditable="true"]{outline:none;border-radius:10px}[contenteditable="true"]:focus{box-shadow:0 0 0 3px rgba(101,71,255,.18);background:rgba(255,255,255,.25)}.panel{background:rgba(255,255,255,.72);border:1px solid rgba(226,229,240,.86);border-radius:30px;padding:22px;box-shadow:0 18px 50px rgba(37,42,65,.09);backdrop-filter:blur(18px)}.panel h1{margin:0 0 8px;font-size:34px;letter-spacing:-.055em}.panel p{margin:0 0 18px;color:#64748b;line-height:1.55}.controls{display:grid;gap:12px}.field{display:grid;gap:6px}.field label{color:#64748b;font-size:12px;font-weight:900}.field input{min-height:44px;border:1px solid rgba(226,229,240,.95);border-radius:15px;background:#fff;padding:0 13px;font-size:14px;font-weight:750;outline:none}.actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:4px}.actions button,.file-label{min-height:46px;border:0;border-radius:16px;display:grid;place-items:center;text-align:center;font-size:14px;font-weight:950;cursor:pointer;text-decoration:none}.file-label{background:rgba(101,71,255,.12);color:#6547ff}.download{background:linear-gradient(135deg,#6547ff,#2f80ff);color:#fff}.reset{background:#eef2ff;color:#4f46e5}.note{margin-top:16px;padding:12px;border-radius:18px;background:#f8fafc;color:#64748b;font-size:13px;line-height:1.45;font-weight:650}input[type="file"]{display:none}.hidden-capture{position:fixed;left:-99999px;top:0;width:420px;height:525px}@media(max-width:900px){.page{padding:80px 16px 28px}.workspace{grid-template-columns:1fr}.stage{transform:scale(.82);transform-origin:top center;height:431px}.panel{max-width:520px;margin:0 auto}.topbar{left:12px;right:12px}.topbar a,.topbar button{font-size:12px;padding:0 12px}.actions{grid-template-columns:1fr}}@media(max-width:480px){.stage{transform:scale(.72);height:378px}}
+/* 01 floral — portrait, flower art right, QR bottom-left */
+.theme-floral{
+  width:min(420px,100%);
+  aspect-ratio:4/5;
+  border-radius:36px;
+  background:linear-gradient(145deg,#fff8fb,#ffe1ef 62%,#fff);
+}
+.theme-floral::before{right:-42px;top:112px;width:210px;height:210px;border-radius:42% 58% 60% 40%;background:#f9a8d4;opacity:.42}
+.theme-floral::after{left:-46px;bottom:72px;width:145px;height:145px;border-radius:50%;background:#fb7185;opacity:.18}
+.theme-floral .art{right:52px;top:70px;width:82px;height:82px;border-radius:50%;background:radial-gradient(circle,#fff 0 12%,transparent 13%),radial-gradient(circle at 20% 50%,#fb7185 0 20%,transparent 21%),radial-gradient(circle at 80% 50%,#f9a8d4 0 20%,transparent 21%),radial-gradient(circle at 50% 20%,#fda4af 0 20%,transparent 21%),radial-gradient(circle at 50% 80%,#fecdd3 0 20%,transparent 21%)}
+.theme-floral .copy{left:36px;right:36px;top:48px}
+.theme-floral .kicker{color:#e11d48}
+.theme-floral .title{margin-top:104px}
+.theme-floral .qr-box{left:36px;bottom:72px;width:124px;height:124px;border-radius:30px}
+.theme-floral .footer{right:36px;bottom:34px}
 
+/* 02 ocean — wide, wave band bottom, QR right */
+.theme-ocean{
+  width:min(540px,100%);
+  aspect-ratio:1.55/1;
+  border-radius:36px;
+  background:linear-gradient(145deg,#effcff,#bdefff 58%,#fff);
+}
+.theme-ocean::before{right:-38px;top:62px;width:210px;height:180px;border-radius:50%;background:#38bdf8;opacity:.25}
+.theme-ocean::after{left:-40px;right:-40px;bottom:-34px;height:135px;background:radial-gradient(320px 96px at 140px 60px,#7dd3fc 0 58%,transparent 59%),radial-gradient(380px 118px at 430px 38px,#38bdf8 0 56%,transparent 57%);opacity:.65}
+.theme-ocean .copy{left:38px;top:42px}
+.theme-ocean .kicker{color:#0284c7}
+.theme-ocean .qr-box{right:42px;bottom:62px;width:126px;height:126px;border-radius:30px}
+.theme-ocean .footer{left:38px;bottom:30px}
+
+/* 03 birds — postcard, cloud behind QR */
+.theme-birds{
+  width:min(510px,100%);
+  aspect-ratio:1.35/1;
+  border-radius:34px;
+  background:linear-gradient(145deg,#f8fbff,#dbeafe 64%,#fff);
+}
+.theme-birds::before{right:-30px;top:70px;width:190px;height:150px;border-radius:50%;background:#93c5fd;opacity:.30}
+.theme-birds .art{right:92px;top:78px;width:152px;height:82px;background:radial-gradient(circle at 20% 70%,#fff 0 18%,transparent 19%),radial-gradient(circle at 48% 50%,#fff 0 30%,transparent 31%),radial-gradient(circle at 76% 70%,#fff 0 22%,transparent 23%)}
+.theme-birds .copy{left:38px;bottom:78px}
+.theme-birds .kicker{color:#2563eb}
+.theme-birds .qr-box{right:44px;bottom:58px;width:130px;height:108px;border-radius:28px}
+.theme-birds .footer{left:38px;bottom:30px}
+
+/* 04 coffee — cafe horizontal, mug art behind QR */
+.theme-coffee{
+  width:min(540px,100%);
+  aspect-ratio:1.55/1;
+  border-radius:36px;
+  background:linear-gradient(145deg,#fff8ef,#ffdba8 58%,#fff);
+}
+.theme-coffee::before{right:-32px;top:68px;width:220px;height:190px;border-radius:48%;background:#9a3412;opacity:.20}
+.theme-coffee .art{right:118px;top:68px;width:114px;height:114px;border:12px solid #9a3412;border-radius:50%;opacity:.55}
+.theme-coffee .art::after{right:-46px;top:32px;width:46px;height:38px;border:9px solid #9a3412;border-left:0;border-radius:0 999px 999px 0}
+.theme-coffee .copy{left:38px;bottom:82px}
+.theme-coffee .kicker{color:#9a3412}
+.theme-coffee .qr-box{right:44px;top:58px;width:124px;height:124px;border-radius:32px}
+.theme-coffee .footer{left:38px;bottom:30px}
+
+/* 05 neon — vertical ticket, QR as glowing pass stamp */
+.theme-neon{
+  width:min(430px,100%);
+  aspect-ratio:4/5;
+  border-radius:38px;
+  background:linear-gradient(145deg,#140b35,#240859 62%,#4c1d95);
+  color:#fff;
+}
+.theme-neon::before{right:-54px;top:74px;width:230px;height:230px;border-radius:50%;background:#0ea5e9;opacity:.26}
+.theme-neon::after{left:-60px;bottom:-46px;width:180px;height:180px;border-radius:50%;background:#fff;opacity:.30}
+.theme-neon .art{right:48px;top:74px;width:164px;height:164px;border-radius:34px;border:3px solid #22d3ee;box-shadow:0 0 34px rgba(34,211,238,.42),inset 0 0 28px rgba(34,211,238,.15)}
+.theme-neon .copy{left:44px;right:44px;bottom:94px}
+.theme-neon .kicker{color:#22d3ee;background:rgba(255,255,255,.16)}
+.theme-neon .title{color:#fff;font-size:38px}
+.theme-neon .sub,.theme-neon .footer{color:rgba(255,255,255,.75)}
+.theme-neon .qr-box{right:78px;top:104px;width:126px;height:126px;border-radius:28px}
+.theme-neon .footer{left:44px;bottom:42px}
+
+/* 06 luxury — compact dark stamp */
+.theme-luxury{
+  width:min(500px,100%);
+  aspect-ratio:1.28/1;
+  border-radius:36px;
+  color:#fff7e8;
+  background:linear-gradient(145deg,#050505,#161616 64%,#4a3410);
+}
+.theme-luxury::before{right:-42px;top:76px;width:190px;height:190px;border-radius:50%;background:#facc15;opacity:.18}
+.theme-luxury::after{left:-42px;bottom:-46px;width:145px;height:145px;border-radius:50%;background:#8b5cf6;opacity:.18}
+.theme-luxury .art{left:58px;bottom:128px;width:13px;height:13px;background:#facc15;transform:rotate(45deg);box-shadow:88px 42px 0 rgba(250,204,21,.55),138px -8px 0 rgba(255,255,255,.45)}
+.theme-luxury .copy{left:38px;top:44px}
+.theme-luxury .kicker{color:#facc15;background:rgba(255,255,255,.18)}
+.theme-luxury .sub,.theme-luxury .footer{color:rgba(255,247,232,.75)}
+.theme-luxury .qr-box{right:42px;bottom:44px;width:132px;height:132px;border-radius:32px}
+.theme-luxury .footer{left:38px;bottom:30px}
+
+/* 07 nature — portrait label with leaf graphic as safe background */
+.theme-nature{
+  width:min(420px,100%);
+  aspect-ratio:4/5;
+  border-radius:36px;
+  background:linear-gradient(145deg,#effff4,#cdf8d7 66%,#fff);
+}
+.theme-nature::before{right:-58px;top:82px;width:265px;height:265px;border-radius:50%;background:#86efac;opacity:.30}
+.theme-nature::after{left:-60px;bottom:-60px;width:190px;height:190px;border-radius:50%;background:#fff;opacity:.52}
+.theme-nature .art{right:114px;top:158px;width:120px;height:80px;border-radius:100% 0 100% 0;background:#22c55e;opacity:.34;transform:rotate(-28deg)}
+.theme-nature .copy{right:34px;top:54px;width:226px}
+.theme-nature .kicker{color:#16a34a}
+.theme-nature .title{font-size:36px;margin-top:26px}
+.theme-nature .sub{max-width:220px}
+.theme-nature .qr-box{left:34px;top:170px;width:120px;height:150px;border-radius:34px}
+.theme-nature .footer{right:34px;bottom:34px}
+
+/* 08 startup — dashboard card */
+.theme-startup{
+  width:min(560px,100%);
+  aspect-ratio:1.7/1;
+  border-radius:34px;
+  background:linear-gradient(145deg,#f8fafc,#e0e7ff 64%,#fff);
+}
+.theme-startup::before{right:-30px;top:55px;width:190px;height:145px;border-radius:42%;background:#818cf8;opacity:.20}
+.theme-startup .art{left:38px;bottom:80px;width:390px;height:74px;border-radius:24px;background:rgba(255,255,255,.54)}
+.theme-startup .copy{left:38px;top:38px}
+.theme-startup .kicker{color:#4f46e5}
+.theme-startup .title{font-size:36px}
+.theme-startup .qr-box{right:38px;top:42px;width:142px;height:96px;border-radius:24px}
+.theme-startup .footer{left:38px;bottom:26px}
+
+/* 09 pass — ticket strip */
+.theme-pass{
+  width:min(560px,100%);
+  aspect-ratio:1.75/1;
+  border-radius:30px;
+  background:linear-gradient(145deg,#faf5ff,#ddd6fe 62%,#fff);
+}
+.theme-pass::before{right:22px;top:28px;width:185px;height:260px;background:rgba(255,255,255,.52);clip-path:polygon(0 0,100% 0,88% 50%,100% 100%,0 100%,12% 50%)}
+.theme-pass .copy{left:38px;top:42px}
+.theme-pass .kicker{color:#7c3aed}
+.theme-pass .qr-box{right:50px;top:50%;transform:translateY(-50%);width:110px;height:170px;border-radius:26px}
+.theme-pass .footer{left:38px;bottom:28px}
+
+/* 10 wifi — square centered */
+.theme-wifi{
+  width:min(440px,100%);
+  aspect-ratio:1/1;
+  border-radius:36px;
+  background:linear-gradient(145deg,#ecfeff,#cffafe 62%,#fff);
+}
+.theme-wifi::before{right:-18px;top:68px;width:170px;height:170px;border-radius:50%;background:#67e8f9;opacity:.28}
+.theme-wifi .art{right:78px;top:88px;width:104px;height:74px;background:radial-gradient(circle at 50% 100%,#0891b2 0 8%,transparent 9%),radial-gradient(ellipse at 50% 100%,transparent 0 32%,#0891b2 33% 38%,transparent 39%),radial-gradient(ellipse at 50% 100%,transparent 0 55%,#0891b2 56% 61%,transparent 62%);opacity:.42}
+.theme-wifi .copy{left:36px;right:36px;bottom:76px;text-align:center}
+.theme-wifi .kicker{color:#0891b2}
+.theme-wifi .sub{margin-left:auto;margin-right:auto}
+.theme-wifi .qr-box{left:50%;top:58px;transform:translateX(-50%);width:130px;height:112px;border-radius:30px}
+.theme-wifi .footer{left:50%;bottom:28px;transform:translateX(-50%)}
+
+/* 11 coupon — horizontal promo */
+.theme-coupon{
+  width:min(540px,100%);
+  aspect-ratio:1.6/1;
+  border-radius:34px;
+  background:linear-gradient(145deg,#fffbeb,#fed7aa 62%,#fff);
+}
+.theme-coupon::before{right:32px;top:48px;width:230px;height:168px;background:rgba(255,255,255,.52);clip-path:polygon(0 0,100% 0,100% 35%,90% 50%,100% 65%,100% 100%,0 100%,0 65%,10% 50%,0 35%)}
+.theme-coupon::after{right:-38px;top:82px;width:150px;height:140px;border-radius:50%;background:#fb923c;opacity:.22}
+.theme-coupon .copy{left:38px;bottom:72px}
+.theme-coupon .kicker{color:#f97316}
+.theme-coupon .qr-box{right:42px;top:54px;width:132px;height:104px;border-radius:24px}
+.theme-coupon .footer{left:38px;bottom:28px}
+
+/* 12 wedding — elegant center */
+.theme-wedding{
+  width:min(420px,100%);
+  aspect-ratio:4/5;
+  border-radius:36px;
+  background:linear-gradient(145deg,#fff1f2,#fecdd3 62%,#fff);
+}
+.theme-wedding::before{left:50%;top:150px;width:190px;height:190px;border:8px solid #fff;border-radius:50%;transform:translateX(-50%);opacity:.52}
+.theme-wedding .copy{left:34px;right:34px;top:46px;text-align:center}
+.theme-wedding .kicker{color:#be123c}
+.theme-wedding .sub{margin-left:auto;margin-right:auto}
+.theme-wedding .qr-box{left:50%;bottom:58px;transform:translateX(-50%);width:122px;height:122px;border-radius:50%}
+.theme-wedding .footer{right:32px;bottom:28px}
+
+/* 13 food — menu poster */
+.theme-food{
+  width:min(420px,100%);
+  aspect-ratio:4/5;
+  border-radius:36px;
+  background:linear-gradient(145deg,#fff7ed,#fed7aa 62%,#fff);
+}
+.theme-food::before{right:40px;top:84px;width:112px;height:112px;border-radius:50%;background:#fff;box-shadow:inset 0 0 0 14px rgba(220,38,38,.10)}
+.theme-food .art{right:76px;top:120px;width:18px;height:18px;border-radius:50%;background:#ef4444;box-shadow:35px 12px 0 #22c55e,16px 45px 0 #f97316}
+.theme-food .copy{left:34px;top:44px}
+.theme-food .kicker{color:#dc2626}
+.theme-food .qr-box{left:50%;bottom:54px;transform:translateX(-50%);width:140px;height:98px;border-radius:26px}
+.theme-food .footer{right:32px;bottom:28px}
+
+/* 14 map — pin composition */
+.theme-map{
+  width:min(500px,100%);
+  aspect-ratio:1.3/1;
+  border-radius:36px;
+  background:linear-gradient(145deg,#f0fdfa,#99f6e4 62%,#fff);
+}
+.theme-map::before{right:50px;bottom:52px;width:190px;height:230px;border-radius:999px 999px 999px 40px;background:#14b8a6;opacity:.18;transform:rotate(-45deg)}
+.theme-map .copy{left:38px;top:48px}
+.theme-map .kicker{color:#0f766e}
+.theme-map .qr-box{right:48px;bottom:58px;width:118px;height:118px;border-radius:999px 999px 999px 22px;transform:rotate(-45deg)}
+.theme-map .qr-box img,.theme-map .qr-box span{transform:rotate(45deg)}
+.theme-map .footer{left:38px;bottom:30px}
+
+/* 15 music — dark poster */
+.theme-music{
+  width:min(420px,100%);
+  aspect-ratio:4/5;
+  border-radius:36px;
+  color:#fff;
+  background:linear-gradient(145deg,#111827,#3b0764 70%,#111);
+}
+.theme-music::before{right:-28px;top:80px;width:180px;height:180px;border-radius:50%;background:#f0abfc;opacity:.18}
+.theme-music .art{left:48px;top:96px;width:12px;height:80px;background:#22d3ee;box-shadow:34px -22px 0 #a78bfa,68px 12px 0 #f0abfc,102px -8px 0 #22d3ee}
+.theme-music .copy{right:32px;top:58px;width:220px}
+.theme-music .kicker{color:#f0abfc;background:rgba(255,255,255,.18)}
+.theme-music .sub,.theme-music .footer{color:rgba(255,255,255,.72)}
+.theme-music .qr-box{left:34px;bottom:54px;width:118px;height:118px;border-radius:30px}
+.theme-music .footer{right:32px;bottom:28px}
+
+/* 16 book — book cover */
+.theme-book{
+  width:min(420px,100%);
+  aspect-ratio:4/5;
+  border-radius:28px;
+  background:linear-gradient(145deg,#fffbeb,#fde68a 62%,#fff);
+}
+.theme-book::before{right:26px;top:70px;width:160px;height:248px;border-radius:18px;background:#fff;box-shadow:inset 74px 0 0 rgba(146,64,14,.14)}
+.theme-book .copy{left:34px;top:48px}
+.theme-book .kicker{color:#92400e}
+.theme-book .qr-box{right:36px;top:104px;width:112px;height:150px;border-radius:18px}
+.theme-book .footer{left:34px;bottom:28px}
+
+/* 17 fitness — bold pass */
+.theme-fitness{
+  width:min(540px,100%);
+  aspect-ratio:1.6/1;
+  border-radius:34px;
+  background:linear-gradient(145deg,#f8fafc,#fee2e2 62%,#fff);
+}
+.theme-fitness::before{right:-28px;top:86px;width:140px;height:140px;border-radius:50%;background:#fca5a5;opacity:.22}
+.theme-fitness .art{right:42px;top:90px;width:150px;height:34px;border-radius:999px;background:#ef4444;box-shadow:-30px 0 0 #fff,30px 0 0 #fff}
+.theme-fitness .copy{left:38px;top:44px}
+.theme-fitness .kicker{color:#ef4444}
+.theme-fitness .qr-box{right:40px;bottom:48px;width:138px;height:108px;border-radius:28px}
+.theme-fitness .footer{left:38px;bottom:28px}
+
+/* 18 medical — clinic horizontal */
+.theme-medical{
+  width:min(540px,100%);
+  aspect-ratio:1.58/1;
+  border-radius:34px;
+  background:linear-gradient(145deg,#f0f9ff,#dff6ff 58%,#fff);
+}
+.theme-medical::before{right:-42px;top:52px;width:210px;height:210px;border-radius:50%;background:#7dd3fc;opacity:.24}
+.theme-medical::after{left:-54px;bottom:-58px;width:160px;height:160px;border-radius:50%;background:#fff;opacity:.55}
+.theme-medical .art{left:56px;top:62px;width:78px;height:78px;border-radius:22px;background:#fff;box-shadow:0 18px 36px rgba(37,42,65,.10)}
+.theme-medical .art::before{left:31px;top:15px;width:15px;height:48px;background:#0ea5e9;border-radius:999px}
+.theme-medical .art::after{left:15px;top:31px;width:48px;height:15px;background:#0ea5e9;border-radius:999px}
+.theme-medical .copy{left:56px;bottom:72px}
+.theme-medical .kicker{color:#0ea5e9}
+.theme-medical .title{font-size:40px}
+.theme-medical .qr-box{right:54px;top:74px;width:138px;height:138px;border-radius:30px}
+.theme-medical .footer{left:56px;bottom:34px}
+
+/* 19 education — course card */
+.theme-edu{
+  width:min(520px,100%);
+  aspect-ratio:1.45/1;
+  border-radius:34px;
+  background:linear-gradient(145deg,#fefce8,#fde68a 62%,#fff);
+}
+.theme-edu::before{right:58px;top:82px;width:150px;height:76px;background:#ca8a04;clip-path:polygon(50% 0,100% 35%,50% 70%,0 35%);opacity:.40}
+.theme-edu .copy{left:38px;top:44px}
+.theme-edu .kicker{color:#ca8a04}
+.theme-edu .qr-box{left:50%;bottom:42px;transform:translateX(-50%);width:126px;height:104px;border-radius:26px}
+.theme-edu .footer{right:38px;bottom:28px}
+
+/* 20 pet — playful square */
+.theme-pet{
+  width:min(450px,100%);
+  aspect-ratio:1/1;
+  border-radius:36px;
+  background:linear-gradient(145deg,#fff7ed,#fed7aa 62%,#fff);
+}
+.theme-pet::before{right:90px;top:105px;width:82px;height:66px;border-radius:50%;background:#ea580c;opacity:.28}
+.theme-pet .art{right:80px;top:72px;width:22px;height:22px;border-radius:50%;background:#ea580c;opacity:.28;box-shadow:38px -12px 0 rgba(234,88,12,.28),78px 3px 0 rgba(234,88,12,.28),22px 38px 0 rgba(234,88,12,.28)}
+.theme-pet .copy{left:36px;top:48px}
+.theme-pet .kicker{color:#ea580c}
+.theme-pet .qr-box{right:40px;bottom:52px;width:120px;height:120px;border-radius:50%}
+.theme-pet .footer{left:36px;bottom:28px}
+
+.panel{
+  border:1px solid var(--line);
+  border-radius:32px;
+  background:rgba(255,255,255,.78);
+  box-shadow:0 24px 70px rgba(37,42,65,.10);
+  padding:26px;
+}
+.panel h1{margin:0;font-size:34px;line-height:1;letter-spacing:-.055em}
+.panel p{margin:12px 0 20px;color:var(--muted);line-height:1.55;font-weight:650}
+.upload{
+  min-height:54px;
+  border-radius:18px;
+  display:grid;
+  place-items:center;
+  color:var(--primary);
+  background:rgba(101,71,255,.10);
+  font-weight:950;
+  cursor:pointer;
+  margin-bottom:16px;
+}
+.upload input{display:none}
+.field{margin-bottom:12px}
+.field label{display:block;margin-bottom:7px;color:var(--muted);font-size:13px;font-weight:900}
+.field input{
+  width:100%;
+  height:50px;
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:0 16px;
+  outline:0;
+  color:var(--text);
+  font-size:16px;
+  font-weight:780;
+}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}
+.row button{min-height:52px;border:0;border-radius:16px;cursor:pointer;font-weight:950;font-size:15px}
+.reset{background:#eef2ff;color:var(--primary)}
+.download{background:linear-gradient(135deg,var(--primary),var(--primary2));color:#fff}
+.note{
+  margin-top:18px;
+  padding:14px;
+  border-radius:18px;
+  background:rgba(255,255,255,.58);
+  color:var(--muted);
+  font-weight:750;
+  line-height:1.45;
+}
+@media(max-width:920px){
+  body{padding:78px 16px 28px}
+  .page{grid-template-columns:1fr;gap:24px}
+  .panel{max-width:560px;margin:0 auto}
+}
+@media(max-width:520px){
+  .card{border-radius:28px}
+  .title{font-size:34px!important}
+}
 </style>
 </head>
 <body>
-<header class="topbar"><a href="../">← All templates</a><button class="primary" id="downloadTop" onclick="document.getElementById('downloadBtn').click()">Download PNG</button></header>
-<main class="page">
-  <div class="workspace">
-    <section class="stage" aria-label="Editable QR template preview">
-      <div class="qr-card" id="qrCard">
-        <svg class="art" viewBox="0 0 420 525" preserveAspectRatio="none" aria-hidden="true">
-<circle cx="320" cy="126" r="92" fill="#facc15" opacity=".20"/><path d="M214 92 350 144 214 196 78 144Z" fill="#ca8a04" opacity=".22"/><path d="M136 168v64c42 30 114 30 156 0v-64" fill="#ca8a04" opacity=".16"/>
-<rect x="80" y="360" width="78" height="112" rx="12" fill="#fff" opacity=".54"/><rect x="174" y="340" width="78" height="132" rx="12" fill="#fff" opacity=".42"/><rect x="268" y="376" width="78" height="96" rx="12" fill="#fff" opacity=".48"/></svg>
+  <div class="top-actions">
+    <a href="../">← All templates</a>
+    <button id="downloadTop" type="button">Download PNG</button>
+  </div>
+
+  <main class="page">
+    <section class="preview-area">
+      <article class="card theme-edu" id="card">
+        <div class="art"></div>
+
         <div class="copy">
-          <span class="kicker" id="editKicker" contenteditable="true">CLASS QR</span>
-          <b class="title" id="editTitle" contenteditable="true">Join lesson</b>
-          <small class="subtitle" id="editSubtitle" contenteditable="true">Scan for class link, file, or assignment.</small>
+          <span class="kicker editable" id="cardLabel" contenteditable="true">CLASS</span>
+          <b class="title editable" id="cardTitle" contenteditable="true">Education Class</b>
+          <small class="sub editable" id="cardSub" contenteditable="true">Course card for lessons, resources, and class links.</small>
         </div>
-        <div class="qr-box" id="qrBox" title="Click to upload your QR PNG">
-          <img id="qrImg" alt="Uploaded QR code" />
-          <span class="qr-placeholder">Click to<br>upload QR</span>
+
+        <div class="qr-box" id="qrBox">
+          <img id="qrImage" alt="Uploaded QR code">
+          <span>click to<br>upload QR</span>
         </div>
-        <div class="footer" id="editFooter" contenteditable="true">Education QR</div>
-      </div>
+
+        <div class="footer editable" id="cardFooter" contenteditable="true">FlowSync Class</div>
+      </article>
     </section>
+
     <aside class="panel">
       <h1>Education Class</h1>
-      <p>Click text directly on the card or edit below. Upload the QR PNG you created from FlowSync, then download this finished card.</p>
-      <div class="controls">
-        <label class="file-label" for="qrUpload">Upload QR PNG/JPG</label><input id="qrUpload" type="file" accept="image/png,image/jpeg,image/webp,image/svg+xml" />
-        <div class="field"><label>Top label</label><input id="fieldKicker" value="CLASS QR"></div>
-        <div class="field"><label>Title</label><input id="fieldTitle" value="Join lesson"></div>
-        <div class="field"><label>Subtitle</label><input id="fieldSubtitle" value="Scan for class link, file, or assignment."></div>
-        <div class="field"><label>Footer</label><input id="fieldFooter" value="Education QR"></div>
-        <div class="actions"><button class="reset" id="resetBtn" type="button">Reset text</button><button class="download" id="downloadBtn" type="button">Download PNG</button></div>
+      <p>This card is composed with a safe QR area, readable text area, and artwork that does not fight the content.</p>
+
+      <label class="upload">
+        Upload QR PNG/JPG
+        <input id="qrUpload" type="file" accept="image/png,image/jpeg,image/webp">
+      </label>
+
+      <div class="field">
+        <label>Top label</label>
+        <input id="inputLabel" value="CLASS">
       </div>
-      <div class="note"><b>Flow:</b> Create QR on your main page → download QR PNG → open a template → upload QR → edit card text → download finished template card.</div>
+
+      <div class="field">
+        <label>Title</label>
+        <input id="inputTitle" value="Education Class">
+      </div>
+
+      <div class="field">
+        <label>Subtitle</label>
+        <input id="inputSub" value="Course card for lessons, resources, and class links.">
+      </div>
+
+      <div class="field">
+        <label>Footer</label>
+        <input id="inputFooter" value="FlowSync Class">
+      </div>
+
+      <div class="row">
+        <button class="reset" id="resetBtn" type="button">Reset text</button>
+        <button class="download" id="downloadBtn" type="button">Download PNG</button>
+      </div>
+
+      <div class="note">
+        Workflow: create QR on main page → download QR PNG → upload here → edit text → download final card.
+      </div>
     </aside>
-  </div>
-</main>
+  </main>
 
 <script>
-const root = document.documentElement;
-const qrBox = document.getElementById('qrBox');
-const qrImg = document.getElementById('qrImg');
-const file = document.getElementById('qrUpload');
-const card = document.getElementById('qrCard');
-const fields = {
-  kicker: document.getElementById('fieldKicker'),
-  title: document.getElementById('fieldTitle'),
-  subtitle: document.getElementById('fieldSubtitle'),
-  footer: document.getElementById('fieldFooter')
+const card = document.getElementById("card");
+const qrBox = document.getElementById("qrBox");
+const qrUpload = document.getElementById("qrUpload");
+const qrImage = document.getElementById("qrImage");
+
+const defaults = {
+  label: "CLASS",
+  title: "Education Class",
+  sub: "Course card for lessons, resources, and class links.",
+  footer: "FlowSync Class"
 };
-const edits = {
-  kicker: document.getElementById('editKicker'),
-  title: document.getElementById('editTitle'),
-  subtitle: document.getElementById('editSubtitle'),
-  footer: document.getElementById('editFooter')
-};
-const defaults = Object.fromEntries(Object.keys(edits).map(k => [k, edits[k].textContent]));
-function syncFromFields(){Object.keys(fields).forEach(k=>{edits[k].textContent = fields[k].value || defaults[k];});}
-function syncFromCard(){Object.keys(fields).forEach(k=>{fields[k].value = edits[k].textContent.trim();});}
-Object.values(fields).forEach(el=>el.addEventListener('input',syncFromFields));
-Object.values(edits).forEach(el=>el.addEventListener('input',syncFromCard));
-qrBox.addEventListener('click',()=>file.click());
-file.addEventListener('change',()=>{
-  const f=file.files&&file.files[0]; if(!f) return;
-  const reader=new FileReader();
-  reader.onload=()=>{qrImg.src=reader.result; qrBox.classList.add('has-qr');};
-  reader.readAsDataURL(f);
-});
-document.getElementById('resetBtn').addEventListener('click',()=>{Object.keys(defaults).forEach(k=>{fields[k].value=defaults[k]; edits[k].textContent=defaults[k];});});
-function cssText(){return document.getElementById('pageStyle').textContent;}
-function cleanClone(){
-  const clone = card.cloneNode(true);
-  clone.querySelectorAll('[contenteditable]').forEach(el=>el.removeAttribute('contenteditable'));
-  clone.querySelectorAll('.qr-box').forEach(el=>el.style.cursor='default');
-  clone.classList.add('capture-card');
-  return clone.outerHTML;
+
+const map = [
+  ["inputLabel", "cardLabel"],
+  ["inputTitle", "cardTitle"],
+  ["inputSub", "cardSub"],
+  ["inputFooter", "cardFooter"]
+];
+
+function syncFromInputs(){
+  map.forEach(([inputId, cardId]) => {
+    document.getElementById(cardId).textContent = document.getElementById(inputId).value;
+  });
 }
-async function downloadPng(){
-  if(!qrBox.classList.contains('has-qr')){ alert('Upload your QR PNG first.'); return; }
-  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="420" height="525"><foreignObject width="100%" height="100%"><div xmlns="http://www.w3.org/1999/xhtml"><style>${cssText()} .qr-card{box-shadow:none!important;}</style>${cleanClone()}</div></foreignObject></svg>`;
-  const blob = new Blob([svg],{type:'image/svg+xml;charset=utf-8'});
+
+function syncFromCard(cardId, inputId){
+  document.getElementById(inputId).value = document.getElementById(cardId).textContent.trim();
+}
+
+map.forEach(([inputId, cardId]) => {
+  document.getElementById(inputId).addEventListener("input", syncFromInputs);
+  document.getElementById(cardId).addEventListener("input", () => syncFromCard(cardId, inputId));
+});
+
+document.getElementById("resetBtn").addEventListener("click", () => {
+  document.getElementById("inputLabel").value = defaults.label;
+  document.getElementById("inputTitle").value = defaults.title;
+  document.getElementById("inputSub").value = defaults.sub;
+  document.getElementById("inputFooter").value = defaults.footer;
+  syncFromInputs();
+});
+
+qrBox.addEventListener("click", () => qrUpload.click());
+
+qrUpload.addEventListener("change", () => {
+  const file = qrUpload.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = () => {
+    qrImage.src = reader.result;
+    qrBox.classList.add("has-qr");
+  };
+  reader.readAsDataURL(file);
+});
+
+function downloadCard(){
+  const editables = [...card.querySelectorAll("[contenteditable]")];
+  editables.forEach(el => el.setAttribute("contenteditable", "false"));
+
+  const rect = card.getBoundingClientRect();
+  const exportW = 1200;
+  const exportH = Math.round(exportW * rect.height / rect.width);
+
+  const clone = card.cloneNode(true);
+  clone.style.margin = "0";
+  clone.style.width = exportW + "px";
+  clone.style.height = exportH + "px";
+  clone.style.maxWidth = "none";
+
+  const css = [...document.styleSheets].map(sheet => {
+    try { return [...sheet.cssRules].map(rule => rule.cssText).join("\n"); }
+    catch { return ""; }
+  }).join("\n");
+
+  const svg = `
+    <svg xmlns="http://www.w3.org/2000/svg" width="${exportW}" height="${exportH}">
+      <foreignObject width="${exportW}" height="${exportH}">
+        <div xmlns="http://www.w3.org/1999/xhtml">
+          <style>
+            * { box-sizing: border-box; }
+            body { margin: 0; }
+            ${css}
+          </style>
+          ${clone.outerHTML}
+        </div>
+      </foreignObject>
+    </svg>
+  `;
+
+  const blob = new Blob([svg], { type: "image/svg+xml;charset=utf-8" });
   const url = URL.createObjectURL(blob);
   const img = new Image();
+
   img.onload = () => {
-    const canvas=document.createElement('canvas'); canvas.width=1080; canvas.height=1350;
-    const ctx=canvas.getContext('2d'); ctx.drawImage(img,0,0,1080,1350);
+    const canvas = document.createElement("canvas");
+    canvas.width = exportW;
+    canvas.height = exportH;
+    const ctx = canvas.getContext("2d");
+    ctx.drawImage(img, 0, 0);
     URL.revokeObjectURL(url);
-    const a=document.createElement('a'); a.download='flowsync-template-card.png'; a.href=canvas.toDataURL('image/png'); a.click();
+
+    const a = document.createElement("a");
+    a.download = "flowsync-education-class-template.png";
+    a.href = canvas.toDataURL("image/png");
+    a.click();
+
+    editables.forEach(el => el.setAttribute("contenteditable", "true"));
   };
-  img.onerror = () => {URL.revokeObjectURL(url); alert('Download failed. Try another browser or upload a PNG QR.');};
+
   img.src = url;
 }
-document.getElementById('downloadBtn').addEventListener('click',downloadPng);
-</script>
 
+document.getElementById("downloadBtn").addEventListener("click", downloadCard);
+document.getElementById("downloadTop").addEventListener("click", downloadCard);
+</script>
 </body>
 </html>

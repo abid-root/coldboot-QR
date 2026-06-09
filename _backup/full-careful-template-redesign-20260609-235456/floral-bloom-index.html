@@ -1,0 +1,624 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>FlowSync Template - Floral Bloom</title>
+<style>
+*{box-sizing:border-box}
+:root{
+  --bg:#f7f8fc;
+  --text:#101219;
+  --muted:#64748b;
+  --line:rgba(226,229,240,.9);
+  --primary:#6547ff;
+  --primary2:#2f80ff;
+}
+body{
+  margin:0;
+  min-height:100vh;
+  padding:58px 28px;
+  background:radial-gradient(circle at 50% 0%,rgba(101,71,255,.12),transparent 30%),var(--bg);
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  color:var(--text);
+}
+.top-actions{
+  position:fixed;
+  top:18px;
+  left:24px;
+  right:24px;
+  z-index:40;
+  display:flex;
+  justify-content:space-between;
+  pointer-events:none;
+}
+.top-actions a,
+.top-actions button{
+  pointer-events:auto;
+  min-height:44px;
+  padding:0 18px;
+  border:0;
+  border-radius:999px;
+  background:rgba(255,255,255,.8);
+  color:var(--muted);
+  text-decoration:none;
+  font-weight:900;
+  box-shadow:0 12px 35px rgba(37,42,65,.08);
+  cursor:pointer;
+}
+.top-actions button{
+  color:#fff;
+  background:linear-gradient(135deg,var(--primary),var(--primary2));
+}
+.page{
+  width:min(1180px,100%);
+  min-height:calc(100vh - 116px);
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:minmax(420px,560px) minmax(350px,500px);
+  gap:48px;
+  align-items:center;
+}
+.preview-area{
+  display:grid;
+  place-items:center;
+}
+.card{
+  position:relative;
+  overflow:hidden;
+  isolation:isolate;
+  border:1px solid rgba(226,229,240,.92);
+  box-shadow:0 34px 92px rgba(37,42,65,.14);
+}
+.card::before,
+.card::after,
+.decor{
+  content:"";
+  position:absolute;
+  pointer-events:none;
+}
+.copy{
+  position:absolute;
+  z-index:10;
+}
+.kicker{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:32px;
+  padding:0 14px;
+  border-radius:999px;
+  background:rgba(255,255,255,.68);
+  font-size:11px;
+  font-weight:950;
+  letter-spacing:.13em;
+}
+.title{
+  display:block;
+  margin-top:16px;
+  font-size:42px;
+  line-height:.96;
+  letter-spacing:-.07em;
+  font-weight:950;
+  outline:0;
+}
+.sub{
+  display:block;
+  margin-top:12px;
+  max-width:300px;
+  color:var(--muted);
+  font-size:16px;
+  line-height:1.42;
+  font-weight:720;
+  outline:0;
+}
+.footer{
+  position:absolute;
+  z-index:12;
+  color:var(--muted);
+  font-size:14px;
+  font-weight:900;
+  outline:0;
+}
+.qr-box{
+  position:absolute;
+  z-index:15;
+  display:grid;
+  place-items:center;
+  overflow:hidden;
+  cursor:pointer;
+  background:rgba(255,255,255,.96);
+  box-shadow:0 20px 46px rgba(37,42,65,.16);
+}
+.qr-box img{
+  width:74%;
+  height:74%;
+  object-fit:contain;
+  display:none;
+}
+.qr-box.has-qr img{display:block}
+.qr-box span{
+  color:var(--primary);
+  font-size:13px;
+  line-height:1.15;
+  font-weight:950;
+  text-align:center;
+  padding:12px;
+}
+.qr-box.has-qr span{display:none}
+
+/* MEDICAL: calm horizontal clinic card */
+.medical{
+  width:min(540px,100%);
+  aspect-ratio:1.58/1;
+  border-radius:34px;
+  background:linear-gradient(145deg,#f0f9ff 0%,#dff6ff 58%,#ffffff 100%);
+}
+.medical::before{
+  width:210px;
+  height:210px;
+  right:-42px;
+  top:52px;
+  border-radius:50%;
+  background:#7dd3fc;
+  opacity:.24;
+}
+.medical::after{
+  width:160px;
+  height:160px;
+  left:-54px;
+  bottom:-58px;
+  border-radius:50%;
+  background:#ffffff;
+  opacity:.55;
+}
+.medical .decor.plus{
+  left:56px;
+  top:62px;
+  width:78px;
+  height:78px;
+  border-radius:22px;
+  background:#fff;
+  box-shadow:0 18px 36px rgba(37,42,65,.10);
+}
+.medical .decor.plus::before,
+.medical .decor.plus::after{
+  content:"";
+  position:absolute;
+  background:#0ea5e9;
+  border-radius:999px;
+}
+.medical .decor.plus::before{
+  width:15px;
+  height:48px;
+  left:31px;
+  top:15px;
+}
+.medical .decor.plus::after{
+  width:48px;
+  height:15px;
+  left:15px;
+  top:31px;
+}
+.medical .copy{
+  left:56px;
+  bottom:72px;
+}
+.medical .kicker{color:#0ea5e9}
+.medical .title{font-size:40px}
+.medical .qr-box{
+  right:54px;
+  top:74px;
+  width:138px;
+  height:138px;
+  border-radius:30px;
+}
+.medical .footer{
+  left:56px;
+  bottom:34px;
+}
+
+/* NEON: real ticket composition */
+.neon{
+  width:min(440px,100%);
+  aspect-ratio:4/5;
+  border-radius:38px;
+  background:linear-gradient(145deg,#140b35 0%,#240859 62%,#4c1d95 100%);
+  color:#fff;
+}
+.neon::before{
+  width:230px;
+  height:230px;
+  right:-54px;
+  top:74px;
+  border-radius:50%;
+  background:#0ea5e9;
+  opacity:.26;
+}
+.neon::after{
+  width:180px;
+  height:180px;
+  left:-60px;
+  bottom:-46px;
+  border-radius:50%;
+  background:#ffffff;
+  opacity:.30;
+}
+.neon .decor.frame{
+  right:48px;
+  top:74px;
+  width:164px;
+  height:164px;
+  border-radius:34px;
+  border:3px solid #22d3ee;
+  box-shadow:0 0 34px rgba(34,211,238,.42), inset 0 0 28px rgba(34,211,238,.15);
+}
+.neon .decor.line{
+  left:48px;
+  right:48px;
+  top:300px;
+  height:1px;
+  background:repeating-linear-gradient(90deg,rgba(255,255,255,.36) 0 10px,transparent 10px 20px);
+}
+.neon .copy{
+  left:44px;
+  right:44px;
+  bottom:94px;
+}
+.neon .kicker{
+  color:#22d3ee;
+  background:rgba(255,255,255,.16);
+}
+.neon .title{
+  color:#fff;
+  font-size:39px;
+}
+.neon .sub{
+  color:rgba(255,255,255,.75);
+}
+.neon .qr-box{
+  right:78px;
+  top:104px;
+  width:126px;
+  height:126px;
+  border-radius:28px;
+}
+.neon .footer{
+  left:44px;
+  bottom:42px;
+  color:rgba(255,255,255,.72);
+}
+
+/* NATURE: vertical product label, controlled leaf space */
+.nature{
+  width:min(420px,100%);
+  aspect-ratio:4/5;
+  border-radius:36px;
+  background:linear-gradient(145deg,#effff4 0%,#cdf8d7 66%,#ffffff 100%);
+}
+.nature::before{
+  width:240px;
+  height:240px;
+  right:-62px;
+  top:108px;
+  border-radius:50%;
+  background:#86efac;
+  opacity:.30;
+}
+.nature::after{
+  width:170px;
+  height:170px;
+  left:-58px;
+  bottom:-58px;
+  border-radius:50%;
+  background:#ffffff;
+  opacity:.52;
+}
+.nature .decor.leaf{
+  right:114px;
+  top:158px;
+  width:120px;
+  height:80px;
+  border-radius:100% 0 100% 0;
+  background:#22c55e;
+  opacity:.34;
+  transform:rotate(-28deg);
+}
+.nature .copy{
+  right:34px;
+  top:54px;
+  width:226px;
+}
+.nature .kicker{color:#16a34a}
+.nature .title{
+  font-size:36px;
+  margin-top:26px;
+}
+.nature .sub{
+  max-width:220px;
+}
+.nature .qr-box{
+  left:34px;
+  top:170px;
+  width:120px;
+  height:150px;
+  border-radius:34px;
+}
+.nature .footer{
+  right:34px;
+  bottom:34px;
+}
+
+.panel{
+  border:1px solid var(--line);
+  border-radius:32px;
+  background:rgba(255,255,255,.78);
+  box-shadow:0 24px 70px rgba(37,42,65,.10);
+  padding:26px;
+}
+.panel h1{
+  margin:0;
+  font-size:34px;
+  line-height:1;
+  letter-spacing:-.055em;
+}
+.panel p{
+  margin:12px 0 20px;
+  color:var(--muted);
+  line-height:1.55;
+  font-weight:650;
+}
+.upload{
+  min-height:54px;
+  border-radius:18px;
+  display:grid;
+  place-items:center;
+  color:var(--primary);
+  background:rgba(101,71,255,.10);
+  font-weight:950;
+  cursor:pointer;
+  margin-bottom:16px;
+}
+.upload input{display:none}
+.field{margin-bottom:12px}
+.field label{
+  display:block;
+  margin-bottom:7px;
+  color:var(--muted);
+  font-size:13px;
+  font-weight:900;
+}
+.field input{
+  width:100%;
+  height:50px;
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:0 16px;
+  outline:0;
+  color:var(--text);
+  font-size:16px;
+  font-weight:780;
+}
+.row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  margin-top:18px;
+}
+.row button{
+  min-height:52px;
+  border:0;
+  border-radius:16px;
+  cursor:pointer;
+  font-weight:950;
+  font-size:15px;
+}
+.reset{background:#eef2ff;color:var(--primary)}
+.download{background:linear-gradient(135deg,var(--primary),var(--primary2));color:#fff}
+.note{
+  margin-top:18px;
+  padding:14px;
+  border-radius:18px;
+  background:rgba(255,255,255,.58);
+  color:var(--muted);
+  font-weight:750;
+  line-height:1.45;
+}
+@media(max-width:920px){
+  body{padding:78px 16px 28px}
+  .page{grid-template-columns:1fr;gap:24px}
+  .panel{max-width:560px;margin:0 auto}
+}
+@media(max-width:520px){
+  .card{border-radius:28px}
+  .title{font-size:34px!important}
+}
+</style>
+</head>
+<body>
+  <div class="top-actions">
+    <a href="../">← All templates</a>
+    <button id="downloadTop" type="button">Download PNG</button>
+  </div>
+
+  <main class="page">
+    <section class="preview-area">
+      <article class="card floral" id="card">
+        <div class="decor plus"></div>
+        <div class="decor frame"></div>
+        <div class="decor line"></div>
+        <div class="decor leaf"></div>
+
+        <div class="copy">
+          <span class="kicker editable" id="cardLabel" contenteditable="true">FLOWER</span>
+          <b class="title editable" id="cardTitle" contenteditable="true">Floral Bloom</b>
+          <small class="sub editable" id="cardSub" contenteditable="true">A soft QR card for shops, beauty, or personal brands.</small>
+        </div>
+
+        <div class="qr-box" id="qrBox">
+          <img id="qrImage" alt="Uploaded QR code">
+          <span>click to<br>upload QR</span>
+        </div>
+
+        <div class="footer editable" id="cardFooter" contenteditable="true">FlowSync Bloom</div>
+      </article>
+    </section>
+
+    <aside class="panel">
+      <h1>Floral Bloom</h1>
+      <p>This card is composed with a safe text area, a safe QR area, and artwork that does not fight the content.</p>
+
+      <label class="upload">
+        Upload QR PNG/JPG
+        <input id="qrUpload" type="file" accept="image/png,image/jpeg,image/webp">
+      </label>
+
+      <div class="field">
+        <label>Top label</label>
+        <input id="inputLabel" value="FLOWER">
+      </div>
+
+      <div class="field">
+        <label>Title</label>
+        <input id="inputTitle" value="Floral Bloom">
+      </div>
+
+      <div class="field">
+        <label>Subtitle</label>
+        <input id="inputSub" value="A soft QR card for shops, beauty, or personal brands.">
+      </div>
+
+      <div class="field">
+        <label>Footer</label>
+        <input id="inputFooter" value="FlowSync Bloom">
+      </div>
+
+      <div class="row">
+        <button class="reset" id="resetBtn" type="button">Reset text</button>
+        <button class="download" id="downloadBtn" type="button">Download PNG</button>
+      </div>
+
+      <div class="note">
+        Workflow: create QR on main page → download QR PNG → upload here → edit text → download final card.
+      </div>
+    </aside>
+  </main>
+
+<script>
+const card = document.getElementById("card");
+const qrBox = document.getElementById("qrBox");
+const qrUpload = document.getElementById("qrUpload");
+const qrImage = document.getElementById("qrImage");
+
+const defaults = {
+  label: "FLOWER",
+  title: "Floral Bloom",
+  sub: "A soft QR card for shops, beauty, or personal brands.",
+  footer: "FlowSync Bloom"
+};
+
+const map = [
+  ["inputLabel", "cardLabel"],
+  ["inputTitle", "cardTitle"],
+  ["inputSub", "cardSub"],
+  ["inputFooter", "cardFooter"]
+];
+
+function syncFromInputs(){
+  map.forEach(([inputId, cardId]) => {
+    document.getElementById(cardId).textContent = document.getElementById(inputId).value;
+  });
+}
+
+function syncFromCard(cardId, inputId){
+  document.getElementById(inputId).value = document.getElementById(cardId).textContent.trim();
+}
+
+map.forEach(([inputId, cardId]) => {
+  document.getElementById(inputId).addEventListener("input", syncFromInputs);
+  document.getElementById(cardId).addEventListener("input", () => syncFromCard(cardId, inputId));
+});
+
+document.getElementById("resetBtn").addEventListener("click", () => {
+  document.getElementById("inputLabel").value = defaults.label;
+  document.getElementById("inputTitle").value = defaults.title;
+  document.getElementById("inputSub").value = defaults.sub;
+  document.getElementById("inputFooter").value = defaults.footer;
+  syncFromInputs();
+});
+
+qrBox.addEventListener("click", () => qrUpload.click());
+
+qrUpload.addEventListener("change", () => {
+  const file = qrUpload.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = () => {
+    qrImage.src = reader.result;
+    qrBox.classList.add("has-qr");
+  };
+  reader.readAsDataURL(file);
+});
+
+function downloadCard(){
+  const editables = [...card.querySelectorAll("[contenteditable]")];
+  editables.forEach(el => el.setAttribute("contenteditable", "false"));
+
+  const rect = card.getBoundingClientRect();
+  const exportW = 1200;
+  const exportH = Math.round(exportW * rect.height / rect.width);
+
+  const clone = card.cloneNode(true);
+  clone.style.margin = "0";
+  clone.style.width = exportW + "px";
+  clone.style.height = exportH + "px";
+  clone.style.maxWidth = "none";
+
+  const css = [...document.styleSheets].map(sheet => {
+    try { return [...sheet.cssRules].map(rule => rule.cssText).join("\\n"); }
+    catch { return ""; }
+  }).join("\\n");
+
+  const svg = `
+    <svg xmlns="http://www.w3.org/2000/svg" width="${exportW}" height="${exportH}">
+      <foreignObject width="${exportW}" height="${exportH}">
+        <div xmlns="http://www.w3.org/1999/xhtml">
+          <style>
+            * { box-sizing: border-box; }
+            body { margin: 0; }
+            ${css}
+          </style>
+          ${clone.outerHTML}
+        </div>
+      </foreignObject>
+    </svg>
+  `;
+
+  const blob = new Blob([svg], { type: "image/svg+xml;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+  const img = new Image();
+
+  img.onload = () => {
+    const canvas = document.createElement("canvas");
+    canvas.width = exportW;
+    canvas.height = exportH;
+    const ctx = canvas.getContext("2d");
+    ctx.drawImage(img, 0, 0);
+    URL.revokeObjectURL(url);
+
+    const a = document.createElement("a");
+    a.download = "flowsync-template.png";
+    a.href = canvas.toDataURL("image/png");
+    a.click();
+
+    editables.forEach(el => el.setAttribute("contenteditable", "true"));
+  };
+
+  img.src = url;
+}
+
+document.getElementById("downloadBtn").addEventListener("click", downloadCard);
+document.getElementById("downloadTop").addEventListener("click", downloadCard);
+</script>
+</body>
+</html>
