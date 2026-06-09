@@ -143,7 +143,9 @@ function getOptions() {
   const gradientRad = gradientDeg * Math.PI / 180;
 
   const eyeOuter = syncEyes ? solidColor : ($('#eyeOuterColor')?.value || solidColor);
-  const eyeInner = syncEyes ? (useGradient ? secondColor : solidColor) : ($('#eyeInnerColor')?.value || secondColor);
+  const eyeInner = syncEyes
+    ? (useGradient ? secondColor : solidColor)
+    : ($('#eyeInnerColor')?.value || secondColor);
 
   const dotsOptions = { type: dotsType };
 
@@ -235,7 +237,7 @@ function applyUsefulDesignPreview() {
   syncEyeInputs();
 }
 
-function initQR() {
+function renderQR() {
   const target = $('#qrCanvas');
   if (!target) return;
 
@@ -249,19 +251,25 @@ function initQR() {
   qr = new QRCodeStyling(getOptions());
   qr.append(target);
   applyUsefulDesignPreview();
+  updateScanChipText();
+}
+
+function initQR() {
+  renderQR();
+}
+
+function updateScanChipText() {
+  const chip = $('.scan-chip');
+  if (!chip) return;
+
+  const textNode = [...chip.childNodes].find(n => n.nodeType === Node.TEXT_NODE && n.nodeValue.trim());
+  if (textNode) {
+    textNode.nodeValue = ` ${$('#frameText')?.value || 'Scan to preview'} `;
+  }
 }
 
 function updateQR() {
-  if (!qr) return initQR();
-
-  qr.update(getOptions());
-  applyUsefulDesignPreview();
-
-  const chip = $('.scan-chip');
-  if (chip) {
-    const textNode = [...chip.childNodes].find(n => n.nodeType === Node.TEXT_NODE && n.nodeValue.trim());
-    if (textNode) textNode.nodeValue = ` ${$('#frameText')?.value || 'Scan to preview'} `;
-  }
+  renderQR();
 }
 
 function download(ext) {
@@ -454,9 +462,6 @@ function bind() {
 
       if ($('#darkColor')) $('#darkColor').value = c1;
       if ($('#accentColor')) $('#accentColor').value = c2;
-
-      const gradientToggle = $('#gradientToggle');
-      if (gradientToggle) gradientToggle.checked = c1.toLowerCase() !== c2.toLowerCase();
 
       updateQR();
     });

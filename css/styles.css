@@ -1009,14 +1009,12 @@ html[data-theme="dark"] body {
 /* === CONSTANT PANEL FIX END === */
 
 
-/* === QRYX USEFUL QR KIT START === */
-
+/* === QRYX FINAL CLEAN QR CONTROLS START === */
 :root {
   --qryx-qr-bg-preview: #ffffff;
   --qryx-qr-radius: 10px;
 }
 
-/* useful design controls */
 .qr-useful-tools {
   display: grid !important;
   grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
@@ -1024,30 +1022,36 @@ html[data-theme="dark"] body {
   margin: 12px 0 16px !important;
 }
 
-.qr-tool {
-  min-width: 0 !important;
-  padding: 13px !important;
-  border-radius: 18px !important;
+.qr-tool,
+.qr-eye-tools label,
+.qr-toggle-tools label {
   background: rgba(255,255,255,.66) !important;
   border: 1px solid rgba(226,229,240,.86) !important;
-  box-shadow: 0 12px 28px rgba(37,42,65,.06) !important;
+  border-radius: 18px !important;
 }
 
-html[data-theme="dark"] .qr-tool {
+html[data-theme="dark"] .qr-tool,
+html[data-theme="dark"] .qr-eye-tools label,
+html[data-theme="dark"] .qr-toggle-tools label {
   background: rgba(255,255,255,.055) !important;
   border-color: rgba(255,255,255,.085) !important;
-  box-shadow: none !important;
+}
+
+.qr-tool {
+  padding: 13px !important;
+  box-shadow: 0 12px 28px rgba(37,42,65,.06) !important;
 }
 
 .qr-tool-head {
   display: flex !important;
-  justify-content: space-between !important;
   align-items: center !important;
+  justify-content: space-between !important;
   gap: 10px !important;
   margin-bottom: 10px !important;
 }
 
-.qr-tool-head span {
+.qr-tool-head span,
+.qr-eye-tools span {
   color: var(--muted) !important;
   font-size: 12px !important;
   font-weight: 850 !important;
@@ -1091,24 +1095,10 @@ html[data-theme="dark"] .qr-tool {
 .qr-eye-tools label {
   min-height: 54px !important;
   padding: 10px 12px !important;
-  border-radius: 17px !important;
-  background: rgba(255,255,255,.66) !important;
-  border: 1px solid rgba(226,229,240,.86) !important;
   display: flex !important;
   align-items: center !important;
   justify-content: space-between !important;
   gap: 12px !important;
-}
-
-html[data-theme="dark"] .qr-eye-tools label {
-  background: rgba(255,255,255,.055) !important;
-  border-color: rgba(255,255,255,.085) !important;
-}
-
-.qr-eye-tools span {
-  font-size: 12px !important;
-  font-weight: 850 !important;
-  color: var(--muted) !important;
 }
 
 .qr-eye-tools input[type="color"] {
@@ -1132,21 +1122,13 @@ html[data-theme="dark"] .qr-eye-tools label {
 .qr-toggle-tools label {
   min-height: 48px !important;
   padding: 11px 13px !important;
-  border-radius: 17px !important;
   display: flex !important;
   align-items: center !important;
   gap: 10px !important;
   font-size: 12px !important;
   font-weight: 850 !important;
   color: var(--text) !important;
-  background: rgba(255,255,255,.66) !important;
-  border: 1px solid rgba(226,229,240,.86) !important;
   cursor: pointer !important;
-}
-
-html[data-theme="dark"] .qr-toggle-tools label {
-  background: rgba(255,255,255,.055) !important;
-  border-color: rgba(255,255,255,.085) !important;
 }
 
 .qr-toggle-tools input {
@@ -1155,7 +1137,86 @@ html[data-theme="dark"] .qr-toggle-tools label {
   accent-color: var(--primary) !important;
 }
 
-/* keep QR clean, floating, and not too big */
+.eye-sync-on .qr-eye-tools {
+  opacity: .55 !important;
+}
+
+.eye-sync-on .qr-eye-tools input[type="color"] {
+  cursor: not-allowed !important;
+}
+
+.color-row {
+  display: flex !important;
+  align-items: center !important;
+  flex-wrap: wrap !important;
+  gap: 14px !important;
+}
+
+.color-preset {
+  width: 40px !important;
+  height: 40px !important;
+  flex: 0 0 40px !important;
+  border-radius: 50% !important;
+  border: 1px solid rgba(255,255,255,.12) !important;
+  background: linear-gradient(135deg, var(--a), var(--b)) !important;
+  box-shadow: 0 10px 24px rgba(0,0,0,.12) !important;
+  cursor: pointer !important;
+  transition: transform .18s ease, box-shadow .18s ease !important;
+}
+
+.color-preset:hover {
+  transform: translateY(-2px) scale(1.04) !important;
+  box-shadow: 0 14px 30px rgba(99,91,255,.22) !important;
+}
+
+.upload-box {
+  padding: 18px !important;
+  border-radius: 22px !important;
+  border: 1px dashed rgba(122,128,154,.25) !important;
+  background: linear-gradient(180deg, rgba(255,255,255,.72), rgba(247,248,255,.58)) !important;
+  box-shadow: 0 14px 34px rgba(37,42,65,.06) !important;
+}
+
+html[data-theme="dark"] .upload-box {
+  background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.03)) !important;
+  border-color: rgba(255,255,255,.10) !important;
+  box-shadow: none !important;
+}
+
+.upload-box input[type="file"] {
+  width: 100% !important;
+  font-size: 14px !important;
+  color: var(--muted) !important;
+  background: transparent !important;
+}
+
+.upload-box input[type="file"]::file-selector-button {
+  margin-right: 14px !important;
+  padding: 12px 16px !important;
+  border: 0 !important;
+  border-radius: 14px !important;
+  background: linear-gradient(135deg, var(--primary), var(--primary2)) !important;
+  color: #fff !important;
+  font-size: 14px !important;
+  font-weight: 800 !important;
+  cursor: pointer !important;
+  box-shadow: 0 12px 24px rgba(99,91,255,.22) !important;
+}
+
+.upload-box p {
+  margin: 14px 0 0 !important;
+  color: var(--muted) !important;
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+}
+
+#removeLogo.wide {
+  margin-top: 14px !important;
+  min-height: 54px !important;
+  border-radius: 18px !important;
+  font-weight: 800 !important;
+}
+
 @media (min-width: 901px) {
   .qr-canvas::before,
   .qr-canvas::after {
@@ -1189,7 +1250,7 @@ html[data-theme="dark"] .qr-toggle-tools label {
   }
 
   .qr-canvas svg > rect:first-child {
-    fill: var(--qryx-qr-bg-preview) !important;
+    fill: var(--qryx-qr-bg-preview, #ffffff) !important;
     rx: var(--qryx-qr-radius) !important;
     ry: var(--qryx-qr-radius) !important;
   }
@@ -1201,102 +1262,4 @@ html[data-theme="dark"] .qr-toggle-tools label {
     grid-template-columns: 1fr !important;
   }
 }
-
-/* === QRYX USEFUL QR KIT END === */
-/* === MORE QR GRADIENT PRESETS START === */
-.color-row {
-  display: flex !important;
-  align-items: center !important;
-  flex-wrap: wrap !important;
-  gap: 14px !important;
-}
-
-.color-preset {
-  width: 40px !important;
-  height: 40px !important;
-  flex: 0 0 40px !important;
-  border-radius: 50% !important;
-  border: 1px solid rgba(255,255,255,.12) !important;
-  background: linear-gradient(135deg, var(--a), var(--b)) !important;
-  box-shadow: 0 10px 24px rgba(0,0,0,.12) !important;
-  cursor: pointer !important;
-  transition: transform .18s ease, box-shadow .18s ease !important;
-}
-
-.color-preset:hover {
-  transform: translateY(-2px) scale(1.04) !important;
-  box-shadow: 0 14px 30px rgba(99,91,255,.22) !important;
-}
-/* === MORE QR GRADIENT PRESETS END === */
-
-
-/* === QRYX LOGO UPLOAD POLISH START === */
-
-.upload-box {
-  padding: 18px !important;
-  border-radius: 22px !important;
-  border: 1px dashed rgba(122, 128, 154, 0.25) !important;
-  background: linear-gradient(180deg, rgba(255,255,255,0.72), rgba(247,248,255,0.58)) !important;
-  box-shadow: 0 14px 34px rgba(37,42,65,0.06) !important;
-}
-
-html[data-theme="dark"] .upload-box {
-  background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.03)) !important;
-  border-color: rgba(255,255,255,0.10) !important;
-  box-shadow: none !important;
-}
-
-.upload-box input[type="file"] {
-  width: 100% !important;
-  font-size: 14px !important;
-  color: var(--muted) !important;
-  background: transparent !important;
-}
-
-.upload-box input[type="file"]::file-selector-button {
-  margin-right: 14px !important;
-  padding: 12px 16px !important;
-  border: 0 !important;
-  border-radius: 14px !important;
-  background: linear-gradient(135deg, var(--primary), var(--primary2)) !important;
-  color: #ffffff !important;
-  font-size: 14px !important;
-  font-weight: 800 !important;
-  cursor: pointer !important;
-  box-shadow: 0 12px 24px rgba(99,91,255,0.22) !important;
-}
-
-.upload-box p {
-  margin: 14px 0 0 !important;
-  color: var(--muted) !important;
-  font-size: 14px !important;
-  line-height: 1.5 !important;
-}
-
-#removeLogo.wide {
-  margin-top: 14px !important;
-  min-height: 54px !important;
-  border-radius: 18px !important;
-  font-weight: 800 !important;
-}
-
-/* === QRYX LOGO UPLOAD POLISH END === */
-/* === QRYX SOLID GRADIENT FINAL START === */
-.eye-sync-on .qr-eye-tools {
-  opacity: .55 !important;
-}
-
-.eye-sync-on .qr-eye-tools input[type="color"] {
-  cursor: not-allowed !important;
-}
-
-.qr-toggle-tools input[type="checkbox"] {
-  accent-color: var(--primary) !important;
-}
-
-.qr-canvas svg > rect:first-child {
-  fill: var(--qryx-qr-bg-preview, #ffffff) !important;
-  rx: 10px !important;
-  ry: 10px !important;
-}
-/* === QRYX SOLID GRADIENT FINAL END === */
+/* === QRYX FINAL CLEAN QR CONTROLS END === */
