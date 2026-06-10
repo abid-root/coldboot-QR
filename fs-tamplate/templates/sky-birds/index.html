@@ -1264,39 +1264,55 @@ const qrBox=document.getElementById('qrBox');const qrUpload=document.getElementB
       const target = e.target.closest(".label-pill,.title,.sub,.footer,.qr-box");
       if(!target || !card.contains(target) || target.classList.contains("fsx-editing")) return;
 
+      e.preventDefault();
+
       selectLayer(target,true);
-      drag = {el:target,sx:e.clientX,sy:e.clientY,left:0,top:0,active:false,moved:false};
-    });
+      normalize(target);
+
+      try {
+        target.setPointerCapture && target.setPointerCapture(e.pointerId);
+      } catch(err) {}
+
+      drag = {
+        el:target,
+        pointerId:e.pointerId,
+        sx:e.clientX,
+        sy:e.clientY,
+        left:parseFloat(target.style.left || 0),
+        top:parseFloat(target.style.top || 0),
+        moved:false
+      };
+    }, {passive:false});
 
     document.addEventListener("pointermove", e => {
       if(!drag) return;
+      if(e.pointerId !== undefined && drag.pointerId !== undefined && e.pointerId !== drag.pointerId) return;
+
+      e.preventDefault();
 
       const dx = e.clientX - drag.sx;
       const dy = e.clientY - drag.sy;
-      const dist = Math.sqrt(dx*dx + dy*dy);
 
-      if(!drag.active && dist > 5){
-        e.preventDefault();
-        normalize(drag.el);
-        drag.left = parseFloat(drag.el.style.left || 0);
-        drag.top = parseFloat(drag.el.style.top || 0);
-        drag.active = true;
+      if(Math.abs(dx) > 2 || Math.abs(dy) > 2){
         drag.moved = true;
       }
 
-      if(!drag.active) return;
-
-      e.preventDefault();
-      clampMove(drag.el,drag.left + dx,drag.top + dy);
+      clampMove(drag.el, drag.left + dx, drag.top + dy);
       snapElement(drag.el);
       syncControls();
-    },{passive:false});
+    }, {passive:false});
 
-    document.addEventListener("pointerup",() => {
+    function finishDrag(e){
       if(!drag) return;
+      if(e && e.pointerId !== undefined && drag.pointerId !== undefined && e.pointerId !== drag.pointerId) return;
 
       const target = drag.el;
       const moved = drag.moved;
+
+      try {
+        target.releasePointerCapture && target.releasePointerCapture(drag.pointerId);
+      } catch(err) {}
+
       drag = null;
       setTimeout(hideGuides,80);
 
@@ -1316,7 +1332,14 @@ const qrBox=document.getElementById('qrBox');const qrUpload=document.getElementB
         }
         lastTap = {id:target.id,time:now};
       }
-    },true);
+    }
+
+    document.addEventListener("pointerup", finishDrag, true);
+    document.addEventListener("pointercancel", finishDrag, true);
+    window.addEventListener("blur", function(){
+      drag = null;
+      hideGuides();
+    });
 
     card.addEventListener("dblclick", e => {
       const target = e.target.closest(".label-pill,.title,.sub,.footer");
@@ -1331,8 +1354,7 @@ const qrBox=document.getElementById('qrBox');const qrUpload=document.getElementB
     card.addEventListener("click", e => {
       if(e.target.closest(".qr-box")){
         e.preventDefault();
-        e.stopImmediatePropagation();
-        selectLayer(qrBox);
+        e.stopImmediatePropagation();selectLayer(qrBox);
       }
     },true);
 
@@ -1340,9 +1362,7 @@ const qrBox=document.getElementById('qrBox');const qrUpload=document.getElementB
     if(savedQr){
       qrImage.src = savedQr;
       qrBox.classList.add("has-qr");
-    }
-
-    selectLayer(qrBox);
+    }selectLayer(qrBox);
   });
 })();
 </script>
