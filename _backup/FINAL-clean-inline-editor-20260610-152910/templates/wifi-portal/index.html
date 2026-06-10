@@ -1,4 +1,4 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>FlowSync Template - Event Pass</title><style id="template-style">
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>FlowSync Template - Wi‑Fi Portal</title><style id="template-style">
 *{box-sizing:border-box}html,body{min-height:100%}body{margin:0;font-family:Inter,Arial,sans-serif;background:radial-gradient(circle at 50% 0,rgba(101,71,255,.10),transparent 30%),#f7f7fc;color:#0f172a;padding:26px 22px 30px}a{text-decoration:none}
 .topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;gap:12px}.back-btn,.dl-btn,.ghost-btn{min-height:46px;padding:0 18px;border-radius:999px;border:1px solid rgba(210,214,230,.9);background:rgba(255,255,255,.82);color:#64748b;font-weight:900;display:inline-flex;align-items:center;justify-content:center;cursor:pointer}.dl-btn{background:linear-gradient(135deg,#6547ff,#2f80ff);color:#fff;border:0}
 .layout{width:min(1180px,100%);margin:0 auto;display:grid;grid-template-columns:minmax(360px,560px) minmax(360px,500px);gap:42px;align-items:center}.preview-wrap{display:grid;place-items:center}.editor{background:rgba(255,255,255,.8);border:1px solid rgba(223,226,236,.95);border-radius:30px;padding:24px 24px 20px;box-shadow:0 24px 70px rgba(15,23,42,.08)}.editor h1{margin:0;font-size:34px;line-height:1;letter-spacing:-.05em}.editor p{margin:12px 0 18px;color:#64748b;font-weight:600;line-height:1.55}.field{margin-bottom:12px}.field label{display:block;margin:0 0 7px;color:#64748b;font-size:13px;font-weight:900}.field input{width:100%;height:48px;padding:0 14px;border-radius:16px;border:1px solid rgba(221,225,236,1);font-size:15px;font-weight:700;outline:none}.upload{display:grid;place-items:center;min-height:52px;border-radius:16px;background:rgba(101,71,255,.10);color:#6547ff;font-weight:900;cursor:pointer;margin-bottom:16px}.upload input{display:none}.action-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}.note{margin-top:16px;padding:14px 16px;border-radius:18px;background:rgba(244,247,255,.9);color:#64748b;font-size:14px;font-weight:700;line-height:1.45}
@@ -128,30 +128,18 @@
 .theme-pet .art.paw{position:absolute;left:44px;top:72px;width:28px;height:28px;border-radius:50%;background:rgba(234,88,12,.32);box-shadow:34px -18px 0 rgba(234,88,12,.32),68px -8px 0 rgba(234,88,12,.32),18px 30px 0 rgba(234,88,12,.32),54px 30px 0 rgba(234,88,12,.32)}
 .theme-pet .label-pill{left:42px;bottom:186px;color:#ea580c}.theme-pet .title{left:42px;bottom:120px;max-width:220px}.theme-pet .sub{left:42px;bottom:74px;max-width:220px}.theme-pet .qr-box{right:44px;bottom:58px;width:126px;height:126px;border-radius:50%}.theme-pet .footer{left:42px;bottom:32px}
 </style>
-<link rel="stylesheet" href="../editor-assets/fs-editor.css"><!-- FSX FINAL CLEAN EDITOR START -->
-<style id="fsx-final-clean-editor-style">
-html,
+<link rel="stylesheet" href="../editor-assets/fs-editor.css">
+<!-- FSX INLINE RESCUE START -->
+<style id="fsx-inline-rescue-style">
 body.fsx-template-mode{
-  height:100%!important;
   overflow:hidden!important;
-}
-
-body.fsx-template-mode{
-  padding:12px 14px!important;
-  background:radial-gradient(circle at 16% 14%,rgba(104,87,245,.10),transparent 30%),#f6f7fb!important;
-}
-
-body.fsx-template-mode .topbar{
-  height:58px!important;
-  min-height:58px!important;
-  display:flex!important;
-  align-items:center!important;
-  margin-bottom:8px!important;
+  padding:14px!important;
+  background:radial-gradient(circle at 15% 16%,rgba(104,87,245,.10),transparent 30%),#f6f7fb!important;
 }
 
 body.fsx-template-mode .layout{
   width:min(1600px,100%)!important;
-  height:calc(100vh - 78px)!important;
+  height:calc(100vh - 72px)!important;
   display:grid!important;
   grid-template-columns:400px minmax(0,1fr)!important;
   gap:18px!important;
@@ -179,49 +167,17 @@ body.fsx-template-mode .preview-wrap{
   display:flex!important;
   align-items:center!important;
   justify-content:center!important;
-  padding:74px 28px 22px!important;
+  padding:86px 28px 28px!important;
   border-radius:30px!important;
   border:1px solid #e2e7f2!important;
-  background:radial-gradient(circle at 50% 46%,rgba(104,87,245,.09),transparent 36%),linear-gradient(180deg,#fff,rgba(255,255,255,.58))!important;
+  background:radial-gradient(circle at 50% 46%,rgba(104,87,245,.09),transparent 36%),linear-gradient(180deg,#fff,rgba(255,255,255,.55))!important;
 }
 
-body.fsx-template-mode .editor > *:not(.fsx-rail-final):not(.fsx-side-final){
+body.fsx-template-mode .editor > *:not(.fsx-rail-inline):not(.fsx-side-inline){
   display:none!important;
 }
 
-body.fsx-template-mode .fsx-main-download{
-  position:fixed!important;
-  top:18px!important;
-  right:24px!important;
-  height:52px!important;
-  min-width:156px!important;
-  border-radius:24px!important;
-  z-index:999998!important;
-  display:flex!important;
-  align-items:center!important;
-  justify-content:center!important;
-}
-
-body.fsx-template-mode .fsx-theme-final{
-  position:fixed!important;
-  top:18px!important;
-  right:194px!important;
-  width:52px!important;
-  height:52px!important;
-  border-radius:50%!important;
-  border:0!important;
-  background:#fff!important;
-  color:#6857f5!important;
-  display:flex!important;
-  align-items:center!important;
-  justify-content:center!important;
-  line-height:1!important;
-  z-index:999999!important;
-  box-shadow:0 14px 34px rgba(20,27,45,.14)!important;
-  cursor:pointer!important;
-}
-
-.fsx-rail-final{
+.fsx-rail-inline{
   height:100%!important;
   padding:14px 10px!important;
   display:flex!important;
@@ -231,7 +187,7 @@ body.fsx-template-mode .fsx-theme-final{
   border-right:1px solid #e2e7f2!important;
 }
 
-.fsx-brand-final{
+.fsx-brand-inline{
   width:48px!important;
   height:48px!important;
   display:flex!important;
@@ -244,9 +200,9 @@ body.fsx-template-mode .fsx-theme-final{
   overflow:hidden!important;
 }
 
-.fsx-brand-final img{
-  width:58px!important;
-  height:58px!important;
+.fsx-brand-inline img{
+  width:56px!important;
+  height:56px!important;
   object-fit:cover!important;
   display:block!important;
   background:transparent!important;
@@ -254,12 +210,12 @@ body.fsx-template-mode .fsx-theme-final{
   box-shadow:none!important;
   filter:none!important;
   border-radius:14px!important;
-  transform:scale(1.22)!important;
-  clip-path:inset(8px round 12px)!important;
+  transform:scale(1.16)!important;
+  clip-path:inset(7px round 12px)!important;
 }
 
-.fsx-rail-final a,
-.fsx-rail-final button{
+.fsx-rail-inline a,
+.fsx-rail-inline button{
   width:48px!important;
   height:48px!important;
   border:0!important;
@@ -277,17 +233,17 @@ body.fsx-template-mode .fsx-theme-final{
   font-weight:900!important;
 }
 
-.fsx-rail-final a:hover,
-.fsx-rail-final button:hover{
+.fsx-rail-inline a:hover,
+.fsx-rail-inline button:hover{
   background:#f2f0ff!important;
   color:#6857f5!important;
 }
 
-.fsx-rail-final .ico{font-size:17px!important;line-height:1!important}
-.fsx-rail-final .txt{font-size:9px!important}
+.fsx-rail-inline .ico{font-size:17px!important;line-height:1!important}
+.fsx-rail-inline .txt{font-size:9px!important}
 .fsx-rail-spacer{flex:1!important}
 
-.fsx-side-final{
+.fsx-side-inline{
   min-width:0!important;
   height:100%!important;
   display:flex!important;
@@ -297,7 +253,7 @@ body.fsx-template-mode .fsx-theme-final{
 }
 
 .fsx-side-head{
-  padding:17px 16px 14px!important;
+  padding:18px 16px 15px!important;
   border-bottom:1px solid #e2e7f2!important;
 }
 
@@ -327,7 +283,7 @@ body.fsx-template-mode .fsx-theme-final{
 
 .fsx-tabs button,
 .fsx-card button,
-.fsx-workbar-final button{
+.fsx-workbar-inline button{
   border:0!important;
   border-radius:15px!important;
   background:#f2f0ff!important;
@@ -344,7 +300,8 @@ body.fsx-template-mode .fsx-theme-final{
 
 .fsx-tabs button.active,
 .fsx-card button.primary,
-.fsx-workbar-final button.primary{
+.fsx-workbar-inline button.primary,
+.fsx-style-btn.active{
   background:linear-gradient(135deg,#6857f5,#2f7cff)!important;
   color:#fff!important;
   box-shadow:0 12px 26px rgba(73,94,255,.22)!important;
@@ -353,12 +310,12 @@ body.fsx-template-mode .fsx-theme-final{
 .fsx-body{
   flex:1!important;
   overflow-y:auto!important;
-  padding:14px!important;
+  padding:15px!important;
 }
 
 .fsx-card{
-  padding:14px!important;
-  margin-bottom:12px!important;
+  padding:15px!important;
+  margin-bottom:13px!important;
   border-radius:20px!important;
   background:#fff!important;
   border:1px solid #e2e7f2!important;
@@ -377,8 +334,9 @@ body.fsx-template-mode .fsx-theme-final{
 
 .fsx-grid2{display:grid!important;grid-template-columns:1fr 1fr!important;gap:11px!important}
 .fsx-grid3{display:grid!important;grid-template-columns:repeat(3,1fr)!important;gap:9px!important}
+.fsx-grid4{display:grid!important;grid-template-columns:repeat(4,1fr)!important;gap:9px!important}
 
-.fsx-side-final label{
+.fsx-side-inline label{
   display:block!important;
   margin-bottom:10px!important;
   color:#6f7788!important;
@@ -386,9 +344,9 @@ body.fsx-template-mode .fsx-theme-final{
   font-weight:950!important;
 }
 
-.fsx-side-final input,
-.fsx-side-final select,
-.fsx-side-final textarea{
+.fsx-side-inline input,
+.fsx-side-inline select,
+.fsx-side-inline textarea{
   width:100%!important;
   margin-top:7px!important;
   border:1px solid #e2e7f2!important;
@@ -399,31 +357,31 @@ body.fsx-template-mode .fsx-theme-final{
   font-family:inherit!important;
 }
 
-.fsx-side-final input,
-.fsx-side-final select{height:41px!important;padding:0 11px!important}
-.fsx-side-final textarea{height:86px!important;resize:none!important;padding:11px!important;line-height:1.4!important}
-.fsx-side-final input[type="range"]{height:22px!important;padding:0!important;accent-color:#6857f5!important}
-.fsx-side-final input[type="color"]{padding:4px!important}
+.fsx-side-inline input,
+.fsx-side-inline select{height:41px!important;padding:0 11px!important}
+.fsx-side-inline textarea{height:86px!important;resize:none!important;padding:11px!important;line-height:1.4!important}
+.fsx-side-inline input[type="range"]{height:22px!important;padding:0!important;accent-color:#6857f5!important}
+.fsx-side-inline input[type="color"]{padding:4px!important}
 
 .fsx-card button{
   min-height:41px!important;
   font-size:12px!important;
 }
 
-.fsx-workbar-final{
+.fsx-workbar-inline{
   position:absolute!important;
-  top:14px!important;
+  top:16px!important;
   left:18px!important;
   right:18px!important;
   z-index:30000!important;
-  min-height:58px!important;
+  min-height:56px!important;
   display:flex!important;
   align-items:center!important;
   justify-content:flex-start!important;
   gap:8px!important;
-  padding:8px 12px!important;
+  padding:8px 10px!important;
   border-radius:24px!important;
-  background:rgba(255,255,255,.92)!important;
+  background:rgba(255,255,255,.90)!important;
   border:1px solid rgba(226,231,242,.95)!important;
   box-shadow:0 18px 48px rgba(20,27,45,.10)!important;
   backdrop-filter:blur(18px)!important;
@@ -431,12 +389,12 @@ body.fsx-template-mode .fsx-theme-final{
 }
 
 .fsx-layer-pill,
-.fsx-workbar-final button,
-.fsx-workbar-final select,
+.fsx-workbar-inline button,
+.fsx-workbar-inline select,
 .fsx-top-control{
-  height:40px!important;
-  min-height:40px!important;
-  border-radius:15px!important;
+  height:38px!important;
+  min-height:38px!important;
+  border-radius:14px!important;
   white-space:nowrap!important;
   flex:0 0 auto!important;
 }
@@ -454,12 +412,12 @@ body.fsx-template-mode .fsx-theme-final{
   font-weight:950!important;
 }
 
-.fsx-workbar-final button{
+.fsx-workbar-inline button{
   padding:0 11px!important;
   font-size:11px!important;
 }
 
-.fsx-workbar-final select{
+.fsx-workbar-inline select{
   border:1px solid #e2e7f2!important;
   background:#fff!important;
   color:#10131f!important;
@@ -482,6 +440,24 @@ body.fsx-template-mode .fsx-theme-final{
 
 .fsx-top-control input[type="range"]{width:66px!important;accent-color:#6857f5!important}
 .fsx-top-control input[type="color"]{width:30px!important;height:26px!important;padding:3px!important;border-radius:10px!important}
+
+.fsx-floating-theme{
+  position:fixed!important;
+  top:24px!important;
+  right:176px!important;
+  z-index:999999!important;
+  width:44px!important;
+  height:44px!important;
+  border:0!important;
+  border-radius:50%!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  background:#fff!important;
+  color:#6857f5!important;
+  box-shadow:0 14px 34px rgba(20,27,45,.14)!important;
+  cursor:pointer!important;
+}
 
 .label-pill,
 .title,
@@ -526,11 +502,11 @@ body.fsx-dark{
 }
 
 body.fsx-dark .editor,
-body.fsx-dark .fsx-rail-final,
-body.fsx-dark .fsx-side-final,
+body.fsx-dark .fsx-rail-inline,
+body.fsx-dark .fsx-side-inline,
 body.fsx-dark .fsx-side-head,
 body.fsx-dark .fsx-card,
-body.fsx-dark .fsx-workbar-final{
+body.fsx-dark .fsx-workbar-inline{
   background:#101624!important;
   border-color:rgba(135,145,176,.24)!important;
 }
@@ -547,7 +523,7 @@ body.fsx-dark .fsx-layer-pill{
 
 body.fsx-dark .fsx-side-head small,
 body.fsx-dark .fsx-card-title span,
-body.fsx-dark .fsx-side-final label,
+body.fsx-dark .fsx-side-inline label,
 body.fsx-dark .fsx-limit-note{
   color:#9aa4b9!important;
 }
@@ -564,38 +540,41 @@ body.fsx-dark .fsx-top-control{
 
 body.fsx-dark .fsx-tabs button,
 body.fsx-dark .fsx-card button,
-body.fsx-dark .fsx-workbar-final button{
+body.fsx-dark .fsx-workbar-inline button{
   background:rgba(130,108,255,.16)!important;
   color:#b8adff!important;
 }
 
 body.fsx-dark .fsx-tabs button.active,
 body.fsx-dark .fsx-card button.primary,
-body.fsx-dark .fsx-workbar-final button.primary{
+body.fsx-dark .fsx-workbar-inline button.primary,
+body.fsx-dark .fsx-style-btn.active{
   background:linear-gradient(135deg,#6857f5,#2f7cff)!important;
   color:#fff!important;
 }
 
-body.fsx-dark .fsx-theme-final{
+body.fsx-dark .fsx-floating-theme{
   background:#151b2d!important;
   color:#b8adff!important;
 }
 </style>
-<!-- FSX FINAL CLEAN EDITOR END -->
-</head><body data-slug="event-pass"><div class="topbar"><a class="back-btn" href="../index.html">← All templates</a><button class="dl-btn" id="downloadTop" type="button">Download PNG</button></div><main class="layout"><section class="preview-wrap"><article class="card size-landscape theme-pass" id="card">
-<span class="shape s1"></span><span class="shape s2"></span><span class="art ticketline"></span>
-<span class="label-pill" id="cardLabel" contenteditable="true">TICKET</span>
-<div class="title" id="cardTitle" contenteditable="true">Event Pass</div>
-<div class="sub" id="cardSub" contenteditable="true">Horizontal pass with a dedicated scan strip.</div>
+<!-- FSX INLINE RESCUE END -->
+</head><body data-slug="wifi-portal"><div class="topbar"><a class="back-btn" href="../index.html">← All templates</a><button class="dl-btn" id="downloadTop" type="button">Download PNG</button></div><main class="layout"><section class="preview-wrap"><article class="card size-square theme-wifi" id="card">
+<span class="shape s1"></span><span class="art wifi"></span>
+<span class="label-pill" id="cardLabel" contenteditable="true">WI-FI</span>
+<div class="title" id="cardTitle" contenteditable="true">Wi‑Fi Portal</div>
+<div class="sub" id="cardSub" contenteditable="true">Guest Wi‑Fi card for cafés, lobbies, homes, and rooms.</div>
 <div class="qr-box" id="qrBox"><img id="qrImage" alt="QR"><span>click to<br>upload QR</span></div>
-<div class="footer" id="cardFooter" contenteditable="true">FlowSync Pass</div>
-</article></section><aside class="editor"><h1>Event Pass</h1><p>Upload your QR, edit the text, then download the final card as PNG. You can also click directly on the card text to edit it.</p><label class="upload">Upload QR PNG/JPG/WEBP<input id="qrUpload" type="file" accept="image/png,image/jpeg,image/webp"></label><div class="field"><label>Top label</label><input id="inputLabel" value="TICKET"></div><div class="field"><label>Title</label><input id="inputTitle" value="Event Pass"></div><div class="field"><label>Subtitle</label><input id="inputSub" value="Horizontal pass with a dedicated scan strip."></div><div class="field"><label>Footer</label><input id="inputFooter" value="FlowSync Pass"></div><div class="action-row"><button class="ghost-btn" id="resetBtn" type="button">Reset text</button><button class="dl-btn" id="downloadBtn" type="button">Download PNG</button></div><div class="note">Suggested flow: create your QR on the main page → download the QR image → open a template → upload QR → tweak text → download the finished card.</div></aside></main><script>(function(){
+<div class="footer" id="cardFooter" contenteditable="true">FlowSync Wi‑Fi</div>
+</article></section><aside class="editor"><h1>Wi‑Fi Portal</h1><p>Upload your QR, edit the text, then download the final card as PNG. You can also click directly on the card text to edit it.</p><label class="upload">Upload QR PNG/JPG/WEBP<input id="qrUpload" type="file" accept="image/png,image/jpeg,image/webp"></label><div class="field"><label>Top label</label><input id="inputLabel" value="WI-FI"></div><div class="field"><label>Title</label><input id="inputTitle" value="Wi‑Fi Portal"></div><div class="field"><label>Subtitle</label><input id="inputSub" value="Guest Wi‑Fi card for cafés, lobbies, homes, and rooms."></div><div class="field"><label>Footer</label><input id="inputFooter" value="FlowSync Wi‑Fi"></div><div class="action-row"><button class="ghost-btn" id="resetBtn" type="button">Reset text</button><button class="dl-btn" id="downloadBtn" type="button">Download PNG</button></div><div class="note">Suggested flow: create your QR on the main page → download the QR image → open a template → upload QR → tweak text → download the finished card.</div></aside></main><script>(function(){
 const qrBox=document.getElementById('qrBox');const qrUpload=document.getElementById('qrUpload');const qrImage=document.getElementById('qrImage');const pairs=[['inputLabel','cardLabel'],['inputTitle','cardTitle'],['inputSub','cardSub'],['inputFooter','cardFooter']];const defaults=Object.fromEntries(pairs.map(([i])=>[i,document.getElementById(i).value]));function syncInputsToCard(){pairs.forEach(([i,c])=>document.getElementById(c).textContent=document.getElementById(i).value)}function syncCardToInputs(id,input){document.getElementById(input).value=document.getElementById(id).textContent.trim()}pairs.forEach(([input,cardId])=>{document.getElementById(input).addEventListener('input',syncInputsToCard);document.getElementById(cardId).addEventListener('input',()=>syncCardToInputs(cardId,input));});document.getElementById('resetBtn').addEventListener('click',()=>{Object.entries(defaults).forEach(([id,v])=>document.getElementById(id).value=v);syncInputsToCard();});qrBox.addEventListener('click',()=>qrUpload.click());qrUpload.addEventListener('change',()=>{const file=qrUpload.files&&qrUpload.files[0];if(!file)return;const reader=new FileReader();reader.onload=()=>{qrImage.src=reader.result;qrBox.classList.add('has-qr');};reader.readAsDataURL(file);});function downloadCard(){const card=document.getElementById('card');const css=document.getElementById('template-style').textContent;const clone=card.cloneNode(true);clone.querySelectorAll('[contenteditable]').forEach(el=>el.removeAttribute('contenteditable'));const rect=card.getBoundingClientRect();const width=1400;const height=Math.round(width*rect.height/rect.width);clone.style.width=width+'px';clone.style.height=height+'px';clone.style.maxWidth='none';const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}"><foreignObject width="100%" height="100%"><div xmlns="http://www.w3.org/1999/xhtml"><style>${css}
-</style>${clone.outerHTML}</div></foreignObject></svg>`;const blob=new Blob([svg],{type:'image/svg+xml;charset=utf-8'});const url=URL.createObjectURL(blob);const img=new Image();img.onload=function(){const canvas=document.createElement('canvas');canvas.width=width;canvas.height=height;const ctx=canvas.getContext('2d');ctx.drawImage(img,0,0);URL.revokeObjectURL(url);const a=document.createElement('a');a.download='flowsync-'+(document.body.dataset.slug||'template')+'.png';a.href=canvas.toDataURL('image/png');a.click();};img.src=url;}document.getElementById('downloadBtn').addEventListener('click',downloadCard);document.getElementById('downloadTop').addEventListener('click',downloadCard);})();</script><!-- FSX FINAL CLEAN EDITOR START -->
-<script id="fsx-final-clean-editor-script">
+</style>${clone.outerHTML}</div></foreignObject></svg>`;const blob=new Blob([svg],{type:'image/svg+xml;charset=utf-8'});const url=URL.createObjectURL(blob);const img=new Image();img.onload=function(){const canvas=document.createElement('canvas');canvas.width=width;canvas.height=height;const ctx=canvas.getContext('2d');ctx.drawImage(img,0,0);URL.revokeObjectURL(url);const a=document.createElement('a');a.download='flowsync-'+(document.body.dataset.slug||'template')+'.png';a.href=canvas.toDataURL('image/png');a.click();};img.src=url;}document.getElementById('downloadBtn').addEventListener('click',downloadCard);document.getElementById('downloadTop').addEventListener('click',downloadCard);})();</script>
+
+<!-- FSX INLINE RESCUE START -->
+<script id="fsx-inline-rescue-script">
 (function(){
-  if(window.__fsxFinalCleanEditor) return;
-  window.__fsxFinalCleanEditor = true;
+  if(window.__fsxInlineRescue) return;
+  window.__fsxInlineRescue = true;
 
   const LIMITS = {
     cardLabel:{name:"Label",words:3,chars:18},
@@ -604,7 +583,7 @@ const qrBox=document.getElementById('qrBox');const qrUpload=document.getElementB
     cardFooter:{name:"Footer",words:5,chars:32}
   };
 
-  const themeKey = "flowsync_template_theme_final_clean";
+  const themeKey = "flowsync_template_theme_inline";
   const logoLight = "../../../assets/common/whiteone.webp";
   const logoDark = "../../../assets/common/blackone.webp";
 
@@ -624,12 +603,7 @@ const qrBox=document.getElementById('qrBox');const qrUpload=document.getElementB
 
     document.body.classList.add("fsx-template-mode");
 
-    document.querySelectorAll(".fsx-rail-final,.fsx-side-final,.fsx-workbar-final,.fsx-theme-final,.fsx-guide").forEach(el => el.remove());
-
-    document.querySelectorAll("button,a").forEach(el => {
-      const txt = (el.textContent || "").trim().toLowerCase();
-      if(txt.includes("download png")) el.classList.add("fsx-main-download");
-    });
+    document.querySelectorAll(".fsx-rail-inline,.fsx-side-inline,.fsx-workbar-inline,.fsx-floating-theme,.fsx-guide").forEach(el => el.remove());
 
     const hiddenUpload = document.createElement("input");
     hiddenUpload.type = "file";
@@ -651,9 +625,9 @@ const qrBox=document.getElementById('qrBox');const qrUpload=document.getElementB
     let lastTap = {id:"",time:0};
 
     const rail = document.createElement("div");
-    rail.className = "fsx-rail-final";
+    rail.className = "fsx-rail-inline";
     rail.innerHTML = `
-      <div class="fsx-brand-final"><img id="fsxBrandLogo" src="${logoLight}" alt="FlowSync"></div>
+      <div class="fsx-brand-inline"><img id="fsxBrandLogo" src="${logoLight}" alt="FlowSync"></div>
       <a href="../../../index.html"><span class="ico">⌂</span><span class="txt">Home</span></a>
       <a href="../index.html"><span class="ico">▦</span><span class="txt">Temps</span></a>
       <a href="../../../index.html#create"><span class="ico">＋</span><span class="txt">QR</span></a>
@@ -663,16 +637,16 @@ const qrBox=document.getElementById('qrBox');const qrUpload=document.getElementB
     editor.appendChild(rail);
 
     const side = document.createElement("div");
-    side.className = "fsx-side-final";
+    side.className = "fsx-side-inline";
     editor.appendChild(side);
 
     const workbar = document.createElement("div");
-    workbar.className = "fsx-workbar-final";
+    workbar.className = "fsx-workbar-inline";
     preview.appendChild(workbar);
 
     const themeBtn = document.createElement("button");
     themeBtn.type = "button";
-    themeBtn.className = "fsx-theme-final";
+    themeBtn.className = "fsx-floating-theme";
     document.body.appendChild(themeBtn);
 
     const vGuide = document.createElement("div");
@@ -861,44 +835,37 @@ const qrBox=document.getElementById('qrBox');const qrUpload=document.getElementB
       }
     }
 
-    function selectLayer(layer, keepPanel){
+    function selectLayer(layer, skipPanel){
       selected = typeof layer === "string" ? $(layer) : layer;
       if(!selected) return;
 
       layers.forEach(([id]) => $(id)?.classList.remove("fsx-selected"));
       selected.classList.add("fsx-selected");
 
-      renderShell();
-
-      if(!keepPanel) renderPanel();
-
+      renderSide(skipPanel);
       renderToolbar();
       syncControls();
     }
 
-    function renderShell(){
+    function renderSide(skipBody){
       const selectedId = selected.id;
 
-      if(!side.querySelector(".fsx-side-head")){
-        side.innerHTML = `
-          <div class="fsx-side-head">
-            <b>Studio</b>
-            <small>Pick an element. Text gets text tools. QR gets QR tools.</small>
-            <div class="fsx-tabs">
-              ${layers.map(([id,name]) => `<button type="button" data-layer="${id}">${name}</button>`).join("")}
-            </div>
+      side.innerHTML = `
+        <div class="fsx-side-head">
+          <b>Studio</b>
+          <small>Pick an element. Text gets text tools. QR gets QR tools.</small>
+          <div class="fsx-tabs">
+            ${layers.map(([id,name]) => `<button type="button" data-layer="${id}" class="${id===selectedId ? "active":""}">${name}</button>`).join("")}
           </div>
-          <div class="fsx-body" id="fsxBody"></div>
-        `;
-
-        side.querySelectorAll("[data-layer]").forEach(btn => {
-          btn.addEventListener("click", () => selectLayer(btn.dataset.layer));
-        });
-      }
+        </div>
+        <div class="fsx-body" id="fsxBody"></div>
+      `;
 
       side.querySelectorAll("[data-layer]").forEach(btn => {
-        btn.classList.toggle("active", btn.dataset.layer === selectedId);
+        btn.addEventListener("click", () => selectLayer(btn.dataset.layer));
       });
+
+      if(!skipBody) renderPanel();
     }
 
     function renderToolbar(){
@@ -906,7 +873,7 @@ const qrBox=document.getElementById('qrBox');const qrUpload=document.getElementB
 
       if(isQr){
         workbar.innerHTML = `
-          <span class="fsx-layer-pill">QR</span>
+          <span class="fsx-layer-pill">QR tools</span>
           <label class="fsx-top-control">Box <input id="topQrSize" type="range" min="60" max="250"></label>
           <label class="fsx-top-control">Corner <input id="topQrRadius" type="range" min="0" max="90"></label>
           <label class="fsx-top-control">Scale <input id="topQrScale" type="range" min="45" max="95"></label>
@@ -929,6 +896,8 @@ const qrBox=document.getElementById('qrBox');const qrUpload=document.getElementB
         $("topUpload").addEventListener("click", () => hiddenUpload.click());
       } else {
         const cs = getComputedStyle(selected);
+        const weightRaw = parseInt(cs.fontWeight,10) || 700;
+        const weight = weightRaw >= 850 ? "900" : weightRaw >= 650 ? "700" : "500";
 
         workbar.innerHTML = `
           <span class="fsx-layer-pill">${layerName(selected.id)}</span>
@@ -939,12 +908,13 @@ const qrBox=document.getElementById('qrBox');const qrUpload=document.getElementB
             <option value="Trebuchet MS">Trebuchet</option>
             <option value="Impact">Impact</option>
           </select>
-          <select id="topStyle">
-            <option value="regular">Regular</option>
-            <option value="bold">Bold</option>
-            <option value="italic">Italic</option>
-            <option value="underline">Underline</option>
+          <select id="topWeight">
+            <option value="500">Normal</option>
+            <option value="700">Bold</option>
+            <option value="900">Black</option>
           </select>
+          <button type="button" id="topItalic" class="fsx-style-btn">I</button>
+          <button type="button" id="topUnderline" class="fsx-style-btn">U</button>
           <label class="fsx-top-control">Size <input id="topSize" type="range" min="8" max="92"></label>
           <label class="fsx-top-control">Color <input id="topColor" type="color"></label>
           <button type="button" id="topLeft">Left</button>
@@ -953,17 +923,21 @@ const qrBox=document.getElementById('qrBox');const qrUpload=document.getElementB
         `;
 
         $("topFont").value = cleanFont(cs.fontFamily);
-        $("topStyle").value = getStyleValue();
+        $("topWeight").value = weight;
         $("topSize").value = parseInt(cs.fontSize,10) || 20;
         $("topColor").value = rgbToHex(cs.color);
 
         $("topFont").addEventListener("change", e => setText("font-family",e.target.value));
-        $("topStyle").addEventListener("change", e => applyStyleChoice(e.target.value));
+        $("topWeight").addEventListener("change", e => setText("font-weight",e.target.value));
+        $("topItalic").addEventListener("click", toggleItalic);
+        $("topUnderline").addEventListener("click", toggleUnderline);
         $("topSize").addEventListener("input", e => setText("font-size",e.target.value + "px"));
         $("topColor").addEventListener("input", e => setText("color",e.target.value));
         $("topLeft").addEventListener("click", () => setText("text-align","left"));
         $("topCenter").addEventListener("click", centerX);
         $("topRight").addEventListener("click", () => setText("text-align","right"));
+
+        syncStyleButtons();
       }
     }
 
@@ -1004,7 +978,11 @@ const qrBox=document.getElementById('qrBox');const qrUpload=document.getElementB
             <label>Content<textarea id="sideText"></textarea></label>
             <div class="fsx-grid2">
               <label>Font<select id="sideFont"><option value="Inter">Inter</option><option value="Arial">Arial</option><option value="Georgia">Georgia</option><option value="Trebuchet MS">Trebuchet</option><option value="Impact">Impact</option></select></label>
-              <label>Style<select id="sideStyle"><option value="regular">Regular</option><option value="bold">Bold</option><option value="italic">Italic</option><option value="underline">Underline</option></select></label>
+              <label>Weight<select id="sideWeight"><option value="500">Normal</option><option value="700">Bold</option><option value="900">Black</option></select></label>
+            </div>
+            <div class="fsx-grid2">
+              <button id="sideItalic">Italic</button>
+              <button id="sideUnderline">Underline</button>
             </div>
             <div class="fsx-grid2">
               <label>Size <input id="sideSize" type="range" min="8" max="92"></label>
@@ -1026,9 +1004,10 @@ const qrBox=document.getElementById('qrBox');const qrUpload=document.getElementB
           selected.textContent = limited;
           addLimitNote(e.target,selected.id);
         });
-
         $("sideFont").addEventListener("change", e => setText("font-family",e.target.value));
-        $("sideStyle").addEventListener("change", e => applyStyleChoice(e.target.value));
+        $("sideWeight").addEventListener("change", e => setText("font-weight",e.target.value));
+        $("sideItalic").addEventListener("click", toggleItalic);
+        $("sideUnderline").addEventListener("click", toggleUnderline);
         $("sideSize").addEventListener("input", e => setText("font-size",e.target.value + "px"));
         $("sideColor").addEventListener("input", e => setText("color",e.target.value));
         $("sideLeft").addEventListener("click", () => setText("text-align","left"));
@@ -1040,7 +1019,6 @@ const qrBox=document.getElementById('qrBox');const qrUpload=document.getElementB
         setPercent(selected,Number($("posX").value),Number($("posY").value));
         syncControls();
       });
-
       $("posY").addEventListener("input", () => {
         setPercent(selected,Number($("posX").value),Number($("posY").value));
         syncControls();
@@ -1093,6 +1071,8 @@ const qrBox=document.getElementById('qrBox');const qrUpload=document.getElementB
       limitElement(selected);
 
       const cs = getComputedStyle(selected);
+      const weightRaw = parseInt(cs.fontWeight,10) || 700;
+      const weight = weightRaw >= 850 ? "900" : weightRaw >= 650 ? "700" : "500";
 
       if($("sideText")){
         $("sideText").value = selected.textContent.trim();
@@ -1100,9 +1080,11 @@ const qrBox=document.getElementById('qrBox');const qrUpload=document.getElementB
       }
 
       ["topFont","sideFont"].forEach(id => { if($(id)) $(id).value = cleanFont(cs.fontFamily); });
-      ["topStyle","sideStyle"].forEach(id => { if($(id)) $(id).value = getStyleValue(); });
+      ["topWeight","sideWeight"].forEach(id => { if($(id)) $(id).value = weight; });
       ["topSize","sideSize"].forEach(id => { if($(id)) $(id).value = parseInt(cs.fontSize,10) || 20; });
       ["topColor","sideColor"].forEach(id => { if($(id)) $(id).value = rgbToHex(cs.color); });
+
+      syncStyleButtons();
     }
 
     function setText(prop,value){
@@ -1111,41 +1093,28 @@ const qrBox=document.getElementById('qrBox');const qrUpload=document.getElementB
       syncControls();
     }
 
-    function getStyleValue(){
-      if(!isText(selected)) return "regular";
-      const cs = getComputedStyle(selected);
-      const underline = String(cs.textDecorationLine || "").includes("underline");
-      const italic = cs.fontStyle === "italic";
-      const weight = parseInt(cs.fontWeight,10) || 500;
-
-      if(underline) return "underline";
-      if(italic) return "italic";
-      if(weight >= 650) return "bold";
-      return "regular";
+    function toggleItalic(){
+      if(!isText(selected)) return;
+      const next = getComputedStyle(selected).fontStyle === "italic" ? "normal" : "italic";
+      selected.style.setProperty("font-style",next,"important");
+      syncControls();
     }
 
-    function applyStyleChoice(value){
+    function toggleUnderline(){
       if(!isText(selected)) return;
-
-      if(value === "regular"){
-        selected.style.setProperty("font-weight","500","important");
-        selected.style.setProperty("font-style","normal","important");
-        selected.style.setProperty("text-decoration","none","important");
-      }
-
-      if(value === "bold"){
-        selected.style.setProperty("font-weight","700","important");
-      }
-
-      if(value === "italic"){
-        selected.style.setProperty("font-style","italic","important");
-      }
-
-      if(value === "underline"){
-        selected.style.setProperty("text-decoration","underline","important");
-      }
-
+      const has = String(getComputedStyle(selected).textDecorationLine || "").includes("underline");
+      selected.style.setProperty("text-decoration",has ? "none" : "underline","important");
       syncControls();
+    }
+
+    function syncStyleButtons(){
+      if(!isText(selected)) return;
+      const cs = getComputedStyle(selected);
+      const italic = cs.fontStyle === "italic";
+      const underline = String(cs.textDecorationLine || "").includes("underline");
+
+      ["topItalic","sideItalic"].forEach(id => { if($(id)) $(id).classList.toggle("active",italic); });
+      ["topUnderline","sideUnderline"].forEach(id => { if($(id)) $(id).classList.toggle("active",underline); });
     }
 
     function centerX(){
@@ -1196,8 +1165,7 @@ const qrBox=document.getElementById('qrBox');const qrUpload=document.getElementB
 
     function download(){
       layers.forEach(([id]) => $(id)?.classList.remove("fsx-selected"));
-      const btn = document.querySelector(".fsx-main-download") || $("downloadTop") || $("downloadBtn");
-      if(btn) btn.click();
+      $("downloadTop")?.click();
     }
 
     $("fsxRailDownload").addEventListener("click",download);
@@ -1212,12 +1180,6 @@ const qrBox=document.getElementById('qrBox');const qrUpload=document.getElementB
       el.addEventListener("input",() => {
         limitElement(el);
         syncControls();
-      });
-
-      el.addEventListener("blur",() => {
-        el.setAttribute("contenteditable","false");
-        el.classList.remove("fsx-editing");
-        limitElement(el);
       });
     });
 
@@ -1297,6 +1259,16 @@ const qrBox=document.getElementById('qrBox');const qrUpload=document.getElementB
       }
     },true);
 
+    textIds.forEach(id => {
+      const el = $(id);
+      if(!el) return;
+      el.addEventListener("blur",() => {
+        el.setAttribute("contenteditable","false");
+        el.classList.remove("fsx-editing");
+        limitElement(el);
+      });
+    });
+
     const savedQr = localStorage.getItem("flowsync_current_qr");
     if(savedQr){
       qrImage.src = savedQr;
@@ -1307,5 +1279,5 @@ const qrBox=document.getElementById('qrBox');const qrUpload=document.getElementB
   });
 })();
 </script>
-<!-- FSX FINAL CLEAN EDITOR END -->
+<!-- FSX INLINE RESCUE END -->
 </body></html>
