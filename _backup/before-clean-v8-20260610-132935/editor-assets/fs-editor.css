@@ -1,0 +1,801 @@
+/* FlowSync Contextual Workbench v5 */
+:root{
+  --fsx-bg:#f6f7fb;
+  --fsx-surface:#ffffff;
+  --fsx-soft:#f3f1ff;
+  --fsx-soft2:#ebe7ff;
+  --fsx-line:#e3e8f3;
+  --fsx-text:#10131f;
+  --fsx-muted:#727b8d;
+  --fsx-primary:#6857f5;
+  --fsx-blue:#2f7cff;
+  --fsx-grad:linear-gradient(135deg,#6857f5,#2f7cff);
+  --fsx-shadow:0 24px 70px rgba(18,25,42,.10);
+}
+
+body.fsx-template-editor{
+  overflow:hidden!important;
+  padding:14px!important;
+  background:
+    radial-gradient(circle at 15% 16%,rgba(104,87,245,.10),transparent 30%),
+    radial-gradient(circle at 85% 82%,rgba(47,124,255,.09),transparent 34%),
+    var(--fsx-bg)!important;
+  color:var(--fsx-text)!important;
+}
+
+body.fsx-template-editor .topbar{
+  height:44px!important;
+  margin-bottom:12px!important;
+}
+
+body.fsx-template-editor .layout{
+  width:min(1600px,100%)!important;
+  height:calc(100vh - 70px)!important;
+  display:grid!important;
+  grid-template-columns:400px minmax(0,1fr)!important;
+  gap:18px!important;
+  align-items:stretch!important;
+}
+
+body.fsx-template-editor .editor{
+  order:1!important;
+  height:100%!important;
+  overflow:hidden!important;
+  padding:0!important;
+  display:grid!important;
+  grid-template-columns:72px 1fr!important;
+  border-radius:30px!important;
+  background:var(--fsx-surface)!important;
+  border:1px solid var(--fsx-line)!important;
+  box-shadow:var(--fsx-shadow)!important;
+}
+
+body.fsx-template-editor .preview-wrap{
+  position:relative!important;
+  order:2!important;
+  height:100%!important;
+  min-height:0!important;
+  overflow:hidden!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  padding:86px 28px 28px!important;
+  border-radius:30px!important;
+  border:1px solid var(--fsx-line)!important;
+  background:
+    radial-gradient(circle at 50% 46%,rgba(104,87,245,.09),transparent 36%),
+    linear-gradient(180deg,rgba(255,255,255,.86),rgba(255,255,255,.48))!important;
+}
+
+body.fsx-template-editor .editor>h1,
+body.fsx-template-editor .editor>p,
+body.fsx-template-editor .editor>.field,
+body.fsx-template-editor .editor>.upload,
+body.fsx-template-editor .editor>.action-row,
+body.fsx-template-editor .editor>.note,
+body.fsx-template-editor .editor>.fs-pro,
+body.fsx-template-editor .editor>.fs-compact,
+body.fsx-template-editor .editor>.fs-studio,
+body.fsx-template-editor .editor>.fs-canva-panel,
+body.fsx-template-editor .editor>.fs-inspector,
+body.fsx-template-editor .editor>.fsx-panel,
+body.fsx-template-editor .editor>.fsx-rail,
+body.fsx-template-editor .editor>.fsx-side{
+  display:none!important;
+}
+
+/* left icon rail */
+.fsx-rail-v5{
+  height:100%!important;
+  padding:14px 10px!important;
+  display:flex!important;
+  flex-direction:column!important;
+  gap:10px!important;
+  background:#fff!important;
+  border-right:1px solid var(--fsx-line)!important;
+}
+
+.fsx-rail-brand{
+  width:48px!important;
+  height:48px!important;
+  border-radius:18px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  background:var(--fsx-grad)!important;
+  color:#fff!important;
+  font-weight:950!important;
+  font-size:18px!important;
+  box-shadow:0 14px 26px rgba(104,87,245,.22)!important;
+  margin-bottom:8px!important;
+}
+
+.fsx-rail-v5 a,
+.fsx-rail-v5 button{
+  width:48px!important;
+  height:48px!important;
+  border:0!important;
+  border-radius:18px!important;
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:2px!important;
+  background:transparent!important;
+  color:var(--fsx-muted)!important;
+  text-decoration:none!important;
+  cursor:pointer!important;
+  font-family:inherit!important;
+}
+
+.fsx-rail-v5 a:hover,
+.fsx-rail-v5 button:hover{
+  background:var(--fsx-soft)!important;
+  color:var(--fsx-primary)!important;
+}
+
+.fsx-rail-v5 .ico{font-size:17px!important;line-height:1!important}
+.fsx-rail-v5 .txt{font-size:9px!important;font-weight:900!important}
+.fsx-rail-spacer{flex:1!important}
+
+/* side panel */
+.fsx-side-v5{
+  min-width:0!important;
+  height:100%!important;
+  display:flex!important;
+  flex-direction:column!important;
+  overflow:hidden!important;
+  background:#fff!important;
+}
+
+.fsx-side-head{
+  padding:18px 16px 14px!important;
+  border-bottom:1px solid var(--fsx-line)!important;
+  background:
+    radial-gradient(circle at 100% 0%,rgba(104,87,245,.13),transparent 42%),
+    linear-gradient(180deg,#fff,#fbfcff)!important;
+}
+
+.fsx-side-head b{
+  display:block!important;
+  font-size:23px!important;
+  line-height:1!important;
+  letter-spacing:-.05em!important;
+  color:var(--fsx-text)!important;
+}
+
+.fsx-side-head small{
+  display:block!important;
+  margin-top:7px!important;
+  color:var(--fsx-muted)!important;
+  font-size:12px!important;
+  line-height:1.45!important;
+  font-weight:760!important;
+}
+
+.fsx-element-tabs{
+  margin-top:14px!important;
+  display:grid!important;
+  grid-template-columns:repeat(5,1fr)!important;
+  gap:7px!important;
+}
+
+.fsx-element-tabs button{
+  height:38px!important;
+  border:0!important;
+  border-radius:14px!important;
+  background:var(--fsx-soft)!important;
+  color:var(--fsx-primary)!important;
+  cursor:pointer!important;
+  font-family:inherit!important;
+  font-size:11px!important;
+  font-weight:950!important;
+}
+
+.fsx-element-tabs button.active{
+  background:var(--fsx-grad)!important;
+  color:#fff!important;
+  box-shadow:0 10px 22px rgba(73,94,255,.20)!important;
+}
+
+.fsx-body{
+  flex:1 1 auto!important;
+  min-height:0!important;
+  overflow-y:auto!important;
+  padding:14px!important;
+}
+
+.fsx-body::-webkit-scrollbar{width:7px!important}
+.fsx-body::-webkit-scrollbar-thumb{background:rgba(104,87,245,.22)!important;border-radius:999px!important}
+
+.fsx-card{
+  padding:14px!important;
+  margin-bottom:12px!important;
+  border-radius:20px!important;
+  background:#fff!important;
+  border:1px solid var(--fsx-line)!important;
+  box-shadow:0 10px 28px rgba(15,23,42,.04)!important;
+}
+
+.fsx-title{
+  display:flex!important;
+  justify-content:space-between!important;
+  gap:10px!important;
+  margin-bottom:12px!important;
+}
+
+.fsx-title b{font-size:14px!important;color:var(--fsx-text)!important}
+.fsx-title span{font-size:11px!important;color:var(--fsx-muted)!important;font-weight:850!important}
+
+.fsx-grid2{display:grid!important;grid-template-columns:1fr 1fr!important;gap:10px!important}
+.fsx-grid3{display:grid!important;grid-template-columns:repeat(3,1fr)!important;gap:8px!important}
+.fsx-grid4{display:grid!important;grid-template-columns:repeat(4,1fr)!important;gap:8px!important}
+
+.fsx-side-v5 label{
+  display:block!important;
+  margin-bottom:10px!important;
+  color:var(--fsx-muted)!important;
+  font-size:11px!important;
+  font-weight:950!important;
+}
+
+.fsx-side-v5 em{
+  float:right!important;
+  color:var(--fsx-primary)!important;
+  font-style:normal!important;
+}
+
+.fsx-side-v5 input,
+.fsx-side-v5 select,
+.fsx-side-v5 textarea{
+  width:100%!important;
+  margin-top:7px!important;
+  border:1px solid var(--fsx-line)!important;
+  background:#fff!important;
+  color:var(--fsx-text)!important;
+  border-radius:15px!important;
+  font-weight:850!important;
+  font-family:inherit!important;
+}
+
+.fsx-side-v5 input,
+.fsx-side-v5 select{height:40px!important;padding:0 11px!important}
+.fsx-side-v5 textarea{height:86px!important;resize:none!important;padding:11px!important;line-height:1.4!important}
+.fsx-side-v5 input[type="range"]{height:22px!important;padding:0!important;accent-color:var(--fsx-primary)!important}
+.fsx-side-v5 input[type="color"]{padding:4px!important}
+
+.fsx-side-v5 button{
+  border:0!important;
+  min-height:40px!important;
+  border-radius:15px!important;
+  background:var(--fsx-soft)!important;
+  color:var(--fsx-primary)!important;
+  cursor:pointer!important;
+  font-family:inherit!important;
+  font-weight:950!important;
+  font-size:12px!important;
+}
+
+.fsx-side-v5 button:hover{background:var(--fsx-soft2)!important}
+
+.fsx-primary{
+  background:var(--fsx-grad)!important;
+  color:#fff!important;
+  box-shadow:0 12px 26px rgba(73,94,255,.22)!important;
+}
+
+.fsx-wide{width:100%!important;margin-top:10px!important}
+
+.fsx-nudge{
+  display:grid!important;
+  grid-template-columns:repeat(3,44px)!important;
+  grid-template-rows:repeat(3,38px)!important;
+  justify-content:center!important;
+  gap:7px!important;
+  margin:10px auto 0!important;
+}
+
+.fsx-help{
+  padding:11px 13px!important;
+  border-radius:17px!important;
+  background:linear-gradient(135deg,rgba(104,87,245,.08),rgba(47,124,255,.05))!important;
+  color:var(--fsx-muted)!important;
+  border:1px solid rgba(104,87,245,.10)!important;
+  font-size:11px!important;
+  line-height:1.45!important;
+  font-weight:760!important;
+}
+
+/* contextual top toolbar */
+.fsx-workbar-v5{
+  position:absolute!important;
+  top:16px!important;
+  left:16px!important;
+  right:16px!important;
+  z-index:30000!important;
+  min-height:56px!important;
+  display:flex!important;
+  align-items:center!important;
+  gap:9px!important;
+  padding:9px!important;
+  border-radius:24px!important;
+  background:rgba(255,255,255,.88)!important;
+  border:1px solid rgba(226,231,242,.95)!important;
+  box-shadow:0 18px 48px rgba(20,27,45,.10)!important;
+  backdrop-filter:blur(18px)!important;
+  overflow-x:auto!important;
+}
+
+.fsx-workbar-v5::-webkit-scrollbar{height:0!important}
+
+.fsx-workbar-v5 button,
+.fsx-workbar-v5 select,
+.fsx-workbar-v5 input{
+  height:38px!important;
+  border-radius:14px!important;
+  font-family:inherit!important;
+  font-size:12px!important;
+  font-weight:950!important;
+}
+
+.fsx-workbar-v5 button{
+  border:0!important;
+  padding:0 13px!important;
+  cursor:pointer!important;
+  white-space:nowrap!important;
+  background:var(--fsx-soft)!important;
+  color:var(--fsx-primary)!important;
+}
+
+.fsx-workbar-v5 button:hover{background:var(--fsx-soft2)!important}
+
+.fsx-workbar-v5 button.primary{
+  background:var(--fsx-grad)!important;
+  color:#fff!important;
+  box-shadow:0 12px 28px rgba(73,94,255,.22)!important;
+}
+
+.fsx-workbar-v5 select{
+  min-width:132px!important;
+  border:1px solid var(--fsx-line)!important;
+  background:#fff!important;
+  color:var(--fsx-text)!important;
+  padding:0 10px!important;
+}
+
+.fsx-tool-label{
+  height:38px!important;
+  display:flex!important;
+  align-items:center!important;
+  gap:7px!important;
+  padding:0 10px!important;
+  border-radius:14px!important;
+  background:#fff!important;
+  border:1px solid var(--fsx-line)!important;
+  color:var(--fsx-muted)!important;
+  font-size:11px!important;
+  font-weight:900!important;
+  white-space:nowrap!important;
+}
+
+.fsx-tool-label input[type="range"]{
+  width:92px!important;
+  accent-color:var(--fsx-primary)!important;
+}
+
+.fsx-tool-label input[type="color"]{
+  width:42px!important;
+  border:1px solid var(--fsx-line)!important;
+  background:#fff!important;
+  padding:4px!important;
+}
+
+.fsx-divider{
+  width:1px!important;
+  height:28px!important;
+  background:var(--fsx-line)!important;
+  flex:0 0 auto!important;
+}
+
+.fsx-toolbar-spacer{margin-left:auto!important}
+
+.fsx-theme-round{
+  width:40px!important;
+  min-width:40px!important;
+  padding:0!important;
+  border-radius:50%!important;
+}
+
+/* editable layers */
+.label-pill,
+.title,
+.sub,
+.footer,
+.qr-box{
+  cursor:grab!important;
+  user-select:none!important;
+  touch-action:none!important;
+}
+
+.label-pill:hover,
+.title:hover,
+.sub:hover,
+.footer:hover,
+.qr-box:hover{
+  outline:2px dashed rgba(104,87,245,.42)!important;
+  outline-offset:6px!important;
+}
+
+.fsx-selected{
+  outline:2px dashed rgba(104,87,245,.92)!important;
+  outline-offset:6px!important;
+}
+
+.fsx-editing{
+  cursor:text!important;
+  user-select:text!important;
+  touch-action:auto!important;
+  outline:2px solid rgba(104,87,245,.92)!important;
+  outline-offset:6px!important;
+}
+
+.fsx-guide{
+  position:absolute!important;
+  z-index:9999!important;
+  pointer-events:none!important;
+  display:none;
+}
+
+.fsx-guide.show{display:block!important}
+.fsx-guide.v{top:0!important;bottom:0!important;width:0!important;border-left:2px dashed rgba(104,87,245,.78)!important}
+.fsx-guide.h{left:0!important;right:0!important;height:0!important;border-top:2px dashed rgba(104,87,245,.78)!important}
+
+/* dark mode */
+body.fsx-dark{
+  --fsx-bg:#080b13;
+  --fsx-surface:#101624;
+  --fsx-line:rgba(135,145,176,.24);
+  --fsx-text:#eef2ff;
+  --fsx-muted:#9aa4b9;
+  --fsx-soft:rgba(130,108,255,.16);
+  --fsx-soft2:rgba(130,108,255,.24);
+  background:
+    radial-gradient(circle at 75% 5%,rgba(104,87,245,.24),transparent 30%),
+    radial-gradient(circle at 5% 90%,rgba(47,124,255,.17),transparent 30%),
+    #080b13!important;
+}
+
+body.fsx-dark .editor,
+body.fsx-dark .fsx-rail-v5,
+body.fsx-dark .fsx-side-v5,
+body.fsx-dark .fsx-side-head,
+body.fsx-dark .fsx-card,
+body.fsx-dark .fsx-workbar-v5{
+  background:rgba(16,22,36,.92)!important;
+}
+
+body.fsx-dark .preview-wrap{
+  background:
+    radial-gradient(circle at 50% 45%,rgba(104,87,245,.20),transparent 35%),
+    linear-gradient(180deg,rgba(16,20,34,.88),rgba(8,11,19,.96))!important;
+}
+
+body.fsx-dark .fsx-side-v5 input,
+body.fsx-dark .fsx-side-v5 select,
+body.fsx-dark .fsx-side-v5 textarea,
+body.fsx-dark .fsx-workbar-v5 select,
+body.fsx-dark .fsx-tool-label,
+body.fsx-dark .fsx-tool-label input[type="color"]{
+  background:#080b13!important;
+  color:#eef2ff!important;
+  border-color:rgba(135,145,176,.28)!important;
+}
+
+body.fsx-dark .fsx-workbar-v5 button,
+body.fsx-dark .fsx-side-v5 button,
+body.fsx-dark .fsx-rail-v5 a,
+body.fsx-dark .fsx-rail-v5 button,
+body.fsx-dark .fsx-element-tabs button{
+  background:rgba(130,108,255,.16)!important;
+  color:#b8adff!important;
+}
+
+body.fsx-dark .fsx-workbar-v5 button.primary,
+body.fsx-dark .fsx-primary,
+body.fsx-dark .fsx-rail-brand,
+body.fsx-dark .fsx-element-tabs button.active{
+  background:var(--fsx-grad)!important;
+  color:#fff!important;
+}
+
+@media(max-width:980px){
+  body.fsx-template-editor{overflow:auto!important}
+  body.fsx-template-editor .layout{
+    height:auto!important;
+    grid-template-columns:1fr!important;
+  }
+  body.fsx-template-editor .editor{
+    order:2!important;
+    max-width:560px!important;
+    margin:0 auto!important;
+    grid-template-columns:64px 1fr!important;
+    min-height:760px!important;
+  }
+  body.fsx-template-editor .preview-wrap{
+    order:1!important;
+    min-height:560px!important;
+    padding-top:92px!important;
+  }
+}
+/* === FSX V6 TOPBAR POLISH START === */
+
+.fsx-logo-brand{
+  background:transparent!important;
+  box-shadow:none!important;
+  overflow:hidden!important;
+}
+
+.fsx-logo-brand img{
+  width:46px!important;
+  height:46px!important;
+  object-fit:contain!important;
+  display:block!important;
+}
+
+.fsx-logo-brand img[src=""],
+.fsx-logo-brand img:not([src]){
+  display:none!important;
+}
+
+.fsx-logo-brand span{
+  width:48px!important;
+  height:48px!important;
+  border-radius:18px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  background:linear-gradient(135deg,#6857f5,#2f7cff)!important;
+  color:#fff!important;
+}
+
+.fsx-logo-brand img + span{
+  display:none!important;
+}
+
+.fsx-rail-v5{
+  padding-bottom:14px!important;
+}
+
+.fsx-workbar-v5{
+  top:15px!important;
+  left:18px!important;
+  right:18px!important;
+  min-height:58px!important;
+  padding:9px 10px!important;
+  gap:10px!important;
+  border-radius:26px!important;
+  background:rgba(255,255,255,.82)!important;
+  border:1px solid rgba(226,231,242,.95)!important;
+  box-shadow:0 20px 54px rgba(20,27,45,.11)!important;
+  backdrop-filter:blur(20px)!important;
+}
+
+.fsx-workbar-v5 button,
+.fsx-workbar-v5 select,
+.fsx-top-control{
+  height:40px!important;
+  border-radius:16px!important;
+}
+
+.fsx-workbar-v5 button{
+  padding:0 15px!important;
+  background:#f2f0ff!important;
+  color:#6857f5!important;
+}
+
+.fsx-workbar-v5 button:hover{
+  background:#e9e5ff!important;
+}
+
+.fsx-workbar-v5 button.primary{
+  padding:0 20px!important;
+  background:linear-gradient(135deg,#6857f5,#2f7cff)!important;
+  color:#fff!important;
+  box-shadow:0 14px 30px rgba(73,94,255,.24)!important;
+}
+
+.fsx-top-select{
+  height:40px!important;
+  border:1px solid #e3e8f3!important;
+  background:#fff!important;
+  color:#10131f!important;
+  border-radius:16px!important;
+  padding:0 13px!important;
+  font-weight:950!important;
+}
+
+.fsx-font-select{
+  min-width:150px!important;
+}
+
+.fsx-weight-select{
+  min-width:112px!important;
+}
+
+.fsx-top-control{
+  display:flex!important;
+  align-items:center!important;
+  gap:8px!important;
+  padding:0 12px!important;
+  background:#fff!important;
+  border:1px solid #e3e8f3!important;
+  color:#727b8d!important;
+  font-size:11px!important;
+  font-weight:950!important;
+  white-space:nowrap!important;
+}
+
+.fsx-top-control input[type="range"]{
+  width:92px!important;
+  accent-color:#6857f5!important;
+}
+
+.fsx-top-control input[type="color"]{
+  width:34px!important;
+  height:28px!important;
+  border-radius:10px!important;
+  border:1px solid #e3e8f3!important;
+  padding:3px!important;
+  background:#fff!important;
+}
+
+.fsx-toolbar-spacer{
+  margin-left:auto!important;
+}
+
+.fsx-theme-round{
+  width:42px!important;
+  min-width:42px!important;
+  padding:0!important;
+  border-radius:50%!important;
+  font-size:15px!important;
+}
+
+body.fsx-template-editor .topbar #downloadBtn{
+  display:none!important;
+}
+
+body.fsx-dark .fsx-workbar-v5{
+  background:rgba(16,22,36,.84)!important;
+  border-color:rgba(135,145,176,.24)!important;
+  box-shadow:0 20px 54px rgba(0,0,0,.28)!important;
+}
+
+body.fsx-dark .fsx-top-select,
+body.fsx-dark .fsx-top-control,
+body.fsx-dark .fsx-top-control input[type="color"]{
+  background:#080b13!important;
+  color:#eef2ff!important;
+  border-color:rgba(135,145,176,.28)!important;
+}
+
+body.fsx-dark .fsx-workbar-v5 button{
+  background:rgba(130,108,255,.16)!important;
+  color:#b8adff!important;
+}
+
+body.fsx-dark .fsx-workbar-v5 button.primary{
+  background:linear-gradient(135deg,#6857f5,#2f7cff)!important;
+  color:#fff!important;
+}
+
+/* === FSX V6 TOPBAR POLISH END === */
+/* === FSX V7 THEME LOGO QR FIX START === */
+
+/* clean logo: no blue glow / no box */
+.fsx-logo-brand,
+.fsx-rail-brand.fsx-logo-brand{
+  background:transparent!important;
+  box-shadow:none!important;
+  border-radius:0!important;
+}
+
+.fsx-logo-brand img{
+  width:46px!important;
+  height:46px!important;
+  object-fit:contain!important;
+  display:block!important;
+  filter:none!important;
+  box-shadow:none!important;
+  background:transparent!important;
+  border-radius:0!important;
+}
+
+.fsx-logo-brand span{
+  box-shadow:none!important;
+}
+
+/* top toolbar fit */
+.fsx-workbar-v5{
+  right:18px!important;
+  gap:7px!important;
+  padding:8px 62px 8px 8px!important;
+  overflow:hidden!important;
+}
+
+.fsx-workbar-v5 button{
+  padding:0 11px!important;
+  height:38px!important;
+  border-radius:14px!important;
+}
+
+.fsx-workbar-v5 button.primary{
+  padding:0 15px!important;
+}
+
+.fsx-top-select{
+  min-width:105px!important;
+  max-width:130px!important;
+  height:38px!important;
+  padding:0 10px!important;
+}
+
+.fsx-font-select{min-width:118px!important}
+.fsx-weight-select{min-width:92px!important}
+
+.fsx-top-control{
+  height:38px!important;
+  padding:0 9px!important;
+  gap:6px!important;
+  border-radius:14px!important;
+}
+
+.fsx-top-control input[type="range"]{
+  width:72px!important;
+}
+
+.fsx-top-control input[type="color"]{
+  width:30px!important;
+  height:26px!important;
+}
+
+/* always-visible theme toggle */
+.fsx-floating-theme{
+  position:absolute!important;
+  top:17px!important;
+  right:18px!important;
+  z-index:40000!important;
+  width:42px!important;
+  height:42px!important;
+  border:0!important;
+  border-radius:50%!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  cursor:pointer!important;
+  font-size:15px!important;
+  font-weight:950!important;
+  background:#ffffff!important;
+  color:#6857f5!important;
+  box-shadow:0 14px 34px rgba(20,27,45,.14)!important;
+}
+
+body.fsx-dark .fsx-floating-theme{
+  background:#151b2d!important;
+  color:#b8adff!important;
+  box-shadow:0 14px 34px rgba(0,0,0,.28)!important;
+}
+
+/* QR click should only select, not upload */
+.qr-box,
+.qr-box *{
+  cursor:grab!important;
+}
+
+/* hide old duplicated topbar download */
+body.fsx-template-editor .topbar #downloadBtn,
+body.fsx-template-editor .topbar button#downloadBtn{
+  display:none!important;
+}
+
+/* === FSX V7 THEME LOGO QR FIX END === */
