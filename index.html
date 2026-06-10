@@ -594,5 +594,37 @@
 })();
 </script>
 <!-- FS QR TO TEMPLATE BRIDGE END -->
+<!-- FS QR TEMPLATE BRIDGE START -->
+<script>
+(function(){
+  document.addEventListener("click", function(e){
+    var link = e.target.closest('a[href*="fs-tamplate/templates"],a[href*="./templates"],a[href*="templates/"]');
+    if(!link) return;
+
+    var items = Array.from(document.querySelectorAll("canvas,svg,img")).filter(function(el){
+      var r = el.getBoundingClientRect();
+      return r.width > 80 && r.height > 80 && el.offsetParent !== null;
+    }).sort(function(a,b){
+      var ar = a.getBoundingClientRect();
+      var br = b.getBoundingClientRect();
+      return (br.width * br.height) - (ar.width * ar.height);
+    });
+
+    var qr = items[0];
+    if(!qr) return;
+
+    try{
+      if(qr.tagName.toLowerCase() === "canvas"){
+        localStorage.setItem("flowsync_current_qr", qr.toDataURL("image/png"));
+      } else if(qr.tagName.toLowerCase() === "svg"){
+        localStorage.setItem("flowsync_current_qr", "data:image/svg+xml;charset=utf-8," + encodeURIComponent(new XMLSerializer().serializeToString(qr)));
+      } else if(qr.tagName.toLowerCase() === "img" && qr.src && qr.src.startsWith("data:")){
+        localStorage.setItem("flowsync_current_qr", qr.src);
+      }
+    }catch(err){}
+  }, true);
+})();
+</script>
+<!-- FS QR TEMPLATE BRIDGE END -->
 </body>
 </html>
