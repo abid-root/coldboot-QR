@@ -527,16 +527,11 @@ body.fsx-dark .fsx-element-tabs button.active{
     padding-top:92px!important;
   }
 }
+/* === FSX V6 TOPBAR POLISH START === */
 
-
-
-/* === FSX CLEAN TOPBAR NAV LOGO FIX START === */
-
-.fsx-logo-brand,
-.fsx-rail-brand.fsx-logo-brand{
+.fsx-logo-brand{
   background:transparent!important;
   box-shadow:none!important;
-  border-radius:0!important;
   overflow:hidden!important;
 }
 
@@ -545,13 +540,10 @@ body.fsx-dark .fsx-element-tabs button.active{
   height:46px!important;
   object-fit:contain!important;
   display:block!important;
-  background:transparent!important;
-  box-shadow:none!important;
-  filter:none!important;
-  border-radius:0!important;
 }
 
-.fsx-logo-brand img + span{
+.fsx-logo-brand img[src=""],
+.fsx-logo-brand img:not([src]){
   display:none!important;
 }
 
@@ -564,32 +556,177 @@ body.fsx-dark .fsx-element-tabs button.active{
   justify-content:center!important;
   background:linear-gradient(135deg,#6857f5,#2f7cff)!important;
   color:#fff!important;
-  font-weight:950!important;
+}
+
+.fsx-logo-brand img + span{
+  display:none!important;
+}
+
+.fsx-rail-v5{
+  padding-bottom:14px!important;
 }
 
 .fsx-workbar-v5{
-  right:72px!important;
-  gap:7px!important;
-  padding:8px!important;
-  overflow-x:auto!important;
-  overflow-y:hidden!important;
-  scrollbar-width:none!important;
-}
-
-.fsx-workbar-v5::-webkit-scrollbar{
-  height:0!important;
+  top:15px!important;
+  left:18px!important;
+  right:18px!important;
+  min-height:58px!important;
+  padding:9px 10px!important;
+  gap:10px!important;
+  border-radius:26px!important;
+  background:rgba(255,255,255,.82)!important;
+  border:1px solid rgba(226,231,242,.95)!important;
+  box-shadow:0 20px 54px rgba(20,27,45,.11)!important;
+  backdrop-filter:blur(20px)!important;
 }
 
 .fsx-workbar-v5 button,
 .fsx-workbar-v5 select,
 .fsx-top-control{
-  height:38px!important;
-  border-radius:14px!important;
-  white-space:nowrap!important;
+  height:40px!important;
+  border-radius:16px!important;
 }
 
 .fsx-workbar-v5 button{
-  padding:0 10px!important;
+  padding:0 15px!important;
+  background:#f2f0ff!important;
+  color:#6857f5!important;
+}
+
+.fsx-workbar-v5 button:hover{
+  background:#e9e5ff!important;
+}
+
+.fsx-workbar-v5 button.primary{
+  padding:0 20px!important;
+  background:linear-gradient(135deg,#6857f5,#2f7cff)!important;
+  color:#fff!important;
+  box-shadow:0 14px 30px rgba(73,94,255,.24)!important;
+}
+
+.fsx-top-select{
+  height:40px!important;
+  border:1px solid #e3e8f3!important;
+  background:#fff!important;
+  color:#10131f!important;
+  border-radius:16px!important;
+  padding:0 13px!important;
+  font-weight:950!important;
+}
+
+.fsx-font-select{
+  min-width:150px!important;
+}
+
+.fsx-weight-select{
+  min-width:112px!important;
+}
+
+.fsx-top-control{
+  display:flex!important;
+  align-items:center!important;
+  gap:8px!important;
+  padding:0 12px!important;
+  background:#fff!important;
+  border:1px solid #e3e8f3!important;
+  color:#727b8d!important;
+  font-size:11px!important;
+  font-weight:950!important;
+  white-space:nowrap!important;
+}
+
+.fsx-top-control input[type="range"]{
+  width:92px!important;
+  accent-color:#6857f5!important;
+}
+
+.fsx-top-control input[type="color"]{
+  width:34px!important;
+  height:28px!important;
+  border-radius:10px!important;
+  border:1px solid #e3e8f3!important;
+  padding:3px!important;
+  background:#fff!important;
+}
+
+.fsx-toolbar-spacer{
+  margin-left:auto!important;
+}
+
+.fsx-theme-round{
+  width:42px!important;
+  min-width:42px!important;
+  padding:0!important;
+  border-radius:50%!important;
+  font-size:15px!important;
+}
+
+body.fsx-template-editor .topbar #downloadBtn{
+  display:none!important;
+}
+
+body.fsx-dark .fsx-workbar-v5{
+  background:rgba(16,22,36,.84)!important;
+  border-color:rgba(135,145,176,.24)!important;
+  box-shadow:0 20px 54px rgba(0,0,0,.28)!important;
+}
+
+body.fsx-dark .fsx-top-select,
+body.fsx-dark .fsx-top-control,
+body.fsx-dark .fsx-top-control input[type="color"]{
+  background:#080b13!important;
+  color:#eef2ff!important;
+  border-color:rgba(135,145,176,.28)!important;
+}
+
+body.fsx-dark .fsx-workbar-v5 button{
+  background:rgba(130,108,255,.16)!important;
+  color:#b8adff!important;
+}
+
+body.fsx-dark .fsx-workbar-v5 button.primary{
+  background:linear-gradient(135deg,#6857f5,#2f7cff)!important;
+  color:#fff!important;
+}
+
+/* === FSX V6 TOPBAR POLISH END === */
+/* === FSX V7 THEME LOGO QR FIX START === */
+
+/* clean logo: no blue glow / no box */
+.fsx-logo-brand,
+.fsx-rail-brand.fsx-logo-brand{
+  background:transparent!important;
+  box-shadow:none!important;
+  border-radius:0!important;
+}
+
+.fsx-logo-brand img{
+  width:46px!important;
+  height:46px!important;
+  object-fit:contain!important;
+  display:block!important;
+  filter:none!important;
+  box-shadow:none!important;
+  background:transparent!important;
+  border-radius:0!important;
+}
+
+.fsx-logo-brand span{
+  box-shadow:none!important;
+}
+
+/* top toolbar fit */
+.fsx-workbar-v5{
+  right:18px!important;
+  gap:7px!important;
+  padding:8px 62px 8px 8px!important;
+  overflow:hidden!important;
+}
+
+.fsx-workbar-v5 button{
+  padding:0 11px!important;
+  height:38px!important;
+  border-radius:14px!important;
 }
 
 .fsx-workbar-v5 button.primary{
@@ -597,35 +734,32 @@ body.fsx-dark .fsx-element-tabs button.active{
 }
 
 .fsx-top-select{
-  min-width:104px!important;
-  max-width:128px!important;
+  min-width:105px!important;
+  max-width:130px!important;
   height:38px!important;
   padding:0 10px!important;
 }
 
-.fsx-font-select{
-  min-width:116px!important;
-}
-
-.fsx-weight-select{
-  min-width:92px!important;
-}
+.fsx-font-select{min-width:118px!important}
+.fsx-weight-select{min-width:92px!important}
 
 .fsx-top-control{
+  height:38px!important;
   padding:0 9px!important;
   gap:6px!important;
+  border-radius:14px!important;
 }
 
 .fsx-top-control input[type="range"]{
-  width:70px!important;
+  width:72px!important;
 }
 
 .fsx-top-control input[type="color"]{
   width:30px!important;
   height:26px!important;
-  padding:3px!important;
 }
 
+/* always-visible theme toggle */
 .fsx-floating-theme{
   position:absolute!important;
   top:17px!important;
@@ -652,16 +786,87 @@ body.fsx-dark .fsx-floating-theme{
   box-shadow:0 14px 34px rgba(0,0,0,.28)!important;
 }
 
-body.fsx-template-editor .topbar #downloadTop,
-body.fsx-template-editor .topbar #downloadBtn,
-body.fsx-template-editor .topbar button#downloadTop,
-body.fsx-template-editor .topbar button#downloadBtn{
-  display:none!important;
-}
-
+/* QR click should only select, not upload */
 .qr-box,
 .qr-box *{
   cursor:grab!important;
 }
 
-/* === FSX CLEAN TOPBAR NAV LOGO FIX END === */
+/* hide old duplicated topbar download */
+body.fsx-template-editor .topbar #downloadBtn,
+body.fsx-template-editor .topbar button#downloadBtn{
+  display:none!important;
+}
+
+/* === FSX V7 THEME LOGO QR FIX END === */
+/* === FSX FINAL REPAIR START === */
+
+/* theme toggle visible top-right */
+.fsx-floating-theme{
+  position:absolute!important;
+  top:17px!important;
+  right:18px!important;
+  z-index:40000!important;
+  width:42px!important;
+  height:42px!important;
+  border:0!important;
+  border-radius:50%!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  cursor:pointer!important;
+  font-size:15px!important;
+  font-weight:950!important;
+  background:#ffffff!important;
+  color:#6857f5!important;
+  box-shadow:0 14px 34px rgba(20,27,45,.14)!important;
+}
+
+body.fsx-dark .fsx-floating-theme{
+  background:#151b2d!important;
+  color:#b8adff!important;
+  box-shadow:0 14px 34px rgba(0,0,0,.28)!important;
+}
+
+/* keep toolbar from hiding under theme button */
+.fsx-workbar-v5{
+  right:72px!important;
+  overflow-x:auto!important;
+  overflow-y:hidden!important;
+  scrollbar-width:none!important;
+}
+
+.fsx-workbar-v5::-webkit-scrollbar{
+  height:0!important;
+}
+
+/* clean logo */
+.fsx-logo-brand,
+.fsx-rail-brand.fsx-logo-brand{
+  background:transparent!important;
+  box-shadow:none!important;
+  border-radius:0!important;
+}
+
+.fsx-logo-brand img{
+  width:46px!important;
+  height:46px!important;
+  object-fit:contain!important;
+  display:block!important;
+  background:transparent!important;
+  box-shadow:none!important;
+  filter:none!important;
+  border-radius:0!important;
+}
+
+.fsx-logo-brand img + span{
+  display:none!important;
+}
+
+/* QR should not open upload by clicking on the card */
+.qr-box,
+.qr-box *{
+  cursor:grab!important;
+}
+
+/* === FSX FINAL REPAIR END === */
