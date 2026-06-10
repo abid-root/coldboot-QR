@@ -7,6 +7,65 @@
   <meta name="description" content="Privacy Policy for FlowSync QR code generator." />
   <link rel="stylesheet" href="../css/styles.css" />
   <link rel="stylesheet" href="../css/info-pages.css" />
+<!-- FLOWSYNC FAVICON START -->
+<link rel="icon" id="themeFavicon" href="../assets/common/whiteone.webp" type="image/webp">
+<link rel="icon" href="../assets/common/whiteone.webp" media="(prefers-color-scheme: light)" type="image/webp">
+<link rel="icon" href="../assets/common/blackone.webp" media="(prefers-color-scheme: dark)" type="image/webp">
+<script>
+(function(){
+  var lightIcon = "../assets/common/whiteone.webp";
+  var darkIcon = "../assets/common/blackone.webp";
+
+  function isDark(){
+    var html = document.documentElement;
+    var body = document.body;
+
+    return (
+      html.dataset.theme === "dark" ||
+      html.classList.contains("dark") ||
+      html.classList.contains("fsx-dark") ||
+      (body && (
+        body.dataset.theme === "dark" ||
+        body.classList.contains("dark") ||
+        body.classList.contains("fsx-dark")
+      ))
+    );
+  }
+
+  function applyFavicon(){
+    var icon = document.getElementById("themeFavicon");
+    if(!icon){
+      icon = document.createElement("link");
+      icon.rel = "icon";
+      icon.id = "themeFavicon";
+      document.head.appendChild(icon);
+    }
+
+    icon.href = isDark() ? darkIcon : lightIcon;
+  }
+
+  applyFavicon();
+
+  new MutationObserver(applyFavicon).observe(document.documentElement, {
+    attributes:true,
+    attributeFilter:["data-theme","class"]
+  });
+
+  document.addEventListener("DOMContentLoaded", function(){
+    applyFavicon();
+
+    if(document.body){
+      new MutationObserver(applyFavicon).observe(document.body, {
+        attributes:true,
+        attributeFilter:["data-theme","class"]
+      });
+    }
+  });
+
+  setInterval(applyFavicon, 1000);
+})();
+</script>
+<!-- FLOWSYNC FAVICON END -->
 </head>
 <body class="info-body">
   <div class="app-shell">

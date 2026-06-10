@@ -303,7 +303,7 @@ function setTheme(mode) {
 
   if (mainToggle) mainToggle.textContent = mode === 'dark' ? '☀' : '☾';
   if (secondToggle) secondToggle.textContent = mode === 'dark' ? 'Switch to Light' : 'Switch to Dark';
-  if (favicon) favicon.href = mode === 'dark' ? 'assets/common/lightone.png' : 'assets/common/darkone.png';
+  if (favicon) favicon.href = mode === 'dark' ? 'assets/common/blackone.webp' : 'assets/common/whiteone.webp';
 }
 
 function toggleTheme() {
