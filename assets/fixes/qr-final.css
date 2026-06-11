@@ -1,0 +1,24 @@
+
+/* FlowSync QR final shared polish */
+.fs-qr-theme-toggle,
+#themeToggle,
+.theme-toggle,
+.theme-btn,
+[data-theme-toggle] {
+  width: 42px !important;
+  height: 42px !important;
+  min-width: 42px !important;
+  display: inline-grid !important;
+  place-items: center !important;
+  border-radius: 999px !important;
+  border: 1px solid rgba(120,120,140,.18) !important;
+  background: rgba(255,255,255,.08) !important;
+  color: currentColor !important;
+  font-size: 18px !important;
+  line-height: 1 !important;
+  cursor: pointer !important;
+  padding: 0 !important;
+}
+html[data-theme="dark"], html.dark { color-scheme: dark; }
+html[data-theme="light"], html.light { color-scheme: light; }
+.qr-export-working { pointer-events: none !important; opacity: .65 !important; }

@@ -1,23 +1,23 @@
 {
   "name": "FlowSync QR Generator",
-  "short_name": "FlowSync",
+  "short_name": "FlowSync QR",
   "description": "Create clean QR codes for links, text, email, phone, SMS, Wi-Fi, vCard and location data in your browser.",
-  "start_url": ".",
+  "start_url": "./",
   "scope": ".",
   "display": "standalone",
   "background_color": "#06090f",
   "theme_color": "#06090f",
   "icons": [
     {
-      "src": "assets/common/favicon-192.png",
+      "src": "assets/common/blackone.webp",
       "sizes": "192x192",
-      "type": "image/png",
+      "type": "image/webp",
       "purpose": "any maskable"
     },
     {
-      "src": "assets/common/favicon-512.png",
+      "src": "assets/common/blackone.webp",
       "sizes": "512x512",
-      "type": "image/png",
+      "type": "image/webp",
       "purpose": "any maskable"
     }
   ]
