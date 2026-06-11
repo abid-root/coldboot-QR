@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://abid-root.github.io/coldboot-QR/sitemap.xml

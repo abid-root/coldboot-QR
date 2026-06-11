@@ -563,9 +563,30 @@ body.fsx-dark .fsx-theme-final{
 </style>
 <!-- FSX FINAL CLEAN EDITOR END -->
 <!-- FLOWSYNC FAVICON START -->
-<link rel="icon" id="themeFavicon" href="../../../assets/common/whiteone.webp" type="image/webp">
-<link rel="icon" href="../../../assets/common/whiteone.webp" media="(prefers-color-scheme: light)" type="image/webp">
-<link rel="icon" href="../../../assets/common/blackone.webp" media="(prefers-color-scheme: dark)" type="image/webp">
+  <meta name="description" content="Create clean QR codes for links, text, contact details, Wi-Fi and more. Static, private and browser-based.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="author" content="Abid Hasan">
+  <meta name="theme-color" content="#06090f">
+  <meta name="color-scheme" content="dark light">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <link rel="canonical" href="https://abid-root.github.io/coldboot-QR/fs-tamplate/templates/neon-ticket/">
+  <link rel="icon" type="image/png" href="../../../assets/common/favicon-192.png">
+  <link rel="apple-touch-icon" href="../../../assets/common/apple-touch-icon.png">
+  <link rel="manifest" href="../../../site.webmanifest">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="FlowSync">
+  <meta property="og:title" content="FlowSync Template - Neon Ticket">
+  <meta property="og:description" content="Create clean QR codes for links, text, contact details, Wi-Fi and more. Static, private and browser-based.">
+  <meta property="og:url" content="https://abid-root.github.io/coldboot-QR/fs-tamplate/templates/neon-ticket/">
+  <meta property="og:image" content="https://abid-root.github.io/coldboot-QR/assets/common/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="FlowSync Template - Neon Ticket">
+  <meta name="twitter:description" content="Create clean QR codes for links, text, contact details, Wi-Fi and more. Static, private and browser-based.">
+  <meta name="twitter:image" content="https://abid-root.github.io/coldboot-QR/assets/common/og.png">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "FlowSync QR Code Generator", "url": "https://abid-root.github.io/coldboot-QR/", "description": "Create clean QR codes for links, text, contact details, Wi-Fi and more. Static, private and browser-based.", "author": {"@type": "Person", "name": "Abid Hasan"}}</script>
+
 <script>
 (function(){
   var lightIcon = "../../../assets/common/whiteone.webp";
@@ -626,7 +647,7 @@ body.fsx-dark .fsx-theme-final{
 <span class="label-pill" id="cardLabel" contenteditable="true">EVENT</span>
 <div class="title" id="cardTitle" contenteditable="true">Neon Ticket</div>
 <div class="sub" id="cardSub" contenteditable="true">Dark event pass with a focused scan zone.</div>
-<div class="qr-box" id="qrBox"><img id="qrImage" alt="QR"><span>click to<br>upload QR</span></div>
+<div class="qr-box" id="qrBox"><img id="qrImage" alt="QR" decoding="async" loading="lazy"><span>click to<br>upload QR</span></div>
 <div class="footer" id="cardFooter" contenteditable="true">FlowSync Event</div>
 </article></section><aside class="editor"><h1>Neon Ticket</h1><p>Upload your QR, edit the text, then download the final card as PNG. You can also click directly on the card text to edit it.</p><label class="upload">Upload QR PNG/JPG/WEBP<input id="qrUpload" type="file" accept="image/png,image/jpeg,image/webp"></label><div class="field"><label>Top label</label><input id="inputLabel" value="EVENT"></div><div class="field"><label>Title</label><input id="inputTitle" value="Neon Ticket"></div><div class="field"><label>Subtitle</label><input id="inputSub" value="Dark event pass with a focused scan zone."></div><div class="field"><label>Footer</label><input id="inputFooter" value="FlowSync Event"></div><div class="action-row"><button class="ghost-btn" id="resetBtn" type="button">Reset text</button><button class="dl-btn" id="downloadBtn" type="button">Download PNG</button></div><div class="note">Suggested flow: create your QR on the main page → download the QR image → open a template → upload QR → tweak text → download the finished card.</div></aside></main><script>(function(){
 const qrBox=document.getElementById('qrBox');const qrUpload=document.getElementById('qrUpload');const qrImage=document.getElementById('qrImage');const pairs=[['inputLabel','cardLabel'],['inputTitle','cardTitle'],['inputSub','cardSub'],['inputFooter','cardFooter']];const defaults=Object.fromEntries(pairs.map(([i])=>[i,document.getElementById(i).value]));function syncInputsToCard(){pairs.forEach(([i,c])=>document.getElementById(c).textContent=document.getElementById(i).value)}function syncCardToInputs(id,input){document.getElementById(input).value=document.getElementById(id).textContent.trim()}pairs.forEach(([input,cardId])=>{document.getElementById(input).addEventListener('input',syncInputsToCard);document.getElementById(cardId).addEventListener('input',()=>syncCardToInputs(cardId,input));});document.getElementById('resetBtn').addEventListener('click',()=>{Object.entries(defaults).forEach(([id,v])=>document.getElementById(id).value=v);syncInputsToCard();});qrBox.addEventListener('click',()=>qrUpload.click());qrUpload.addEventListener('change',()=>{const file=qrUpload.files&&qrUpload.files[0];if(!file)return;const reader=new FileReader();reader.onload=()=>{qrImage.src=reader.result;qrBox.classList.add('has-qr');};reader.readAsDataURL(file);});function downloadCard(){const card=document.getElementById('card');const css=document.getElementById('template-style').textContent;const clone=card.cloneNode(true);clone.querySelectorAll('[contenteditable]').forEach(el=>el.removeAttribute('contenteditable'));const rect=card.getBoundingClientRect();const width=1400;const height=Math.round(width*rect.height/rect.width);clone.style.width=width+'px';clone.style.height=height+'px';clone.style.maxWidth='none';const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}"><foreignObject width="100%" height="100%"><div xmlns="http://www.w3.org/1999/xhtml"><style>${css}
@@ -692,7 +713,7 @@ const qrBox=document.getElementById('qrBox');const qrUpload=document.getElementB
     const rail = document.createElement("div");
     rail.className = "fsx-rail-final";
     rail.innerHTML = `
-      <div class="fsx-brand-final"><img id="fsxBrandLogo" src="${logoLight}" alt="FlowSync"></div>
+      <div class="fsx-brand-final"><img id="fsxBrandLogo" src="${logoLight}" alt="FlowSync" decoding="async" loading="lazy"></div>
       <a href="../../../index.html"><span class="ico">⌂</span><span class="txt">Home</span></a>
       <a href="../index.html"><span class="ico">▦</span><span class="txt">Temps</span></a>
       <a href="../../../index.html#create"><span class="ico">＋</span><span class="txt">QR</span></a>

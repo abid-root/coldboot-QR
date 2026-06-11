@@ -1,0 +1,12 @@
+# local/editor
+.vscode/
+*.log
+*.tmp
+*.bak
+*.ps1
+*.zip
+_local-backups/
+before-*/
+*-before-*/
+node_modules/
+__pycache__/
