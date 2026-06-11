@@ -7,68 +7,83 @@
     <meta
       name="description"
       content="A clean static QR code generator with light and dark mode. No backend. No data storage."
-    /><link rel="stylesheet" href="css/styles.css" />
+    />
+    <link rel="stylesheet" href="css/styles.css" />
     <script src="https://cdn.jsdelivr.net/npm/qr-code-styling@1.9.2/lib/qr-code-styling.js"></script>
-  <!-- FLOWSYNC FAVICON START -->
-<link rel="icon" id="themeFavicon" href="assets/common/whiteone.webp" type="image/webp">
-<link rel="icon" href="assets/common/whiteone.webp" media="(prefers-color-scheme: light)" type="image/webp">
-<link rel="icon" href="assets/common/blackone.webp" media="(prefers-color-scheme: dark)" type="image/webp">
-<script>
-(function(){
-  var lightIcon = "assets/common/whiteone.webp";
-  var darkIcon = "assets/common/blackone.webp";
+    <!-- FLOWSYNC FAVICON START -->
+    <link
+      rel="icon"
+      id="themeFavicon"
+      href="assets/common/whiteone.webp"
+      type="image/webp"
+    />
+    <link
+      rel="icon"
+      href="assets/common/whiteone.webp"
+      media="(prefers-color-scheme: light)"
+      type="image/webp"
+    />
+    <link
+      rel="icon"
+      href="assets/common/blackone.webp"
+      media="(prefers-color-scheme: dark)"
+      type="image/webp"
+    />
+    <script>
+      (function () {
+        var lightIcon = "assets/common/whiteone.webp";
+        var darkIcon = "assets/common/blackone.webp";
 
-  function isDark(){
-    var html = document.documentElement;
-    var body = document.body;
+        function isDark() {
+          var html = document.documentElement;
+          var body = document.body;
 
-    return (
-      html.dataset.theme === "dark" ||
-      html.classList.contains("dark") ||
-      html.classList.contains("fsx-dark") ||
-      (body && (
-        body.dataset.theme === "dark" ||
-        body.classList.contains("dark") ||
-        body.classList.contains("fsx-dark")
-      ))
-    );
-  }
+          return (
+            html.dataset.theme === "dark" ||
+            html.classList.contains("dark") ||
+            html.classList.contains("fsx-dark") ||
+            (body &&
+              (body.dataset.theme === "dark" ||
+                body.classList.contains("dark") ||
+                body.classList.contains("fsx-dark")))
+          );
+        }
 
-  function applyFavicon(){
-    var icon = document.getElementById("themeFavicon");
-    if(!icon){
-      icon = document.createElement("link");
-      icon.rel = "icon";
-      icon.id = "themeFavicon";
-      document.head.appendChild(icon);
-    }
+        function applyFavicon() {
+          var icon = document.getElementById("themeFavicon");
+          if (!icon) {
+            icon = document.createElement("link");
+            icon.rel = "icon";
+            icon.id = "themeFavicon";
+            document.head.appendChild(icon);
+          }
 
-    icon.href = isDark() ? darkIcon : lightIcon;
-  }
+          icon.href = isDark() ? darkIcon : lightIcon;
+        }
 
-  applyFavicon();
+        applyFavicon();
 
-  new MutationObserver(applyFavicon).observe(document.documentElement, {
-    attributes:true,
-    attributeFilter:["data-theme","class"]
-  });
+        new MutationObserver(applyFavicon).observe(document.documentElement, {
+          attributes: true,
+          attributeFilter: ["data-theme", "class"],
+        });
 
-  document.addEventListener("DOMContentLoaded", function(){
-    applyFavicon();
+        document.addEventListener("DOMContentLoaded", function () {
+          applyFavicon();
 
-    if(document.body){
-      new MutationObserver(applyFavicon).observe(document.body, {
-        attributes:true,
-        attributeFilter:["data-theme","class"]
-      });
-    }
-  });
+          if (document.body) {
+            new MutationObserver(applyFavicon).observe(document.body, {
+              attributes: true,
+              attributeFilter: ["data-theme", "class"],
+            });
+          }
+        });
 
-  setInterval(applyFavicon, 1000);
-})();
-</script>
-<!-- FLOWSYNC FAVICON END -->
-</head>
+        setInterval(applyFavicon, 1000);
+      })();
+    </script>
+    <!-- FLOWSYNC FAVICON END -->
+  </head>
   <body>
     <div class="app-shell">
       <aside class="sidebar" aria-label="Sidebar navigation">
@@ -135,49 +150,63 @@
                 ＋ Create QR Code
               </button>
               <!-- FS TAMPLATE PACK HOLDER START -->
-<div class="fs-template-pack-holder">
-  <div class="fs-pack-head">
-    <div>
-      <b>QR templates</b>
-      <small>Open a design, upload your QR, edit text, download PNG.</small>
-    </div>
-    <a href="fs-tamplate/templates/">All 20</a>
-  </div>
+              <div class="fs-template-pack-holder">
+                <div class="fs-pack-head">
+                  <div>
+                    <b>QR templates</b>
+                    <small
+                      >Open a design, upload your QR, edit text, download
+                      PNG.</small
+                    >
+                  </div>
+                  <a href="fs-tamplate/templates/">All 20</a>
+                </div>
 
-  <div class="fs-pack-strip">
-    <a class="fs-pack-card floral" href="fs-tamplate/templates/floral-bloom/">
-      <span>Flower</span>
-      <i>QR</i>
-      <b>Bloom</b>
-      <small>Soft brand card</small>
-    </a>
+                <div class="fs-pack-strip">
+                  <a
+                    class="fs-pack-card floral"
+                    href="fs-tamplate/templates/floral-bloom/"
+                  >
+                    <span>Flower</span>
+                    <i>QR</i>
+                    <b>Bloom</b>
+                    <small>Soft brand card</small>
+                  </a>
 
-    <a class="fs-pack-card ocean" href="fs-tamplate/templates/ocean-wave/">
-      <span>Ocean</span>
-      <i>QR</i>
-      <b>Wave</b>
-      <small>Fresh link card</small>
-    </a>
+                  <a
+                    class="fs-pack-card ocean"
+                    href="fs-tamplate/templates/ocean-wave/"
+                  >
+                    <span>Ocean</span>
+                    <i>QR</i>
+                    <b>Wave</b>
+                    <small>Fresh link card</small>
+                  </a>
 
-    <a class="fs-pack-card premium" href="fs-tamplate/templates/luxury-black/">
-      <span>Premium</span>
-      <i>QR</i>
-      <b>Black</b>
-      <small>Luxury card</small>
-    </a>
-  </div>
+                  <a
+                    class="fs-pack-card premium"
+                    href="fs-tamplate/templates/luxury-black/"
+                  >
+                    <span>Premium</span>
+                    <i>QR</i>
+                    <b>Black</b>
+                    <small>Luxury card</small>
+                  </a>
+                </div>
 
-  <a class="fs-pack-more" href="fs-tamplate/templates/">Open template gallery</a>
-</div>
-<!-- FS TAMPLATE PACK HOLDER END -->
+                <a class="fs-pack-more" href="fs-tamplate/templates/"
+                  >Open template gallery</a
+                >
+              </div>
+              <!-- FS TAMPLATE PACK HOLDER END -->
 
-<!-- HERO QUICK LINKS START -->
-<div class="hero-quick-links">
-  <a href="privacy/">Policy</a>
-  <a href="guide/">Guide</a>
-  <a href="index.html#contact">Contact</a>
-</div>
-<!-- HERO QUICK LINKS END -->
+              <!-- HERO QUICK LINKS START -->
+              <div class="hero-quick-links">
+                <a href="privacy/">Policy</a>
+                <a href="guide/">Guide</a>
+                <a href="index.html#contact">Contact</a>
+              </div>
+              <!-- HERO QUICK LINKS END -->
             </section>
 
             <section class="preview-stage" aria-label="QR preview">
@@ -589,94 +618,123 @@
     </div>
 
     <script src="js/app.js"></script>
-<!-- FS QR TO TEMPLATE BRIDGE START -->
-<script>
-(function () {
-  function getBigVisibleQrCandidate() {
-    return [...document.querySelectorAll("canvas, svg, img")]
-      .filter(el => {
-        const r = el.getBoundingClientRect();
-        return r.width > 90 && r.height > 90 && el.offsetParent !== null;
-      })
-      .sort((a, b) => {
-        const ar = a.getBoundingClientRect();
-        const br = b.getBoundingClientRect();
-        return (br.width * br.height) - (ar.width * ar.height);
-      })[0];
-  }
+    <!-- FS QR TO TEMPLATE BRIDGE START -->
+    <script>
+      (function () {
+        function getBigVisibleQrCandidate() {
+          return [...document.querySelectorAll("canvas, svg, img")]
+            .filter((el) => {
+              const r = el.getBoundingClientRect();
+              return r.width > 90 && r.height > 90 && el.offsetParent !== null;
+            })
+            .sort((a, b) => {
+              const ar = a.getBoundingClientRect();
+              const br = b.getBoundingClientRect();
+              return br.width * br.height - ar.width * ar.height;
+            })[0];
+        }
 
-  function elementToDataUrl(el) {
-    try {
-      const tag = el.tagName.toLowerCase();
+        function elementToDataUrl(el) {
+          try {
+            const tag = el.tagName.toLowerCase();
 
-      if (tag === "canvas") {
-        return el.toDataURL("image/png");
-      }
+            if (tag === "canvas") {
+              return el.toDataURL("image/png");
+            }
 
-      if (tag === "svg") {
-        const svg = new XMLSerializer().serializeToString(el);
-        return "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg);
-      }
+            if (tag === "svg") {
+              const svg = new XMLSerializer().serializeToString(el);
+              return (
+                "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg)
+              );
+            }
 
-      if (tag === "img" && el.src) {
-        if (el.src.startsWith("data:")) return el.src;
+            if (tag === "img" && el.src) {
+              if (el.src.startsWith("data:")) return el.src;
 
-        const canvas = document.createElement("canvas");
-        canvas.width = el.naturalWidth || 512;
-        canvas.height = el.naturalHeight || 512;
-        canvas.getContext("2d").drawImage(el, 0, 0);
-        return canvas.toDataURL("image/png");
-      }
-    } catch (err) {}
+              const canvas = document.createElement("canvas");
+              canvas.width = el.naturalWidth || 512;
+              canvas.height = el.naturalHeight || 512;
+              canvas.getContext("2d").drawImage(el, 0, 0);
+              return canvas.toDataURL("image/png");
+            }
+          } catch (err) {}
 
-    return "";
-  }
+          return "";
+        }
 
-  document.addEventListener("click", function (e) {
-    const link = e.target.closest('a[href*="fs-tamplate/templates"]');
-    if (!link) return;
+        document.addEventListener(
+          "click",
+          function (e) {
+            const link = e.target.closest('a[href*="fs-tamplate/templates"]');
+            if (!link) return;
 
-    const qr = getBigVisibleQrCandidate();
-    const data = qr ? elementToDataUrl(qr) : "";
+            const qr = getBigVisibleQrCandidate();
+            const data = qr ? elementToDataUrl(qr) : "";
 
-    if (data) {
-      localStorage.setItem("flowsync_current_qr", data);
-    }
-  }, true);
-})();
-</script>
-<!-- FS QR TO TEMPLATE BRIDGE END -->
-<!-- FS QR TEMPLATE BRIDGE START -->
-<script>
-(function(){
-  document.addEventListener("click", function(e){
-    var link = e.target.closest('a[href*="fs-tamplate/templates"],a[href*="./templates"],a[href*="templates/"]');
-    if(!link) return;
+            if (data) {
+              localStorage.setItem("flowsync_current_qr", data);
+            }
+          },
+          true,
+        );
+      })();
+    </script>
+    <!-- FS QR TO TEMPLATE BRIDGE END -->
+    <!-- FS QR TEMPLATE BRIDGE START -->
+    <script>
+      (function () {
+        document.addEventListener(
+          "click",
+          function (e) {
+            var link = e.target.closest(
+              'a[href*="fs-tamplate/templates"],a[href*="./templates"],a[href*="templates/"]',
+            );
+            if (!link) return;
 
-    var items = Array.from(document.querySelectorAll("canvas,svg,img")).filter(function(el){
-      var r = el.getBoundingClientRect();
-      return r.width > 80 && r.height > 80 && el.offsetParent !== null;
-    }).sort(function(a,b){
-      var ar = a.getBoundingClientRect();
-      var br = b.getBoundingClientRect();
-      return (br.width * br.height) - (ar.width * ar.height);
-    });
+            var items = Array.from(document.querySelectorAll("canvas,svg,img"))
+              .filter(function (el) {
+                var r = el.getBoundingClientRect();
+                return (
+                  r.width > 80 && r.height > 80 && el.offsetParent !== null
+                );
+              })
+              .sort(function (a, b) {
+                var ar = a.getBoundingClientRect();
+                var br = b.getBoundingClientRect();
+                return br.width * br.height - ar.width * ar.height;
+              });
 
-    var qr = items[0];
-    if(!qr) return;
+            var qr = items[0];
+            if (!qr) return;
 
-    try{
-      if(qr.tagName.toLowerCase() === "canvas"){
-        localStorage.setItem("flowsync_current_qr", qr.toDataURL("image/png"));
-      } else if(qr.tagName.toLowerCase() === "svg"){
-        localStorage.setItem("flowsync_current_qr", "data:image/svg+xml;charset=utf-8," + encodeURIComponent(new XMLSerializer().serializeToString(qr)));
-      } else if(qr.tagName.toLowerCase() === "img" && qr.src && qr.src.startsWith("data:")){
-        localStorage.setItem("flowsync_current_qr", qr.src);
-      }
-    }catch(err){}
-  }, true);
-})();
-</script>
-<!-- FS QR TEMPLATE BRIDGE END -->
-</body>
+            try {
+              if (qr.tagName.toLowerCase() === "canvas") {
+                localStorage.setItem(
+                  "flowsync_current_qr",
+                  qr.toDataURL("image/png"),
+                );
+              } else if (qr.tagName.toLowerCase() === "svg") {
+                localStorage.setItem(
+                  "flowsync_current_qr",
+                  "data:image/svg+xml;charset=utf-8," +
+                    encodeURIComponent(
+                      new XMLSerializer().serializeToString(qr),
+                    ),
+                );
+              } else if (
+                qr.tagName.toLowerCase() === "img" &&
+                qr.src &&
+                qr.src.startsWith("data:")
+              ) {
+                localStorage.setItem("flowsync_current_qr", qr.src);
+              }
+            } catch (err) {}
+          },
+          true,
+        );
+      })();
+    </script>
+    <!-- FS QR TEMPLATE BRIDGE END -->
+  </body>
 </html>
