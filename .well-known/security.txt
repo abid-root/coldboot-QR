@@ -1,4 +1,3 @@
-Contact: mailto:abidhasan2348@gmail.com
-Preferred-Languages: en, bn
+Contact: https://abid-root.github.io/contact/
+Preferred-Languages: en
 Canonical: https://abid-root.github.io/coldboot-QR/.well-known/security.txt
-Policy: https://abid-root.github.io/coldboot-QR/

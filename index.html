@@ -1,38 +1,33 @@
-<!doctype html>
-<html lang="en" data-theme="light">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>FlowSync — QR Code Generator</title>
-  <meta name="description" content="Create clean QR codes for links, text, contact details, Wi-Fi and more. Static, private and browser-based.">
-  <meta name="robots" content="index, follow, max-image-preview:large">
-  <meta name="author" content="Abid Hasan">
-  <meta name="theme-color" content="#06090f">
-  <meta name="color-scheme" content="dark light">
-  <meta name="referrer" content="strict-origin-when-cross-origin">
-  <link rel="canonical" href="https://abid-root.github.io/coldboot-QR/">
-  <link rel="icon" type="image/png" href="assets/common/favicon-192.png">
-  <link rel="apple-touch-icon" href="assets/common/apple-touch-icon.png">
-  <link rel="manifest" href="site.webmanifest">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="FlowSync">
-  <meta property="og:title" content="FlowSync — QR Code Generator">
-  <meta property="og:description" content="Create clean QR codes for links, text, contact details, Wi-Fi and more. Static, private and browser-based.">
-  <meta property="og:url" content="https://abid-root.github.io/coldboot-QR/">
-  <meta property="og:image" content="https://abid-root.github.io/coldboot-QR/assets/common/og.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="FlowSync — QR Code Generator">
-  <meta name="twitter:description" content="Create clean QR codes for links, text, contact details, Wi-Fi and more. Static, private and browser-based.">
-  <meta name="twitter:image" content="https://abid-root.github.io/coldboot-QR/assets/common/og.png">
-  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "FlowSync QR Code Generator", "url": "https://abid-root.github.io/coldboot-QR/", "description": "Create clean QR codes for links, text, contact details, Wi-Fi and more. Static, private and browser-based.", "author": {"@type": "Person", "name": "Abid Hasan"}}</script>
+<!DOCTYPE html>
 
-<link rel="stylesheet" href="css/styles.css" />
-    <script src="https://cdn.jsdelivr.net/npm/qr-code-styling@1.9.2/lib/qr-code-styling.js"></script>
-    <!-- FLOWSYNC FAVICON START -->
-
-
+<html data-theme="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>FlowSync — QR Code Generator</title>
+<meta content="Create clean QR codes for links, text, contact details, Wi-Fi and more. Static, private and browser-based." name="description"/>
+<meta content="index, follow, max-image-preview:large" name="robots"/>
+<meta content="Abid Hasan" name="author"/>
+<meta content="#06090f" name="theme-color"/>
+<meta content="dark light" name="color-scheme"/>
+<meta content="strict-origin-when-cross-origin" name="referrer"/>
+<link href="https://abid-root.github.io/coldboot-QR/" rel="canonical"/>
+<link href="site.webmanifest" rel="manifest"/>
+<meta content="website" property="og:type"/>
+<meta content="FlowSync" property="og:site_name"/>
+<meta content="FlowSync — QR Code Generator" property="og:title"/>
+<meta content="Create clean QR codes for links, text, contact details, Wi-Fi and more. Static, private and browser-based." property="og:description"/>
+<meta content="https://abid-root.github.io/coldboot-QR/" property="og:url"/>
+<meta content="https://abid-root.github.io/coldboot-QR/assets/common/og.png" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="FlowSync — QR Code Generator" name="twitter:title"/>
+<meta content="Create clean QR codes for links, text, contact details, Wi-Fi and more. Static, private and browser-based." name="twitter:description"/>
+<meta content="https://abid-root.github.io/coldboot-QR/assets/common/og.png" name="twitter:image"/>
+<link href="css/styles.css" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/qr-code-styling@1.9.2/lib/qr-code-styling.js"></script>
+<!-- FLOWSYNC FAVICON START -->
 <script>
       (function () {
         var lightIcon = "assets/common/whiteone.webp";
@@ -86,545 +81,362 @@
         setInterval(applyFavicon, 1000);
       })();
     </script>
-    <!-- FLOWSYNC FAVICON END -->
-  </head>
-  <body>
-    <div class="app-shell">
-      <aside class="sidebar" aria-label="Sidebar navigation">
-        <a
-          class="brand"
-          href="#create"
-          data-page-link="create"
-          aria-label="FlowSync home"
-        >
-          <span class="brand-text">Flow<span>Sync</span></span>
-        </a>
-
-        <nav class="side-nav">
-          <a class="nav-item active" href="index.html"> <span>⌂</span>Home </a>
-
-          <a class="nav-item" href="guide/"> <span>▦</span>Guide </a>
-          <a class="nav-item" href="pricing/"> <span>▤</span>Pricing </a>
-
-          <a class="nav-item" href="index.html"> <span>✉</span>Contact </a>
-        </nav>
-
-        <div class="side-card">
-          <b>Static Tool</b>
-          <span>No backend, no database, no tracking.</span>
-        </div>
-
-        <div class="profile-chip">
-          <span class="avatar">Q</span>
-          <span><b>Local Mode</b><small>Nothing is saved</small></span>
-        </div>
-      </aside>
-
-      <main class="main">
-        <header class="topbar">
-          <button class="mobile-menu" type="button" aria-label="Open menu">
+<!-- FLOWSYNC FAVICON END -->
+<link href="assets/common/favicon-192.png" rel="icon" type="image/png"/><link href="assets/common/apple-touch-icon.png" rel="apple-touch-icon"/><script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "FlowSync QR Generator", "url": "https://abid-root.github.io/coldboot-QR/", "description": "Create clean QR codes for links, text, email, phone, SMS, Wi-Fi, vCard and location data in your browser.", "publisher": {"@type": "Organization", "name": "FlowSync", "parentOrganization": {"@type": "Organization", "name": "Coldboot"}}, "author": {"@type": "Person", "name": "Abid Hasan"}}</script></head>
+<body>
+<div class="app-shell">
+<aside aria-label="Sidebar navigation" class="sidebar">
+<a aria-label="FlowSync home" class="brand" data-page-link="create" href="#create">
+<span class="brand-text">Flow<span>Sync</span></span>
+</a>
+<nav class="side-nav">
+<a class="nav-item active" href="index.html"> <span>⌂</span>Home </a>
+<a class="nav-item" href="guide/"> <span>▦</span>Guide </a>
+<a class="nav-item" href="pricing/"> <span>▤</span>Pricing </a>
+<a class="nav-item" href="https://abid-root.github.io/contact/"> <span>✉</span>Contact </a>
+</nav>
+<div class="side-card">
+<b>Static Tool</b>
+<span>No backend, no database, no tracking.</span>
+</div>
+<div class="profile-chip">
+<span class="avatar">Q</span>
+<span><b>Local Mode</b><small>Nothing is saved</small></span>
+</div>
+</aside>
+<main class="main">
+<header class="topbar">
+<button aria-label="Open menu" class="mobile-menu" type="button">
             ☰
           </button>
-          <div class="mobile-brand">Flow<span>Sync</span></div>
-          <div class="top-actions">
-      <a href="https://abid-root.github.io/contact/">Contact</a>
-      
-            <button
-              id="themeToggle"
-              class="icon-btn"
-              type="button"
-              aria-label="Toggle theme"
-            >
+<div class="mobile-brand">Flow<span>Sync</span></div>
+<div class="top-actions">
+<button aria-label="Toggle theme" class="icon-btn" id="themeToggle" type="button">
               ☾
             </button>
-            <button id="resetBtn" class="ghost-btn" type="button">Reset</button>
-            <button id="quickDownload" class="primary small" type="button">
+<button class="ghost-btn" id="resetBtn" type="button">Reset</button>
+<button class="primary small" id="quickDownload" type="button">
               Download
             </button>
-          </div>
-        </header>
-
-        <section class="page active" id="page-create">
-          <div class="hero-grid">
-            <section class="hero-copy">
-              <h1>Design<br />brilliant <span>QR</span><br />experiences.</h1>
-              <p>
+</div>
+</header>
+<section class="page active" id="page-create">
+<div class="hero-grid">
+<section class="hero-copy">
+<h1>Design<br/>brilliant <span>QR</span><br/>experiences.</h1>
+<p>
                 Create, customize and download clean QR codes. Everything runs
                 in your browser.
               </p>
-              <button class="primary" id="focusInput" type="button">
+<button class="primary" id="focusInput" type="button">
                 ＋ Create QR Code
               </button>
-              <!-- FS TAMPLATE PACK HOLDER START -->
-              <div class="fs-template-pack-holder">
-                <div class="fs-pack-head">
-                  <div>
-                    <b>QR templates</b>
-                    <small
-                      >Open a design, upload your QR, edit text, download
-                      PNG.</small
-                    >
-                  </div>
-                  <a href="fs-tamplate/templates/">All 20</a>
-                </div>
-
-                <div class="fs-pack-strip">
-                  <a
-                    class="fs-pack-card floral"
-                    href="fs-tamplate/templates/floral-bloom/"
-                  >
-                    <span>Flower</span>
-                    <i>QR</i>
-                    <b>Bloom</b>
-                    <small>Soft brand card</small>
-                  </a>
-
-                  <a
-                    class="fs-pack-card ocean"
-                    href="fs-tamplate/templates/ocean-wave/"
-                  >
-                    <span>Ocean</span>
-                    <i>QR</i>
-                    <b>Wave</b>
-                    <small>Fresh link card</small>
-                  </a>
-
-                  <a
-                    class="fs-pack-card premium"
-                    href="fs-tamplate/templates/luxury-black/"
-                  >
-                    <span>Premium</span>
-                    <i>QR</i>
-                    <b>Black</b>
-                    <small>Luxury card</small>
-                  </a>
-                </div>
-
-                <a class="fs-pack-more" href="fs-tamplate/templates/"
-                  >Open template gallery</a
-                >
-              </div>
-              <!-- FS TAMPLATE PACK HOLDER END -->
-
-              <!-- HERO QUICK LINKS START -->
-              <div class="hero-quick-links">
-                <a href="privacy/">Policy</a>
-                <a href="guide/">Guide</a>
-              </div>
-              <!-- HERO QUICK LINKS END -->
-            </section>
-
-            <section class="preview-stage" aria-label="QR preview">
-              <div id="qrCanvas" class="qr-canvas"></div>
-              <div class="scan-chip">
-                <span>⌗</span> Scan to preview
-                <input id="liveToggle" type="checkbox" checked />
-              </div>
-            </section>
-
-            <section class="design-panel">
-              <div class="panel-tabs" role="tablist">
-                <button class="active" data-editor-tab="content" type="button">
+<!-- FS TAMPLATE PACK HOLDER START -->
+<div class="fs-template-pack-holder">
+<div class="fs-pack-head">
+<div>
+<b>QR templates</b>
+<small>Open a design, upload your QR, edit text, download
+                      PNG.</small>
+</div>
+<a href="fs-tamplate/templates/">All 20</a>
+</div>
+<div class="fs-pack-strip">
+<a class="fs-pack-card floral" href="fs-tamplate/templates/floral-bloom/">
+<span>Flower</span>
+<i>QR</i>
+<b>Bloom</b>
+<small>Soft brand card</small>
+</a>
+<a class="fs-pack-card ocean" href="fs-tamplate/templates/ocean-wave/">
+<span>Ocean</span>
+<i>QR</i>
+<b>Wave</b>
+<small>Fresh link card</small>
+</a>
+<a class="fs-pack-card premium" href="fs-tamplate/templates/luxury-black/">
+<span>Premium</span>
+<i>QR</i>
+<b>Black</b>
+<small>Luxury card</small>
+</a>
+</div>
+<a class="fs-pack-more" href="fs-tamplate/templates/">Open template gallery</a>
+</div>
+<!-- FS TAMPLATE PACK HOLDER END -->
+<!-- HERO QUICK LINKS START -->
+<div class="hero-quick-links">
+<a href="privacy/">Policy</a>
+<a href="guide/">Guide</a>
+</div>
+<!-- HERO QUICK LINKS END -->
+</section>
+<section aria-label="QR preview" class="preview-stage">
+<div class="qr-canvas" id="qrCanvas"></div>
+<div class="scan-chip">
+<span>⌗</span> Scan to preview
+                <input checked="" id="liveToggle" type="checkbox"/>
+</div>
+</section>
+<section class="design-panel">
+<div class="panel-tabs" role="tablist">
+<button class="active" data-editor-tab="content" type="button">
                   Content
                 </button>
-                <button data-editor-tab="design" type="button">Design</button>
-                <button data-editor-tab="logo" type="button">Logo</button>
-                <button data-editor-tab="options" type="button">Options</button>
-              </div>
-
-              <div class="editor-tab active" id="editor-content">
-                <label>QR Type</label>
-                <div class="type-grid" id="typeGrid">
-                  <button class="selected" data-type="url">
+<button data-editor-tab="design" type="button">Design</button>
+<button data-editor-tab="logo" type="button">Logo</button>
+<button data-editor-tab="options" type="button">Options</button>
+</div>
+<div class="editor-tab active" id="editor-content">
+<label>QR Type</label>
+<div class="type-grid" id="typeGrid">
+<button class="selected" data-type="url">
                     🔗<span>URL</span>
-                  </button>
-                  <button data-type="text">T<span>Text</span></button>
-                  <button data-type="wifi">⌁<span>Wi‑Fi</span></button>
-                  <button data-type="email">✉<span>Email</span></button>
-                  <button data-type="phone">☏<span>Phone</span></button>
-                  <button data-type="sms">☷<span>SMS</span></button>
-                  <button data-type="vcard">♙<span>vCard</span></button>
-                  <button data-type="location">⌖<span>Location</span></button>
-                </div>
-                <div id="contentFields" class="field-stack"></div>
-              </div>
-
-              <div class="editor-tab" id="editor-design">
-                <label>Style</label>
-                <div class="choice-row" data-choice="style">
-                  <button class="selected" data-value="square">Minimal</button>
-                  <button data-value="dots">Dots</button>
-                  <button data-value="rounded">Rounded</button>
-                  <button data-value="classy-rounded">Soft</button>
-                  <button data-value="extra-rounded">Pixels</button>
-                </div>
-                <label>Colors</label>
-                <div class="color-row">
-                  <div class="color-manuals">
-                    <label class="manual-color">
-                      <span>QR</span>
-                      <input id="darkColor" type="color" value="#111111" />
-                    </label>
-
-                    <label class="manual-color">
-                      <span>Grad</span>
-                      <input id="accentColor" type="color" value="#635BFF" />
-                    </label>
-
-                    <label class="manual-color">
-                      <span>BG</span>
-                      <input id="lightColor" type="color" value="#ffffff" />
-                    </label>
-
-                    <label class="manual-color">
-                      <span>Outer</span>
-                      <input id="eyeOuterColor" type="color" value="#111111" />
-                    </label>
-
-                    <label class="manual-color">
-                      <span>Inner</span>
-                      <input id="eyeInnerColor" type="color" value="#111111" />
-                    </label>
-                  </div>
-
-                  <div class="preset-group">
-                    <div class="preset-label">Solid</div>
-                    <div class="preset-line">
-                      <button
-                        class="color-preset"
-                        title="Ink"
-                        data-mode="solid"
-                        data-c1="#111827"
-                        data-c2="#111827"
-                        style="--a: #111827; --b: #111827"
-                      ></button>
-                      <button
-                        class="color-preset"
-                        title="Graphite"
-                        data-mode="solid"
-                        data-c1="#1F2937"
-                        data-c2="#1F2937"
-                        style="--a: #1f2937; --b: #1f2937"
-                      ></button>
-                      <button
-                        class="color-preset"
-                        title="Forest"
-                        data-mode="solid"
-                        data-c1="#166534"
-                        data-c2="#166534"
-                        style="--a: #166534; --b: #166534"
-                      ></button>
-                      <button
-                        class="color-preset"
-                        title="Berry"
-                        data-mode="solid"
-                        data-c1="#7F1D1D"
-                        data-c2="#7F1D1D"
-                        style="--a: #7f1d1d; --b: #7f1d1d"
-                      ></button>
-                      <button
-                        class="color-preset"
-                        title="Indigo"
-                        data-mode="solid"
-                        data-c1="#312E81"
-                        data-c2="#312E81"
-                        style="--a: #312e81; --b: #312e81"
-                      ></button>
-                      <button
-                        class="color-preset"
-                        title="Amber"
-                        data-mode="solid"
-                        data-c1="#A16207"
-                        data-c2="#A16207"
-                        style="--a: #a16207; --b: #a16207"
-                      ></button>
-                    </div>
-                  </div>
-
-                  <div class="preset-group">
-                    <div class="preset-label">Gradient</div>
-                    <div class="preset-line">
-                      <button
-                        class="color-preset"
-                        title="Midnight Violet"
-                        data-mode="gradient"
-                        data-c1="#0F172A"
-                        data-c2="#635BFF"
-                        style="--a: #0f172a; --b: #635bff"
-                      ></button>
-                      <button
-                        class="color-preset"
-                        title="Sky Violet"
-                        data-mode="gradient"
-                        data-c1="#0EA5E9"
-                        data-c2="#8B5CF6"
-                        style="--a: #0ea5e9; --b: #8b5cf6"
-                      ></button>
-                      <button
-                        class="color-preset"
-                        title="Emerald Blue"
-                        data-mode="gradient"
-                        data-c1="#065F46"
-                        data-c2="#2563EB"
-                        style="--a: #065f46; --b: #2563eb"
-                      ></button>
-                      <button
-                        class="color-preset"
-                        title="Sunset"
-                        data-mode="gradient"
-                        data-c1="#C2410C"
-                        data-c2="#FB7185"
-                        style="--a: #c2410c; --b: #fb7185"
-                      ></button>
-                      <button
-                        class="color-preset"
-                        title="Pink Violet"
-                        data-mode="gradient"
-                        data-c1="#BE185D"
-                        data-c2="#8B5CF6"
-                        style="--a: #be185d; --b: #8b5cf6"
-                      ></button>
-                      <button
-                        class="color-preset"
-                        title="Lime Glow"
-                        data-mode="gradient"
-                        data-c1="#1F2937"
-                        data-c2="#84CC16"
-                        style="--a: #1f2937; --b: #84cc16"
-                      ></button>
-                    </div>
-                  </div>
-                </div>
-                <label>Eye Style</label>
-                <div class="choice-row" data-choice="eye">
-                  <button class="selected" data-value="square">Square</button>
-                  <button data-value="dot">Dot</button>
-                  <button data-value="extra-rounded">Round</button>
-                </div>
-                <!-- FlowSync USEFUL QR TOOLS START -->
-                <label>QR Customization</label>
-
-                <div class="qr-useful-tools">
-                  <div class="qr-tool">
-                    <div class="qr-tool-head">
-                      <span>QR Padding</span>
-                      <b id="qrMarginValue">10</b>
-                    </div>
-                    <input
-                      id="qrMargin"
-                      type="range"
-                      min="0"
-                      max="24"
-                      value="10"
-                    />
-                  </div>
-
-                  <div class="qr-tool">
-                    <div class="qr-tool-head">
-                      <span>Logo Size</span>
-                      <b id="logoSizeValue">20%</b>
-                    </div>
-                    <input
-                      id="logoSize"
-                      type="range"
-                      min="8"
-                      max="30"
-                      value="20"
-                    />
-                  </div>
-
-                  <div class="qr-tool">
-                    <div class="qr-tool-head">
-                      <span>Logo Safe Zone</span>
-                      <b id="logoGapValue">5</b>
-                    </div>
-                    <input
-                      id="logoGap"
-                      type="range"
-                      min="0"
-                      max="14"
-                      value="5"
-                    />
-                  </div>
-
-                  <div class="qr-tool">
-                    <div class="qr-tool-head">
-                      <span>Gradient Angle</span>
-                      <b id="gradientAngleValue">0°</b>
-                    </div>
-                    <input
-                      id="gradientAngle"
-                      type="range"
-                      min="0"
-                      max="315"
-                      step="45"
-                      value="0"
-                    />
-                  </div>
-                </div>
-
-                <div class="qr-toggle-tools">
-                  <label>
-                    <input id="gradientToggle" type="checkbox" />
-                    <span>Gradient</span>
-                  </label>
-
-                  <label>
-                    <input id="transparentBg" type="checkbox" />
-                    <span>Transparent BG</span>
-                  </label>
-                </div>
-                <!-- FlowSync USEFUL QR TOOLS END -->
-              </div>
-
-              <div class="editor-tab" id="editor-logo">
-                <label>Logo</label>
-                <div class="upload-box">
-                  <input id="logoUpload" type="file" accept="image/*" />
-                  <p>Upload PNG/SVG/JPG logo for center icon.</p>
-                </div>
-                <button id="removeLogo" class="ghost-btn wide" type="button">
+</button>
+<button data-type="text">T<span>Text</span></button>
+<button data-type="wifi">⌁<span>Wi‑Fi</span></button>
+<button data-type="email">✉<span>Email</span></button>
+<button data-type="phone">☏<span>Phone</span></button>
+<button data-type="sms">☷<span>SMS</span></button>
+<button data-type="vcard">♙<span>vCard</span></button>
+<button data-type="location">⌖<span>Location</span></button>
+</div>
+<div class="field-stack" id="contentFields"></div>
+</div>
+<div class="editor-tab" id="editor-design">
+<label>Style</label>
+<div class="choice-row" data-choice="style">
+<button class="selected" data-value="square">Minimal</button>
+<button data-value="dots">Dots</button>
+<button data-value="rounded">Rounded</button>
+<button data-value="classy-rounded">Soft</button>
+<button data-value="extra-rounded">Pixels</button>
+</div>
+<label>Colors</label>
+<div class="color-row">
+<div class="color-manuals">
+<label class="manual-color">
+<span>QR</span>
+<input id="darkColor" type="color" value="#111111"/>
+</label>
+<label class="manual-color">
+<span>Grad</span>
+<input id="accentColor" type="color" value="#635BFF"/>
+</label>
+<label class="manual-color">
+<span>BG</span>
+<input id="lightColor" type="color" value="#ffffff"/>
+</label>
+<label class="manual-color">
+<span>Outer</span>
+<input id="eyeOuterColor" type="color" value="#111111"/>
+</label>
+<label class="manual-color">
+<span>Inner</span>
+<input id="eyeInnerColor" type="color" value="#111111"/>
+</label>
+</div>
+<div class="preset-group">
+<div class="preset-label">Solid</div>
+<div class="preset-line">
+<button class="color-preset" data-c1="#111827" data-c2="#111827" data-mode="solid" style="--a: #111827; --b: #111827" title="Ink"></button>
+<button class="color-preset" data-c1="#1F2937" data-c2="#1F2937" data-mode="solid" style="--a: #1f2937; --b: #1f2937" title="Graphite"></button>
+<button class="color-preset" data-c1="#166534" data-c2="#166534" data-mode="solid" style="--a: #166534; --b: #166534" title="Forest"></button>
+<button class="color-preset" data-c1="#7F1D1D" data-c2="#7F1D1D" data-mode="solid" style="--a: #7f1d1d; --b: #7f1d1d" title="Berry"></button>
+<button class="color-preset" data-c1="#312E81" data-c2="#312E81" data-mode="solid" style="--a: #312e81; --b: #312e81" title="Indigo"></button>
+<button class="color-preset" data-c1="#A16207" data-c2="#A16207" data-mode="solid" style="--a: #a16207; --b: #a16207" title="Amber"></button>
+</div>
+</div>
+<div class="preset-group">
+<div class="preset-label">Gradient</div>
+<div class="preset-line">
+<button class="color-preset" data-c1="#0F172A" data-c2="#635BFF" data-mode="gradient" style="--a: #0f172a; --b: #635bff" title="Midnight Violet"></button>
+<button class="color-preset" data-c1="#0EA5E9" data-c2="#8B5CF6" data-mode="gradient" style="--a: #0ea5e9; --b: #8b5cf6" title="Sky Violet"></button>
+<button class="color-preset" data-c1="#065F46" data-c2="#2563EB" data-mode="gradient" style="--a: #065f46; --b: #2563eb" title="Emerald Blue"></button>
+<button class="color-preset" data-c1="#C2410C" data-c2="#FB7185" data-mode="gradient" style="--a: #c2410c; --b: #fb7185" title="Sunset"></button>
+<button class="color-preset" data-c1="#BE185D" data-c2="#8B5CF6" data-mode="gradient" style="--a: #be185d; --b: #8b5cf6" title="Pink Violet"></button>
+<button class="color-preset" data-c1="#1F2937" data-c2="#84CC16" data-mode="gradient" style="--a: #1f2937; --b: #84cc16" title="Lime Glow"></button>
+</div>
+</div>
+</div>
+<label>Eye Style</label>
+<div class="choice-row" data-choice="eye">
+<button class="selected" data-value="square">Square</button>
+<button data-value="dot">Dot</button>
+<button data-value="extra-rounded">Round</button>
+</div>
+<!-- FlowSync USEFUL QR TOOLS START -->
+<label>QR Customization</label>
+<div class="qr-useful-tools">
+<div class="qr-tool">
+<div class="qr-tool-head">
+<span>QR Padding</span>
+<b id="qrMarginValue">10</b>
+</div>
+<input id="qrMargin" max="24" min="0" type="range" value="10"/>
+</div>
+<div class="qr-tool">
+<div class="qr-tool-head">
+<span>Logo Size</span>
+<b id="logoSizeValue">20%</b>
+</div>
+<input id="logoSize" max="30" min="8" type="range" value="20"/>
+</div>
+<div class="qr-tool">
+<div class="qr-tool-head">
+<span>Logo Safe Zone</span>
+<b id="logoGapValue">5</b>
+</div>
+<input id="logoGap" max="14" min="0" type="range" value="5"/>
+</div>
+<div class="qr-tool">
+<div class="qr-tool-head">
+<span>Gradient Angle</span>
+<b id="gradientAngleValue">0°</b>
+</div>
+<input id="gradientAngle" max="315" min="0" step="45" type="range" value="0"/>
+</div>
+</div>
+<div class="qr-toggle-tools">
+<label>
+<input id="gradientToggle" type="checkbox"/>
+<span>Gradient</span>
+</label>
+<label>
+<input id="transparentBg" type="checkbox"/>
+<span>Transparent BG</span>
+</label>
+</div>
+<!-- FlowSync USEFUL QR TOOLS END -->
+</div>
+<div class="editor-tab" id="editor-logo">
+<label>Logo</label>
+<div class="upload-box">
+<input accept="image/*" id="logoUpload" type="file"/>
+<p>Upload PNG/SVG/JPG logo for center icon.</p>
+</div>
+<button class="ghost-btn wide" id="removeLogo" type="button">
                   Remove logo
                 </button>
-              </div>
-              <div class="hidden-frame-controls" hidden>
-                <input id="frameText" value="Scan to preview" />
-                <input
-                  id="sizeRange"
-                  type="range"
-                  min="160"
-                  max="380"
-                  value="300"
-                />
-                <button id="sizeMinus" type="button">−</button>
-                <button id="sizePlus" type="button">＋</button>
-              </div>
-              <div class="editor-tab" id="editor-options">
-                <label>Error Correction</label>
-                <select id="errorLevel" class="input">
-                  <option value="L">Low</option>
-                  <option value="M">Medium</option>
-                  <option value="Q">Quality</option>
-                  <option value="H" selected>High</option>
-                </select>
-                <label>File Name</label>
-                <input id="fileName" class="input" value="flowsync-qr-code" />
-              </div>
-
-              <div class="download-row">
-                <button class="primary" id="downloadPng" type="button">
+</div>
+<div class="hidden-frame-controls" hidden="">
+<input id="frameText" value="Scan to preview"/>
+<input id="sizeRange" max="380" min="160" type="range" value="300"/>
+<button id="sizeMinus" type="button">−</button>
+<button id="sizePlus" type="button">＋</button>
+</div>
+<div class="editor-tab" id="editor-options">
+<label>Error Correction</label>
+<select class="input" id="errorLevel">
+<option value="L">Low</option>
+<option value="M">Medium</option>
+<option value="Q">Quality</option>
+<option selected="" value="H">High</option>
+</select>
+<label>File Name</label>
+<input class="input" id="fileName" value="flowsync-qr-code"/>
+</div>
+<div class="download-row">
+<button class="primary" id="downloadPng" type="button">
                   ↓ Download PNG
                 </button>
-                <button class="square-btn" id="downloadSvg" type="button">
+<button class="square-btn" id="downloadSvg" type="button">
                   SVG
                 </button>
-              </div>
-            </section>
-          </div>
-        </section>
-
-        <section class="page" id="page-templates">
-          <div class="page-head">
-            <h2>Templates that fit <span>every use case</span></h2>
-            <p>Choose a template and customize it.</p>
-          </div>
-          <div class="search-line">
-            <input
-              id="templateSearch"
-              placeholder="Search templates..."
-            /><select id="categoryFilter">
-              <option>All Categories</option>
-              <option>Business</option>
-              <option>Event</option>
-              <option>Restaurant</option>
-              <option>Product</option>
-            </select>
-          </div>
-          <div class="template-grid" id="templateGrid"></div>
-        </section>
-
-        <section class="page" id="page-mycodes">
-          <div class="page-head">
-            <h2>Your QR Codes</h2>
-            <p>Current session only. Refreshing the page clears this list.</p>
-          </div>
-          <div class="code-actions">
-            <button class="primary" id="saveSessionCode" type="button">
-              Add current QR to session list</button
-            ><button class="ghost-btn" id="clearSession" type="button">
+</div>
+</section>
+</div>
+</section>
+<section class="page" id="page-templates">
+<div class="page-head">
+<h2>Templates that fit <span>every use case</span></h2>
+<p>Choose a template and customize it.</p>
+</div>
+<div class="search-line">
+<input id="templateSearch" placeholder="Search templates..."/><select id="categoryFilter">
+<option>All Categories</option>
+<option>Business</option>
+<option>Event</option>
+<option>Restaurant</option>
+<option>Product</option>
+</select>
+</div>
+<div class="template-grid" id="templateGrid"></div>
+</section>
+<section class="page" id="page-mycodes">
+<div class="page-head">
+<h2>Your QR Codes</h2>
+<p>Current session only. Refreshing the page clears this list.</p>
+</div>
+<div class="code-actions">
+<button class="primary" id="saveSessionCode" type="button">
+              Add current QR to session list</button><button class="ghost-btn" id="clearSession" type="button">
               Clear session
             </button>
-          </div>
-          <div class="codes-list" id="codesList"></div>
-        </section>
-
-        <section class="page" id="page-analytics">
-          <div class="page-head">
-            <h2>Analytics unavailable</h2>
-            <p>
+</div>
+<div class="codes-list" id="codesList"></div>
+</section>
+<section class="page" id="page-analytics">
+<div class="page-head">
+<h2>Analytics unavailable</h2>
+<p>
               Real scan analytics need a backend. This static version does not
               track users.
             </p>
-          </div>
-          <div class="empty-state">
-            <b>No tracking here.</b
-            ><span
-              >To track scans later, you will need dynamic QR links, a database
-              and redirect server.</span
-            >
-          </div>
-        </section>
-
-        <section class="page" id="page-settings">
-          <div class="page-head">
-            <h2>Settings</h2>
-            <p>Customize the interface only. No account settings needed.</p>
-          </div>
-          <div class="settings-grid">
-            <div class="settings-card">
-              <h3>Theme</h3>
-              <p>Switch between light and dark interface.</p>
-              <button id="themeToggle2" class="primary" type="button">
+</div>
+<div class="empty-state">
+<b>No tracking here.</b><span>To track scans later, you will need dynamic QR links, a database
+              and redirect server.</span>
+</div>
+</section>
+<section class="page" id="page-settings">
+<div class="page-head">
+<h2>Settings</h2>
+<p>Customize the interface only. No account settings needed.</p>
+</div>
+<div class="settings-grid">
+<div class="settings-card">
+<h3>Theme</h3>
+<p>Switch between light and dark interface.</p>
+<button class="primary" id="themeToggle2" type="button">
                 Toggle Theme
               </button>
-            </div>
-            <div class="settings-card">
-              <h3>Privacy</h3>
-              <p>
+</div>
+<div class="settings-card">
+<h3>Privacy</h3>
+<p>
                 This site sends nothing to a backend. QR generation happens in
                 the browser.
               </p>
-            </div>
-            <div class="settings-card">
-              <h3>Limit</h3>
-              <p>
+</div>
+<div class="settings-card">
+<h3>Limit</h3>
+<p>
                 No dynamic QR, scan analytics, login, billing or cloud save
                 without backend.
               </p>
-            </div>
-          </div>
-        </section>
-      </main>
-
-      <nav class="bottom-nav" aria-label="Mobile navigation">
-        <button class="active" data-page="create" type="button">
+</div>
+</div>
+</section>
+</main>
+<nav aria-label="Mobile navigation" class="bottom-nav">
+<button class="active" data-page="create" type="button">
           ⚡<span>Create</span>
-        </button>
-        <button data-page="templates" type="button">
+</button>
+<button data-page="templates" type="button">
           ▦<span>Templates</span>
-        </button>
-        <button data-page="mycodes" type="button">
+</button>
+<button data-page="mycodes" type="button">
           ▤<span>My Codes</span>
-        </button>
-        <button data-page="settings" type="button">
+</button>
+<button data-page="settings" type="button">
           ⚙<span>Settings</span>
-        </button>
-      </nav>
-    </div>
-
-    <script src="js/app.js"></script>
-    <!-- FS QR TO TEMPLATE BRIDGE START -->
-    <script>
+</button>
+</nav>
+</div>
+<script src="js/app.js"></script>
+<!-- FS QR TO TEMPLATE BRIDGE START -->
+<script>
       (function () {
         function getBigVisibleQrCandidate() {
           return [...document.querySelectorAll("canvas, svg, img")]
@@ -685,9 +497,9 @@
         );
       })();
     </script>
-    <!-- FS QR TO TEMPLATE BRIDGE END -->
-    <!-- FS QR TEMPLATE BRIDGE START -->
-    <script>
+<!-- FS QR TO TEMPLATE BRIDGE END -->
+<!-- FS QR TEMPLATE BRIDGE START -->
+<script>
       (function () {
         document.addEventListener(
           "click",
@@ -740,6 +552,6 @@
         );
       })();
     </script>
-    <!-- FS QR TEMPLATE BRIDGE END -->
-  </body>
+<!-- FS QR TEMPLATE BRIDGE END -->
+</body>
 </html>
